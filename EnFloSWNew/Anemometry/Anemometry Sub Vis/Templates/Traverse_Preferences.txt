@@ -1,3 +1,0 @@
-Plan_View_Width	XPlan_View_Height	YSide_View_Width	XSide_View_Height	ZFront_View_Width	YFront_View_Height	ZWhich_Axis_Is Vertical	Z
-
-Co-ordinate Transform	False

@@ -1,1 +1,0 @@
-FCO12 Range 0-200mmH2O; FCO12 Range 0-20mmH2O; FCO16 Range ±200mmH2O; FCO16 Range ±2mmH2O; FCO332 Range 0-0.5mmH2O; FCO332 Range 0-200mmH2O; 
