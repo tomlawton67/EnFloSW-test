@@ -75,6 +75,44 @@
 				<Item Name="compatReadText.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/compatReadText.vi"/>
 				<Item Name="Rendezvous RefNum" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/Rendezvous RefNum"/>
 				<Item Name="Open File+.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Open File+.vi"/>
+				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
+				<Item Name="System Exec.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/system.llb/System Exec.vi"/>
+				<Item Name="NI_SMTPEmail.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/SMTP/NI_SMTPEmail.lvlib"/>
+				<Item Name="LV70U32ToDateRec.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/LV70U32ToDateRec.vi"/>
+				<Item Name="GetDateTimeInSecsCompatVI.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/GetDateTimeInSecsCompatVI.vi"/>
+				<Item Name="Compare Two Paths.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Compare Two Paths.vi"/>
+				<Item Name="Open URL in Default Browser core.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/browser.llb/Open URL in Default Browser core.vi"/>
+				<Item Name="Open URL in Default Browser (string).vi" Type="VI" URL="/&lt;vilib&gt;/Platform/browser.llb/Open URL in Default Browser (string).vi"/>
+				<Item Name="Escape Characters for HTTP.vi" Type="VI" URL="/&lt;vilib&gt;/printing/PathToURL.llb/Escape Characters for HTTP.vi"/>
+				<Item Name="Path to URL.vi" Type="VI" URL="/&lt;vilib&gt;/printing/PathToURL.llb/Path to URL.vi"/>
+				<Item Name="Open URL in Default Browser (path).vi" Type="VI" URL="/&lt;vilib&gt;/Platform/browser.llb/Open URL in Default Browser (path).vi"/>
+				<Item Name="Open URL in Default Browser.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/browser.llb/Open URL in Default Browser.vi"/>
+			</Item>
+			<Item Name="user.lib" Type="Folder">
+				<Item Name="DtLvLink.lvlib" Type="Library" URL="/&lt;userlib&gt;/LV-Link3/DtLvLink.lvlib"/>
+				<Item Name="DtOLWriteSingle.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtOLWriteSingle.vi"/>
+				<Item Name="DtOLWriteWaveform.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtOLWriteWaveform.vi"/>
+				<Item Name="DtOLWriteMultiple2D.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtOLWriteMultiple2D.vi"/>
+				<Item Name="DtOLWriteMultiple1D.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtOLWriteMultiple1D.vi"/>
+				<Item Name="DtOLWrite.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/DtOLWrite.vi"/>
+				<Item Name="DtOLCloseTask.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/DtOLCloseTask.vi"/>
+				<Item Name="DtCreateAoutChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateAoutChan.vi"/>
+				<Item Name="DtCreateQuadChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateQuadChan.vi"/>
+				<Item Name="DtCreateDOutChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateDOutChan.vi"/>
+				<Item Name="DtCreateDinChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateDinChan.vi"/>
+				<Item Name="DtCreateCtrContMeasureChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrContMeasureChan.vi"/>
+				<Item Name="DtCreateCtrTwoEdgeChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrTwoEdgeChan.vi"/>
+				<Item Name="DtCreateCtrPeriodChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrPeriodChan.vi"/>
+				<Item Name="DtCreateCtrFreqChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrFreqChan.vi"/>
+				<Item Name="DtCreateCtrUpDownChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrUpDownChan.vi"/>
+				<Item Name="DtCreateCtrRateChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrRateChan.vi"/>
+				<Item Name="DtCreateCtrOneShotRepeatChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrOneShotRepeatChan.vi"/>
+				<Item Name="DtCreateCtrOneShotChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrOneShotChan.vi"/>
+				<Item Name="DtCreateCtrEventsChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateCtrEventsChan.vi"/>
+				<Item Name="DtCreateAoutRawChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateAoutRawChan.vi"/>
+				<Item Name="DtCreateAinRawChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateAinRawChan.vi"/>
+				<Item Name="DtCreateAinChan.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/PolySubVIs/DtCreateAinChan.vi"/>
+				<Item Name="DtOLCreateTask.vi" Type="VI" URL="/&lt;userlib&gt;/LV-Link3/DtOLCreateTask.vi"/>
 			</Item>
 			<Item Name="ADAM_Module_Type.vi" Type="VI" URL="../../../../../ADAM Client/Sub VIs/ADAM_Module_Type.vi"/>
 			<Item Name="ADAM_setup_ch_names.vi" Type="VI" URL="../../../../../ADAM Client/Sub VIs/ADAM_setup_ch_names.vi"/>
@@ -106,7 +144,6 @@
 			<Item Name="Constants_global.vi" Type="VI" URL="../../../Globals/Constants_global.vi"/>
 			<Item Name="Convert_No._to_String_ADAM.vi" Type="VI" URL="../../../../../ADAM Client/Sub VIs/Convert_No._to_String_ADAM.vi"/>
 			<Item Name="Copy_with_Check.vi" Type="VI" URL="../../../File/Copy_with_Check.vi"/>
-			<Item Name="Correlation_cluster.ctl" Type="VI" URL="../../../Controls/Correlation_cluster.ctl"/>
 			<Item Name="Create_directory_path.vi" Type="VI" URL="../../../File/Create_directory_path.vi"/>
 			<Item Name="Create_Error_log_folders.vi" Type="VI" URL="../../../Utilities/Create_Error_log_folders.vi"/>
 			<Item Name="Date_and_Time_to_string.vi" Type="VI" URL="../../../String/Date_and_Time_to_string.vi"/>
@@ -190,10 +227,14 @@
 			<Item Name="Upload_To_ADAM_Server.vi" Type="VI" URL="../../../../../ADAM Client/Sub VIs/Upload_To_ADAM_Server.vi"/>
 			<Item Name="Valid_Message.vi" Type="VI" URL="../../../Utilities/Valid_Message.vi"/>
 			<Item Name="Valid_Path.vi" Type="VI" URL="../../../File/Valid_Path.vi"/>
-			<Item Name="Velocity_cluster.ctl" Type="VI" URL="../../../Controls/Velocity_cluster.ctl"/>
 			<Item Name="Wait_seconds.vi" Type="VI" URL="../../../Wait_seconds.vi"/>
 			<Item Name="Was_string_matched.vi" Type="VI" URL="../../../String/Was_string_matched.vi"/>
 			<Item Name="Write_File_Simple.vi" Type="VI" URL="../../../File/Write_File_Simple.vi"/>
+			<Item Name="XY_Plot_Cluster.ctl" Type="VI" URL="../../../Controls/XY_Plot_Cluster.ctl"/>
+			<Item Name="Correlation_cluster1.ctl" Type="VI" URL="../../../Controls/Correlation_cluster1.ctl"/>
+			<Item Name="XDNodeRunTimeDep.lvlib" Type="Library" URL="/&lt;vilib&gt;/Platform/TimedLoop/XDataNode/XDNodeRunTimeDep.lvlib"/>
+			<Item Name="Open_Close_Front_Panel.ph.vi" Type="VI" URL="../../../Utilities/Open_Close_Front_Panel.ph.vi"/>
+			<Item Name="Run_EnFlo_Hub.vi" Type="VI" URL="../../../../Utilities/Run_EnFlo_Hub.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
