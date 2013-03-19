@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 # To make a symbolic link of this gnuplot shell script data2eps.sh in /usr/local/bin
 # Paste the following command into the Terminal:(without the #) then hit return.
 # sudo ln -s /Applications/EnFlo\ Software/Anemometry/Anemometry\ Sub\ Vis/Script\ files/data2eps.sh /usr/local/bin/data2eps.sh
