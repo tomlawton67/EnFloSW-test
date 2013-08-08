@@ -1,0 +1,88 @@
+set term epslatex color size 9in,6in			# sets the overall canvas dimension- somewhat approximate
+set output "Plot.eps"
+
+
+set multiplot layout 2,3 rowsfirst downwards scale 0.9 title 'Multiplot Example'
+# layout defines an automatic grid to put the plots in
+# scale 1, no margins, makes plot axes touch
+# title is optional; omit COMPLETELY if not required to avoid whitespace
+
+# Make the outline box a little paler
+set style line 12 lc rgb '#808080' lt 1 lw 0.6
+set border ls 12
+
+# Define some constants, for ease of making changes
+file="U0W_U4WU0E_U4Ed.dat"				# Making the filename a variable make editing plot commands easier
+xmin=-22
+xmax=380
+ymin=0
+ymax=0.8
+
+
+set xrange [xmin:xmax]
+set yrange [ymin:ymax]
+
+set ytics 0.2						# Major tics (numbers on axes)
+set mytics 2						# Number of minor divisions per major (not numbered)
+set xtics 90
+set mxtics 2
+set grid x, y, my					# Turn on some gridlines
+
+set tmargin 1						# Margins are defined in characters- tricky!
+set bmargin 0
+set lmargin 0
+set rmargin 0
+
+unset key						# Turn off legend on every plot
+set format x ""						# Hide X axis numbers
+set format y						# Make sure Y axis numbers are on
+set ylabel 'U0/U4'
+
+
+set title 'Point 7' offset char 0, char -0.5		# Keep plot title a little closer
+plot file index 0 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 6 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+set format y ""						# Hide Y numbers
+unset ylabel						# Turn off Y axis label
+
+
+set title 'Point 8'  offset char 0, char -0.5
+plot file index 1 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 7 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+
+set title 'Point 9'  offset char 0, char -0.5
+plot file index 2 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 8 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+# Turn X and Y labels back on
+set format x
+set xlabel 'WD'
+set format y
+set ylabel 'U0/U4'
+
+
+set title 'Point 10'  offset char 0, char -0.5
+plot file index 3 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 9 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+
+set format y ""
+unset ylabel
+set key box inside bottom center horizontal		# Turn on legend for the bottom centre plot
+
+set title 'Point 11'  offset char 0, char -0.5
+plot file index 4 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 10 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+unset key						# Turn legend back off again
+
+set title 'Point 12'  offset char 0, char -0.5
+plot file index 5 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 11 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+
+unset multiplot
+
+
