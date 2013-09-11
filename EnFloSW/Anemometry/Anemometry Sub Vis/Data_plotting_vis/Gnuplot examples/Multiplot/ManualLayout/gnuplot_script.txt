@@ -1,4 +1,4 @@
-set term epslatex color
+set term epslatex color size 5,3
 set output "Plot.eps"
 
 
@@ -35,7 +35,7 @@ set rmargin 1
 set label '\textcolor{white}{X}' at xmax,ymax centre
 set label '\textcolor{white}{X}' at xmin,ymin centre
 
-scale= 0.25						# Allows use of nice integers for positioning....
+scale= 0.2						# Allows use of nice integers for positioning....
 
 set key nobox inside bottom left vertical spacing 2
 set size 6*scale,3*scale
@@ -65,7 +65,7 @@ set format x ''						# Turn of X numbers to avoid title clash
 
 set size 3*scale,2*scale
 set origin 6*scale,4*scale
-set title 'Point 10'  offset char 0, char -0.5
+set title 'Point 10'  offset char 0, char 0
 plot file index 3 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
 file index 9 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
 

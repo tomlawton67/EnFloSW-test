@@ -1,0 +1,125 @@
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>del WD_-26_Sts_Surc_X_-625_Y_-37.pdf 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo calling gnuplot 
+calling gnuplot
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>wgnuplot gnuplot_script.txt 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo finished 
+finished
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \documentclass{article}  1>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \usepackage{graphics}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \usepackage{amssymb}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \usepackage[pdftex]{graphicx}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \usepackage{epstopdf}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \usepackage{color}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \pagestyle{empty}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \begin{document}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \include{Plot}  1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>echo \end{document}   1>>plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>latex plotwrap.tex 
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9)
+entering extended mode
+
+(Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_
+Y_-37\plotwrap.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty")
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg")
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty")
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty")))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"))))
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"))
+
+Package epstopdf Warning: Drivers other than `pdftex.def' are not supported.
+
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg")
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"))
+No file plotwrap.aux.
+
+(Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_
+Y_-37\Plot.tex ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd")
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd") <Plot.eps>)
+Overfull \hbox (392.68066pt too wide) in paragraph at lines 727--9
+[][] 
+[1]
+(Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_
+Y_-37\plotwrap.aux
+(Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_
+Y_-37\Plot.aux)) )
+(see the transcript file for additional information)
+Output written on plotwrap.dvi (1 page, 6980 bytes).
+Transcript written on plotwrap.log.
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>dvips -E -o WD_-26_Sts_Surc_X_-625_Y_-37.eps plotwrap.dvi 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>del *.aux 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>del *.dvi 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>del terminal.log 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>REM del Plot.eps 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>REM del Plot.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>REM del plotwrap.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>REM del *.tex 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>epstopdf WD_-26_Sts_Surc_X_-625_Y_-37.eps 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>start WD_-26_Sts_Surc_X_-625_Y_-37.pdf 
+
+Z:\2003\Dapple\gnuplots\WD=26-site...4_1;B_2;2-1_1;1_1\WD_-26_Sts_Surc_X_-625_Y_-37>REM del *.eps 
+This is dvips(k) 5.992 Copyright 2012 Radical Eye Software (www.radicaleye.com)
+' TeX output 2013.08.29:1026' -> WD_-26_Sts_Surc_X_-625_Y_-37.eps
+<C:/Program Files/MiKTeX 2.9/dvips/base/tex.pro>
+<C:/Program Files/MiKTeX 2.9/dvips/base/texps.pro>
+<C:/Program Files/MiKTeX 2.9/dvips/base/special.pro>
+<C:/Program Files/MiKTeX 2.9/dvips/base/color.pro>. 
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>[1
+<Plot.eps>
+<Z:/2003/Dapple/gnuplots/WD=26-site...4_1;B_2;2-1_1;1_1/WD_-26_Sts_Surc_X_-625_Y_-37/Plot.eps>] 
