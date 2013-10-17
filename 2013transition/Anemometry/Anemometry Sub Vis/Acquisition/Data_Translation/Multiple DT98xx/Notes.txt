@@ -1,0 +1,8 @@
+To use multiple DT98xx devices with simultaneous and synchronised analogue inputs, please connect the "Counter 0 Out" terminal of the master device to the "Ext Clock" terminal of the master device as well as all slave devices.
+
+The board name of a device can be found (and changed) by opening the Data Translation "Open Layers Control Panel". It helps to only have one device connected at a time!
+
+The vi functions by asynchronously opening the device buffers, then starting the master clock, and then waiting for all samples to be acquired.
+
+
+PN 18/10/2012
