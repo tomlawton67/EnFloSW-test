@@ -1,0 +1,14 @@
+****Tunnel Calibration Coefficients for  Y=MX+C where X is the velocity and Y is the tunnel drive control variable such as Voltage or Current demand. *********	
+
+Calibration_Coefficient_Offset_C	0.8504
+Calibration_Coefficient_Slope_M	0.2016
+Zero_Velocity_Output_Voltage	0
+
+Maximum_Allowable_Tunnel_Speed	30
+
+****Tunnel settling time coefficients for  Y=MX+C where X is the change in speed demand (m/s) and Y is the time to wait. *********	
+
+Settling_time_Offset_C	4
+Settling_time_Slope_M	5
+
+VI_to_Remote_Call	Anemometry:Anemometry Sub Vis:Output:Soton_3_x_2_tunnel:Southampton_Elad.vi

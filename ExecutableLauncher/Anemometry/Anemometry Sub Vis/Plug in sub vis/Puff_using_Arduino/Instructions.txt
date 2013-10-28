@@ -1,0 +1,11 @@
+1. Plug Arduino into PC and determine COM port number
+2. Open vi named "Run Once at Start" and select above COM port number in 'VISA resource' menu and save as default value
+   This vi MUST be run once to lock the Arduino COM port. Either insert this vi somewhere in the main code, or run it manually before doing puffs
+3. Use the vi "Puff_using_Arduino" in the same way as "Puff_using_ADAM", wiring in values for number of cycles (blocks), hold on and hold off times (in MICROSECONDS)
+4. The Arduino will report the number of completed cycles as it goes, and the vi will end when the completed cycles equals the demanded number OR a timeout occurs (fault)
+   The successfully completed number of cycles and the error state are output from this vi.
+
+5. :-D
+
+
+P.S. I have done steps 1 and 2 (except for the calling in main code) for you already :-)
