@@ -1,0 +1,361 @@
+set term epslatex color size 10.000000,7.000000
+set output "Plot.eps"
+
+set multiplot layout 5,3 rowsfirst downwards scale 0.900000 title 'WD=-26 Sites    Source (mm)=X= -625  Y=-375 Z=10    Emission Duration (s)=9.50'
+
+set tmargin 2.000000
+set bmargin 2.000000
+set lmargin 2.000000
+set rmargin 2.000000
+set style line 12 lc rgb '#C0C0C0' lt 1 lw 1.5 # useful pale linestyle for grids
+file="WD_-26_Sts_Surc_X_-625_Y_-37.dat"
+set border ls 12
+
+#Begin plots
+set title 'Receptor~=~X=-288~Y=-361~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+set ylabel '$Av_Puff~(ppm)$'
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 0 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=-43~Y=-274~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 1 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=-490~Y=-351~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 2 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=-500~Y=240~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+set ylabel '$Av_Puff~(ppm)$'
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 3 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=-62~Y=-688~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 4 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=-697~Y=-687~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 5 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=-72~Y=-226~Z=82'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+set ylabel '$Av_Puff~(ppm)$'
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 6 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=144~Y=-399~Z=8'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 7 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=1769~Y=-67~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 8 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=192~Y=67~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+set ylabel '$Av_Puff~(ppm)$'
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 9 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=39~Y=192~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 10 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=500~Y=-96~Z=7'  offset char 0.000000, char 0.000000
+unset key
+unset xlabel
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 11 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=586~Y=-389~Z=8'  offset char 0.000000, char 0.000000
+unset key
+set xlabel '$Time~(s)$'
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+set ylabel '$Av_Puff~(ppm)$'
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 12 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=649~Y=-740~Z=7'  offset char 0.000000, char 0.000000
+unset key
+set xlabel '$Time~(s)$'
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 13 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+set title 'Receptor~=~X=803~Y=-87~Z=7'  offset char 0.000000, char 0.000000
+unset key
+set xlabel '$Time~(s)$'
+set xrange [*:*]
+set format x
+set xtics mirror 
+set mxtics 2
+set grid noxtics nomxtics 
+set xzeroaxis
+
+
+unset ylabel
+set yrange [0.000000:*]
+set format y
+set ytics mirror 
+set mytics 2
+set grid noytics nomytics 
+set yzeroaxis
+
+
+plot \
+file index 14 using 1:2 axes x1y1 title '$Source~(mm)=X=~-625~Y=-375~Z=10$' w linespoints lc rgb '#FF0000'  pt 1 ps 1.0  lw 1.0  lt 1 
+
+
+unset multiplot

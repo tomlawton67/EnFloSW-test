@@ -1,0 +1,1 @@
+P01 (Straight, plated); P05 (Boundary, plated); P11 (Straight, miniature); P12 (Slant, miniature); P14 (Bent, miniature); P31 (Thermo); P51(Dual slant, plated); P51/120 (Dual slant, plated); P53(BL Dual slant, plated); P61 (Dual slant, min); P62 (Dual Cross, Min); P64 (Cross bent Min); P76 (Straight, temp. comp.); R61 (Dual Parallel, film); 
