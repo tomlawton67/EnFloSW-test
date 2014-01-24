@@ -1,4 +1,4 @@
-// Developed by Paul Nathan, last mod. 05/07/2013
+// Developed by Paul Nathan, last mod. 23/01/2014
 
 #include <SPI.h>
 #include <EEPROM.h>
@@ -8,13 +8,12 @@ const float invB = 1.0 / 4334.0;
 const float R2 = 100000.0;
 const float R10 = 100000.0;
 const float invT0 = 1.0 / 298.15;
-const float Vs = 2.531; // hard-wired to Vref
+const float Vs = 2.500; // hard-wired to Vref
 float R1;
 
 
 // AD7714 variables
-int Pin_CS[2] = {
-  10, 9};
+int Pin_CS[2] = {10, 9};
 
 unsigned long DataReg, lastAutoCalib_ms, now_ms;//, GainReg, OffsetReg;
 float ADCvolts[2][5], Volts, Temperature;
@@ -24,15 +23,13 @@ byte ModeReg, GainBits, FilterHighBits, FilterHighReg, FilterLowReg;
 byte DRDYbit;
 
 const int nChans = 5; // Hard-coded (SE = 5, DIFF = 3)
-const byte ChannelBitsLUT_DIFF[3] = {
-  0b00000100, 0b00000101, 0b00000110};
-const byte ChannelBitsLUT_SE[5] = {
-  0b00000000, 0b00000001, 0b00000010, 0b00000011, 0b00000110};
+const byte ChannelBitsLUT_DIFF[3] = {0b00000100, 0b00000101, 0b00000110};
+const byte ChannelBitsLUT_SE[5] = {0b00000000, 0b00000001, 0b00000010, 0b00000011, 0b00000110};
 
 byte ChannelBits[5]; // for easy, globally selected SE or DIFF bits. Copy either of the above into this array
 
 const unsigned long AutoCalib_ms = 3600000; // reset, config, auto-calib every hour
-const float Vref = 2.501 - 0.0; // Manually input Vref (specific to each board!)
+const float Vref = 2.500; // Manually input Vref (specific to each board!)
 
 
 // RS-485 variables
@@ -158,15 +155,12 @@ void AD7714Setup()
   ConfigureAD7714(1); // both chips configured identically in this device's case
   // #######################################################################################################
 
-  chan[0] = 0;
-  chan[1] = 0;
-
   lastAutoCalib_ms = millis();
 }
 
 
 void DRDY_fall(int ChipNum)
-{     
+{
   SPI.transfer(0b01011000 | ChannelBits[chan[ChipNum]]); // set to read data register next
   DataReg = static_cast<unsigned long>(SPI.transfer(0xFF)) << 16; // read high byte and shift +16
   DataReg |= static_cast<unsigned long>(SPI.transfer(0xFF)) << 8; // read mid byte and shift +8 and biwise OR
@@ -185,9 +179,9 @@ void DRDY_fall(int ChipNum)
 
 void ConfigureAD7714(int ChipNum)
 {
-  // Reset ADC
   PORTB &= ~Pin_CS[ChipNum]; // LOW
 
+  // Reset ADC. Stop sampling, drive to default with >=32 DIN highs, configure and start sampling again
   for (int i = 0; i < 32; i++)
   {
     SPI.transfer(0xFF);
@@ -208,7 +202,7 @@ void ConfigureAD7714(int ChipNum)
     //    GainReg = static_cast<unsigned long>(SPI.transfer(0xFF)) << 16; // read high byte and shift +16
     //    GainReg |= static_cast<unsigned long>(SPI.transfer(0xFF)) << 8; // read mid byte and shift +8 and biwise OR
     //    GainReg |= static_cast<unsigned long>(SPI.transfer(0xFF)); // read low byte and bitwise OR
-    //    
+    //
     //    // Read Offset Register
     //    SPI.transfer(0b01101000 | ChannelBits[i]);
     //    OffsetReg = static_cast<unsigned long>(SPI.transfer(0xFF)) << 16; // read high byte and shift +16
@@ -218,7 +212,12 @@ void ConfigureAD7714(int ChipNum)
 
   }
 
-  PORTB |= Pin_CS[ChipNum]; // LOW
+  // prepare for channel 0
+  chan[ChipNum] = 0;
+  SPI.transfer(0b00001000 | ChannelBits[0]);
+  SPI.transfer(0xFF);
+
+  PORTB |= Pin_CS[ChipNum]; // HIGH
   //######################################
 }
 
@@ -239,20 +238,21 @@ void ConfigureAD7714channel(byte ChanBits)
   SPI.transfer(0b00010000 | ChanBits);
   SPI.transfer(ModeReg);
 
-  //  Don't do the following because it prevents serial loop from running which causes timeout. Instead just return last good value until ready.
+  // The following prevents serial loop from running which causes lag.
+  // unfortunately with this chip it is necessary to ensure a proper calibration!
 
-  //  // Poll DRDY bit in comms register
-  //  do
-  //  {
-  //    SPI.transfer(0b00001000 | ChanBits);
-  //    DRDYbit = (SPI.transfer(0xFF) & 0b10000000); 
-  //  } 
-  //  while (DRDYbit == 0b10000000);
-  //  // to get here DRDY must have fallen, discard value and move on to next calib channel 
-  //  SPI.transfer(0b01011000 | ChanBits); // set to read data register next
-  //  SPI.transfer(0xFF); // read high byte and shift +16
-  //  SPI.transfer(0xFF); // read mid byte and shift +8 and biwise OR
-  //  SPI.transfer(0xFF); // read low byte and bitwise OR
+  // Poll DRDY bit in comms register
+  do
+  {
+    SPI.transfer(0b00001000 | ChanBits);
+    DRDYbit = (SPI.transfer(0xFF) & 0b10000000);
+  }
+  while (DRDYbit == 0b10000000);
+  // to get here DRDY must have fallen, discard value and move on to next calib channel
+  SPI.transfer(0b01011000 | ChanBits); // set to read data register next
+  SPI.transfer(0xFF); // read high byte and shift +16
+  SPI.transfer(0xFF); // read mid byte and shift +8 and biwise OR
+  SPI.transfer(0xFF); // read low byte and bitwise OR
 }
 
 
@@ -273,7 +273,7 @@ inline void SerialLoop()
   {
     if (Serial.peek() == '@') // only consider valid message start, otherwise discard
     {
-      //memset(buffer, 0x00, L); // initialise buffer  
+      //memset(buffer, 0x00, L); // initialise buffer
       Serial.readBytes(Buffer, L); // read msg into buffer
 
       // only interested in messages destined for this address
@@ -285,36 +285,36 @@ inline void SerialLoop()
           // For AD7714 only care if Analogue Read is requested
           switch (Buffer[3])
           {
-          case 'A':
-            // Analogue
-            // check whether read or write
+            case 'A':
+              // Analogue
+              // check whether read or write
               switch (Buffer[4])
               {
-              case 'R':
-                // Read ###############
-                ReadFromAD7714();
-                Temperature = VoltstoTemp(Volts);
-                TemperatureBytes = reinterpret_cast<char*>(&Temperature);
-                Buffer[6] = TemperatureBytes[3];
-                Buffer[7] = TemperatureBytes[2];
-                Buffer[8] = TemperatureBytes[1];
-                Buffer[9] = TemperatureBytes[0];
-                // #####################
-                break;
+                case 'R':
+                  // Read ###############
+                  ReadFromAD7714();
+                  Temperature = VoltstoTemp(Volts);
+                  TemperatureBytes = reinterpret_cast<char*>(&Temperature);
+                  Buffer[6] = TemperatureBytes[3];
+                  Buffer[7] = TemperatureBytes[2];
+                  Buffer[8] = TemperatureBytes[1];
+                  Buffer[9] = TemperatureBytes[0];
+                  // #####################
+                  break;
               }
-            break;
-          case 'C':
-            // Config. mode
-            // check whether read or write
-            switch (Buffer[4])
-            {
-            case 'W':
-              // Write
-              // ########################
-              SetConfig();
-              // ########################
-            }
-            break;
+              break;
+            case 'C':
+              // Config. mode
+              // check whether read or write
+              switch (Buffer[4])
+              {
+                case 'W':
+                  // Write
+                  // ########################
+                  SetConfig();
+                  // ########################
+              }
+              break;
           }
           // now switch source and destination
           tmp = Buffer[1];
@@ -368,7 +368,7 @@ inline void SerialLoop()
       Serial.read(); // discard invalid byte
       PORTC |= Pin_frm; // warn of invalid byte(s), turn on frm LED
     }
-  } 
+  }
 
 }
 
@@ -382,6 +382,13 @@ void SetConfig()
   {
     thisAddress = static_cast<char>(val);
     EEPROM.write(0, val);
+  }
+  else if (Chan == 0) // perform self-calibration
+  {
+    // Chip 0
+    ConfigureAD7714(0);
+    // Chip 1
+    ConfigureAD7714(1);
   }
 }
 
@@ -416,47 +423,42 @@ void ReadFromAD7714()
 {
   switch (static_cast<int>(static_cast<byte>(Buffer[5])))
   {
-  case 0:
-    // Reset ADC. Stop sampling, drive to default with >=32 DIN highs, configure and start sampling again
-    // Chip 0
-    ConfigureAD7714(0);
-    // Chip 1
-    ConfigureAD7714(1);
-    break;
-  case 1:
-    Volts = ADCvolts[0][0];
-    break;
-  case 2:
-    Volts = ADCvolts[0][1];
-    break;
-  case 3:
-    Volts = ADCvolts[0][2];
-    break;
-  case 4:
-    Volts = ADCvolts[0][3];
-    break;
-  case 5:
-    Volts = ADCvolts[0][4];
-    break;
-  case 6:
-    Volts = ADCvolts[1][0];
-    break;
-  case 7:
-    Volts = ADCvolts[1][1];
-    break;
-  case 8:
-    Volts = ADCvolts[1][2];
-    break;
-  case 9:
-    Volts = ADCvolts[1][3];
-    break;
-  case 10:
-    Volts = ADCvolts[1][4];
-    break;
-  default: 
-    Volts = 0.0;
+    case 1:
+      Volts = ADCvolts[0][0];
+      break;
+    case 2:
+      Volts = ADCvolts[0][1];
+      break;
+    case 3:
+      Volts = ADCvolts[0][2];
+      break;
+    case 4:
+      Volts = ADCvolts[0][3];
+      break;
+    case 5:
+      Volts = ADCvolts[0][4];
+      break;
+    case 6:
+      Volts = ADCvolts[1][0];
+      break;
+    case 7:
+      Volts = ADCvolts[1][1];
+      break;
+    case 8:
+      Volts = ADCvolts[1][2];
+      break;
+    case 9:
+      Volts = ADCvolts[1][3];
+      break;
+    case 10:
+      Volts = ADCvolts[1][4];
+      break;
+    default:
+      Volts = 0.0;
   }
 }
+
+
 
 
 
