@@ -8,7 +8,7 @@ const float invB = 1.0 / 4334.0;
 const float R2 = 100000.0;
 const float R10 = 100000.0;
 const float invT0 = 1.0 / 298.15;
-const float Vs = 2.509; // hard-wired to Vref
+const float Vs = 2.500; // hard-wired to Vref
 float R1;
 
 
@@ -28,8 +28,8 @@ const byte ChannelBitsLUT_SE[5] = {0b00000000, 0b00000001, 0b00000010, 0b0000001
 
 byte ChannelBits[5]; // for easy, globally selected SE or DIFF bits. Copy either of the above into this array
 
-unsigned long AutoCalib_ms = 3600000UL * max(1UL, static_cast<unsigned long>(EEPROM.read(1))); // reset, config, auto-calib every x milliseconds
-const float Vref = 2.499; // Manually input Vref (specific to each board!)
+unsigned long AutoCalib_ms = 60000UL * static_cast<unsigned long>(EEPROM.read(1)); // self-calib every x minutes
+const float Vref = 2.500; // Manually input Vref (specific to each board!)
 
 
 // RS-485 variables
@@ -73,15 +73,18 @@ void loop()
 
   SerialLoop();
 
-  // Check reset, config, auto-calib time
-  now_ms = millis();
-  if ((now_ms - lastAutoCalib_ms) > AutoCalib_ms)
+  // Check self-calib time
+  if (AutoCalib_ms > 0)
   {
-    lastAutoCalib_ms = now_ms;
-    // Chip 0
-    ConfigureAD7714(0);
-    // Chip 1
-    ConfigureAD7714(1);
+    now_ms = millis();
+    if ((now_ms - lastAutoCalib_ms) > AutoCalib_ms)
+    {
+      lastAutoCalib_ms = now_ms;
+      // Chip 0
+      ConfigureAD7714(0);
+      // Chip 1
+      ConfigureAD7714(1);
+    }
   }
 }
 
@@ -389,8 +392,8 @@ void SetConfig()
       EEPROM.write(0, val);
       break;
     case 1:
-      // change self-calibration interval (val in hrs)
-      AutoCalib_ms = 3600000 * max(1UL, static_cast<unsigned long>(val));
+      // change self-calibration interval (val in minutes)
+      AutoCalib_ms = 60000UL * static_cast<unsigned long>(val);
       EEPROM.write(1, val);
       break;
     case 0:
