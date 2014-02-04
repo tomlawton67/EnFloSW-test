@@ -1,4 +1,4 @@
-// Developed by Paul Nathan, last mod. 23/01/2014
+// Developed by Paul Nathan, last mod. 04/02/2014
 
 #include <SPI.h>
 #include <EEPROM.h>
@@ -8,7 +8,7 @@ const float invB = 1.0 / 4334.0;
 const float R2 = 100000.0;
 const float R10 = 100000.0;
 const float invT0 = 1.0 / 298.15;
-const float Vs = 2.500; // hard-wired to Vref
+const float Vs = 2.509; // hard-wired to Vref
 float R1;
 
 
@@ -28,8 +28,8 @@ const byte ChannelBitsLUT_SE[5] = {0b00000000, 0b00000001, 0b00000010, 0b0000001
 
 byte ChannelBits[5]; // for easy, globally selected SE or DIFF bits. Copy either of the above into this array
 
-const unsigned long AutoCalib_ms = 3600000; // reset, config, auto-calib every hour
-const float Vref = 2.500; // Manually input Vref (specific to each board!)
+unsigned long AutoCalib_ms = 3600000UL * max(1UL, static_cast<unsigned long>(EEPROM.read(1))); // reset, config, auto-calib every x milliseconds
+const float Vref = 2.499; // Manually input Vref (specific to each board!)
 
 
 // RS-485 variables
@@ -212,10 +212,10 @@ void ConfigureAD7714(int ChipNum)
 
   }
 
-  // prepare for channel 0
-  chan[ChipNum] = 0;
-  SPI.transfer(0b00001000 | ChannelBits[0]);
-  SPI.transfer(0xFF);
+  //// prepare for channel 0
+  //chan[ChipNum] = 0;
+  //SPI.transfer(0b00001000 | ChannelBits[0]);
+  //SPI.transfer(0xFF);
 
   PORTB |= Pin_CS[ChipNum]; // HIGH
   //######################################
@@ -241,18 +241,21 @@ void ConfigureAD7714channel(byte ChanBits)
   // The following prevents serial loop from running which causes lag.
   // unfortunately with this chip it is necessary to ensure a proper calibration!
 
+  delay(120); // 6 / 50Hz * 1000 (ms) until calib. done, then poll DRDY (should go low after another 3/ 50Hz)
+
   // Poll DRDY bit in comms register
   do
   {
     SPI.transfer(0b00001000 | ChanBits);
     DRDYbit = (SPI.transfer(0xFF) & 0b10000000);
+    delay(1);
   }
   while (DRDYbit == 0b10000000);
   // to get here DRDY must have fallen, discard value and move on to next calib channel
-  SPI.transfer(0b01011000 | ChanBits); // set to read data register next
-  SPI.transfer(0xFF); // read high byte and shift +16
-  SPI.transfer(0xFF); // read mid byte and shift +8 and biwise OR
-  SPI.transfer(0xFF); // read low byte and bitwise OR
+  //SPI.transfer(0b01011000 | ChanBits); // set to read data register next
+  //SPI.transfer(0xFF); // read high byte and shift +16
+  //SPI.transfer(0xFF); // read mid byte and shift +8 and biwise OR
+  //SPI.transfer(0xFF); // read low byte and bitwise OR
 }
 
 
@@ -378,17 +381,23 @@ void SetConfig()
   const int Chan = static_cast<int>(static_cast<byte>(Buffer[5]));
   const byte val = static_cast<byte>(ValBytesToFloat());
 
-  if (Chan == 255) // set address
+  switch (Chan)
   {
-    thisAddress = static_cast<char>(val);
-    EEPROM.write(0, val);
-  }
-  else if (Chan == 0) // perform self-calibration
-  {
-    // Chip 0
-    ConfigureAD7714(0);
-    // Chip 1
-    ConfigureAD7714(1);
+    case 255:
+      // set address
+      thisAddress = static_cast<char>(val);
+      EEPROM.write(0, val);
+      break;
+    case 1:
+      // change self-calibration interval (val in hrs)
+      AutoCalib_ms = 3600000 * max(1UL, static_cast<unsigned long>(val));
+      EEPROM.write(1, val);
+      break;
+    case 0:
+      // perform self-calibration
+      ConfigureAD7714(0); // Chip 0
+      ConfigureAD7714(1); // Chip 1
+      break;
   }
 }
 
@@ -457,35 +466,3 @@ void ReadFromAD7714()
       Volts = 0.0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
