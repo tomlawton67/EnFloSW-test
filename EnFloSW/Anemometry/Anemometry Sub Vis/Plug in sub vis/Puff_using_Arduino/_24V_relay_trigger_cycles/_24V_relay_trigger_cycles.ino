@@ -1,4 +1,4 @@
-// Arduino Puff Release. Version 1.1. Last Mod Paul Nathan 18/06/2013, 21/03/2014 (minor optimisation).
+// Arduino Puff Release. Version 1.1. Last Mod Paul Nathan 18/06/2013, 21/03/2014 (minor optimisation), 02/05/2014 (fixed length messaging).
 
 int pinTRIG = 4;
 
@@ -71,7 +71,7 @@ void serialEvent()
   {
     Serial.read(); // discard '@'
     // read all into buffer, then parse values as appropriate
-    Serial.readBytesUntil('#', Buffer, L); // does NOT include '#'
+    Serial.readBytes(Buffer, L);
     //Serial.write(reinterpret_cast<byte*>(&buffer), sizeof(buffer)); // echo for debug only
 
     Ncycles_bytes[0] = Buffer[1];
