@@ -1,4 +1,4 @@
-// Developed by Paul Nathan, last mod. 04/02/2014
+// Developed by Paul Nathan, last mod. 19/06/2014
 
 #include <SPI.h>
 #include <EEPROM.h>
@@ -31,6 +31,8 @@ byte ChannelBits[5]; // for easy, globally selected SE or DIFF bits. Copy either
 unsigned long AutoCalib_ms = 60000UL * static_cast<unsigned long>(EEPROM.read(1)); // self-calib every x minutes
 const float Vref = 2.500; // Manually input Vref (specific to each board!)
 
+int Chan;
+
 
 // RS-485 variables
 int PinTx_EN, Pin_frm, Pin_chk, Pin_buf;
@@ -42,6 +44,8 @@ char Buffer[L], tmp;
 
 char thisAddress = static_cast<char>(EEPROM.read(0));
 const long baud = 476000;
+
+const char Ident[4] = {'A', 'D', 'C', 't'};
 
 
 void setup()
@@ -289,6 +293,7 @@ inline void SerialLoop()
         if (Buffer[Lm2] == static_cast<char>(CalcChecksum()))
         {
           // For AD7714 only care if Analogue Read is requested
+          Chan = static_cast<int>(static_cast<byte>(Buffer[5]));
           switch (Buffer[3])
           {
             case 'A':
@@ -319,7 +324,21 @@ inline void SerialLoop()
                   // ########################
                   SetConfig();
                   // ########################
+                  break;
+                case 'R':
+                  // Read
+                  // ########################
+                  GetConfig();
+                  // ########################
+                  break;
               }
+              break;
+            case 'I':
+              // Ident. mode
+              // return device ident 4 bytes
+              // ########################
+              GetIdent();
+              // ########################
               break;
           }
           // now switch source and destination
@@ -381,7 +400,6 @@ inline void SerialLoop()
 
 void SetConfig()
 {
-  const int Chan = static_cast<int>(static_cast<byte>(Buffer[5]));
   const byte val = static_cast<byte>(ValBytesToFloat());
 
   switch (Chan)
@@ -402,6 +420,20 @@ void SetConfig()
       ConfigureAD7714(1); // Chip 1
       break;
   }
+}
+
+
+void GetConfig()
+{
+  const float val = static_cast<float>(EEPROM.read(Chan));
+
+  ValFloatToBytes(val);
+}
+
+
+inline void GetIdent()  // direct to comms buffer
+{
+  memcpy(&Buffer[6], &Ident, 4);
 }
 
 
@@ -430,10 +462,19 @@ inline float ValBytesToFloat()
   return val;
 }
 
+inline void ValFloatToBytes(float val) // direct to comms buffer
+{
+  const char *val_bytes = reinterpret_cast<char*>(&val);
+  Buffer[6] = val_bytes[3];
+  Buffer[7] = val_bytes[2];
+  Buffer[8] = val_bytes[1];
+  Buffer[9] = val_bytes[0];
+}
+
 
 void ReadFromAD7714()
 {
-  switch (static_cast<int>(static_cast<byte>(Buffer[5])))
+  switch (Chan)
   {
     case 1:
       Volts = ADCvolts[0][0];

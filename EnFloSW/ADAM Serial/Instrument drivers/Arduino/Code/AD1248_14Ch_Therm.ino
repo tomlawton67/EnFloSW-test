@@ -1,4 +1,4 @@
-// Developed and tested by Paul Nathan. Last modification 11/12/2013
+// Developed and tested by Paul Nathan. Last modification 19/06/2014
 
 #include <SPI.h>
 #include <EEPROM.h>
@@ -14,8 +14,7 @@ float R1;
 
 
 // ADS1248 variables
-int Pin_CS[2] = {
-  10, 12};
+int Pin_CS[2] = {10, 12};
 int Pin_DRDY0 = 11;
 
 const byte NOP = 0xFF;
@@ -34,10 +33,9 @@ char *TemperatureBytes;
 int Chan;
 int currentChan;
 const int nChans = 7; // per chip, single-ended
-const byte ChannelBits[7] = { 
-  0b00001000, 0b00010000, 0b00011000, 0b00100000, 0b00101000, 0b00110000, 0b00111000}; // Single-ended with AIN0 as common ref
+const byte ChannelBits[7] = {0b00001000, 0b00010000, 0b00011000, 0b00100000, 0b00101000, 0b00110000, 0b00111000}; // Single-ended with AIN0 as common ref
 
-const unsigned long AutoCalib_ms = 3600000; // auto-calib offset every hour
+unsigned long AutoCalib_ms = 60000UL * static_cast<unsigned long>(EEPROM.read(1)); // self-calib every x minutes
 const float Vref = 2.048; // Manually input Vref (nominal value from spec sheet appears to match voltmeter value over a range of chips!)
 
 
@@ -51,6 +49,8 @@ char Buffer[L], tmp;
 
 char thisAddress = static_cast<char>(EEPROM.read(0));
 const long baud = 476000;
+
+const char Ident[4] = {'A', 'D', 'C', 't'};
 
 
 void setup()
@@ -69,20 +69,25 @@ void loop()
 
   SerialLoop();
 
-  // Check last auto-offset calib time and do it if elapsed
-  now_ms = millis();
-  if ((now_ms - lastAutoCalib_ms) > AutoCalib_ms)
+  // Check self-calib time
+  if (AutoCalib_ms > 0)
   {
-    lastAutoCalib_ms = now_ms;
-    // re-configure all chips together
-    ConfigureADS1248s;
+    now_ms = millis();
+    if ((now_ms - lastAutoCalib_ms) > AutoCalib_ms)
+    {
+      lastAutoCalib_ms = now_ms;
+      // re-configure all chips together
+      ConfigureADS1248s;
+    }
   }
 }
 
 
 // SLAVE CODE (ARDUINO MICRO ONLY!!)
 
-// rx/tx msg syntax is 12 bytes: '@', src., dest., A/D, R/W, pin, val, val ,val, val, rxCHK, txCHK
+// rx/tx msg syntax is 12 bytes: '@', src., dest., A/D/C/I, R/W, pin, val, val ,val, val, rxCHK, txCHK
+//                                0    1      2       3      4    5    6    7    8    9     10     11
+
 
 void SerialSetup()
 {
@@ -168,17 +173,17 @@ void DRDY_low()
 
   PORTD &= ~Pin_CS[1]; // LOW
 
-  SPI.transfer(RDATA); 
+  SPI.transfer(RDATA);
 
   DataReg =  static_cast<unsigned long>(SPI.transfer(WREG | 0x00)) << 16;
-  DataReg |= static_cast<unsigned long>(SPI.transfer(0x00)) << 8; 
-  DataReg |= static_cast<unsigned long>(SPI.transfer(ChannelBits[Chan])); 
+  DataReg |= static_cast<unsigned long>(SPI.transfer(0x00)) << 8;
+  DataReg |= static_cast<unsigned long>(SPI.transfer(ChannelBits[Chan]));
   SPI.transfer(NOP);
 
   PORTD |= Pin_CS[1]; // HIGH
 
   DataReg = -(~DataReg + 1UL);
-  ADCvolts[1][currentChan] = Vref * (float(DataReg) / 8388607.0); 
+  ADCvolts[1][currentChan] = Vref * (float(DataReg) / 8388607.0);
 }
 
 
@@ -194,7 +199,7 @@ void ConfigureADS1248s()
   // Skip register 0x00 MUX0, will select channel later on
   // write to registers 0x01 to 0x03, VBIAS, MUX1, SYS0
   SPI.transfer(WREG | 0x01);
-  SPI.transfer(0x00 | 0x02); 
+  SPI.transfer(0x00 | 0x02);
   // Register 0x01 VBIAS. No bias on any AIN, so set all to zero
   SPI.transfer(0b00000000);
   // Register 0x02 MUX1. Internal osc 0, Internal Vref always on 01, Onboard ref is used 10, sys monitor off 000
@@ -213,7 +218,7 @@ void ConfigureADS1248s()
   SPI.transfer(0b11001100);
   // Register 0x0C GPIOCFG. Use all pins as analog input
   SPI.transfer(0b00000000);
-  // Final Registers 0x0D and 0x0E can be skipped due to the above GPIO config. 
+  // Final Registers 0x0D and 0x0E can be skipped due to the above GPIO config.
   SPI.transfer(NOP);
 
   // per-channel self offset calib
@@ -262,12 +267,12 @@ inline void SerialLoop()
   // Check if message waiting in RS-485 transducer buffer
   // if so, construct variable buffer, implement request, and send output back over RS-485 to master
   // first check for buffer overrun, if so, turn on warning LED 'buf'
-  if (Serial1.available() > 63) PORTD |= Pin_buf; 
+  if (Serial1.available() > 63) PORTD |= Pin_buf;
   while (Serial1.available() >= L) // only do something if data is waiting from RS-485 network
   {
     if (Serial1.peek() == '@') // only consider valid message start, otherwise discard
     {
-      //memset(Buffer, 0x00, L); // initialise buffer  
+      //memset(Buffer, 0x00, L); // initialise buffer
       Serial1.readBytes(Buffer, L); // read msg into buffer
 
       // only interested in messages destined for this address
@@ -279,36 +284,50 @@ inline void SerialLoop()
           // For ADS7148 only care if Analogue Read is requested
           switch (Buffer[3])
           {
-          case 'A':
-            // Analogue
-            // check whether read or write
-            switch (Buffer[4])
-            {
-            case 'R':
-              // Read ##################
-              ReadFromADS1248();
-              Temperature = VoltstoTemp(Volts);
-              TemperatureBytes = reinterpret_cast<char*>(&Temperature);
-              Buffer[6] = TemperatureBytes[3];
-              Buffer[7] = TemperatureBytes[2];
-              Buffer[8] = TemperatureBytes[1];
-              Buffer[9] = TemperatureBytes[0];
+            case 'A':
+              // Analogue
+              // check whether read or write
+              switch (Buffer[4])
+              {
+                case 'R':
+                  // Read ##################
+                  ReadFromADS1248();
+                  Temperature = VoltstoTemp(Volts);
+                  TemperatureBytes = reinterpret_cast<char*>(&Temperature);
+                  Buffer[6] = TemperatureBytes[3];
+                  Buffer[7] = TemperatureBytes[2];
+                  Buffer[8] = TemperatureBytes[1];
+                  Buffer[9] = TemperatureBytes[0];
+                  // ########################
+                  break;
+              }
+              break;
+            case 'C':
+              // Config. mode
+              // check whether read or write
+              switch (Buffer[4])
+              {
+                case 'W':
+                  // Write
+                  // ########################
+                  SetConfig();
+                  // ########################
+                  break;
+                case 'R':
+                  // Read
+                  // ########################
+                  GetConfig();
+                  // ########################
+                  break;
+              }
+              break;
+            case 'I':
+              // Ident. mode
+              // return device ident 4 bytes
+              // ########################
+              GetIdent();
               // ########################
               break;
-            }
-            break;
-          case 'C':
-            // Config. mode
-            // check whether read or write
-            switch (Buffer[4])
-            {
-            case 'W':
-              // Write
-              // ########################
-              SetConfig();
-              // ########################
-            }
-            break;
           }
           // now switch source and destination
           tmp = Buffer[1];
@@ -362,7 +381,7 @@ inline void SerialLoop()
       Serial1.read(); // discard invalid byte
       PORTB |= Pin_frm; // warn of invalid byte(s), turn on frm LED
     }
-  } 
+  }
 
 }
 
@@ -372,11 +391,37 @@ void SetConfig()
   const int Chan = static_cast<int>(static_cast<byte>(Buffer[5]));
   const byte val = static_cast<byte>(ValBytesToFloat());
 
-  if (Chan == 255) // set address
+  switch (Chan)
   {
-    thisAddress = static_cast<char>(val);
-    EEPROM.write(0, val);
+    case 255:
+      // set address
+      thisAddress = static_cast<char>(val);
+      EEPROM.write(0, val);
+      break;
+    case 1:
+      // change self-calibration interval (val in minutes)
+      AutoCalib_ms = 60000UL * static_cast<unsigned long>(val);
+      EEPROM.write(1, val);
+      break;
+    case 0:
+      // perform self-calibration
+      ConfigureADS1248s();
+      break;
   }
+}
+
+
+void GetConfig()
+{
+  const float val = static_cast<float>(EEPROM.read(Chan));
+
+  ValFloatToBytes(val);
+}
+
+
+inline void GetIdent()  // direct to comms buffer
+{
+  memcpy(&Buffer[6], &Ident, 4);
 }
 
 
@@ -406,67 +451,64 @@ inline float ValBytesToFloat()
 }
 
 
+inline void ValFloatToBytes(float val) // direct to comms buffer
+{
+  const char *val_bytes = reinterpret_cast<char*>(&val);
+  Buffer[6] = val_bytes[3];
+  Buffer[7] = val_bytes[2];
+  Buffer[8] = val_bytes[1];
+  Buffer[9] = val_bytes[0];
+}
+
+
 void ReadFromADS1248() // Map physical channels to incremental 'software' channels
 {
   switch (static_cast<int>(static_cast<byte>(Buffer[5])))
   {
-  case 0: // special channel called to initiate reset and offset self-calibration
-    // Reset ADCs, send RESET command and re-configure
-    PORTB &= ~Pin_CS[0]; // ALL LOW
-    PORTD &= ~Pin_CS[1];
-
-    SPI.transfer(RESET);
-    delay(1); // 0.6ms fixed reset time. Can use simple 'delay' function here as nothing else important should be happening anyway, and interrupts are not disabled so comms ok.
-
-    PORTB |= Pin_CS[0]; // ALL HIGH
-    PORTD |= Pin_CS[1];
-
-    ConfigureADS1248s();
-    break;
-  case 1:
-    Volts = ADCvolts[0][0];
-    break;
-  case 2:
-    Volts = ADCvolts[0][3];
-    break;
-  case 3:
-    Volts = ADCvolts[0][4];
-    break;
-  case 4:
-    Volts = ADCvolts[0][2];
-    break;
-  case 5:
-    Volts = ADCvolts[0][1];
-    break;
-  case 6:
-    Volts = ADCvolts[0][6];
-    break;
-  case 7:
-    Volts = ADCvolts[0][5];
-    break;
-  case 8:
-    Volts = ADCvolts[1][4];
-    break;
-  case 9:
-    Volts = ADCvolts[1][3];
-    break;
-  case 10:
-    Volts = ADCvolts[1][0];
-    break;
-  case 11:
-    Volts = ADCvolts[1][5];
-    break;
-  case 12:
-    Volts = ADCvolts[1][6];
-    break;
-  case 13:
-    Volts = ADCvolts[1][1];
-    break;
-  case 14:
-    Volts = ADCvolts[1][2];
-    break;
-  default: 
-    Volts = 0.0;
+    case 1:
+      Volts = ADCvolts[0][0];
+      break;
+    case 2:
+      Volts = ADCvolts[0][3];
+      break;
+    case 3:
+      Volts = ADCvolts[0][4];
+      break;
+    case 4:
+      Volts = ADCvolts[0][2];
+      break;
+    case 5:
+      Volts = ADCvolts[0][1];
+      break;
+    case 6:
+      Volts = ADCvolts[0][6];
+      break;
+    case 7:
+      Volts = ADCvolts[0][5];
+      break;
+    case 8:
+      Volts = ADCvolts[1][4];
+      break;
+    case 9:
+      Volts = ADCvolts[1][3];
+      break;
+    case 10:
+      Volts = ADCvolts[1][0];
+      break;
+    case 11:
+      Volts = ADCvolts[1][5];
+      break;
+    case 12:
+      Volts = ADCvolts[1][6];
+      break;
+    case 13:
+      Volts = ADCvolts[1][1];
+      break;
+    case 14:
+      Volts = ADCvolts[1][2];
+      break;
+    default:
+      Volts = 0.0;
   }
 }
 
