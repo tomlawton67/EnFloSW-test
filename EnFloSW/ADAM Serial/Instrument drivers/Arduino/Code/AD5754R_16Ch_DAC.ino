@@ -234,7 +234,7 @@ inline void SerialLoop()
                 case 'W':
                   // Write
                   // ########################
-                  if (canProceed) SetConfig(); else ErrOut();
+                  if (canProceed || Chan == 255) SetConfig(); else ErrOut();
                   // ########################
                   break;
                 case 'R':

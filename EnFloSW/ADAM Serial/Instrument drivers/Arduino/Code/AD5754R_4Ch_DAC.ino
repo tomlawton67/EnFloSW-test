@@ -1,12 +1,11 @@
-// Developed and tested by Paul Nathan. Last modification 19/06/2014
+// Code for 4 channel 16-bit DAC over RS-485
+// Developed and tested by Paul Nathan. Last modification 15/07/2014
 
 #include <SPI.h>
 #include <EEPROM.h>
 
 
 // AD5754R variables
-int Pin_CS = 2; // PIND1
-
 const byte NOP = 0b00011000; // followed by two more 8-bit writes of "don't care" values
 const byte CLEAR = 0b00011100; // followed by two more 8-bit writes of "don't care" values
 //const byte LOAD = 0b00011101; // followed by two more 8-bit writes of "don't care" values
@@ -15,16 +14,22 @@ const byte PWR = 0b00010000; // followed by specific config bits, (first 5 are "
 const byte OPRANGE = 0b00001000;  // OR with ChannelBits and then follow by specific config bits, (first 13 are "don't care")
 const byte DACregWRITE = 0b00000000;  // OR with ChannelBits and then follow by two more 8-bit writes of DATA
 
-const int nChan = 4;
-const byte ChannelBits[nChan + 1] = {0b00000100, 0b00000000, 0b00000001, 0b00000010, 0b00000011}; // first value is AllChannels, then DAC1...4
+const int nChips = 1; // number of DAC chips
+const int nChannelsPerChip = 4; // one DAC chip
+const byte ChannelBits[nChannelsPerChip + 1] = {0b00000100, 0b00000000, 0b00000001, 0b00000010, 0b00000011}; // first value is AllChannels, then DAC1...4
 
-float DAC_Vout[nChan + 1]; // store voltage demand for query
+const int TotalChannels = nChannelsPerChip * nChips;
+int Pin_CS[nChips] = {A3};
+
+float DAC_Vout[TotalChannels + 1]; // store voltage demand for query
+
 int Chan;
-bool canProceed_DAC, canProceed_Rly;
+bool canProceed;
 
-// Relay variables
-const int nRly = 4;
-int Pin_relay[nRly + 1]; // index 0 is dummy for setting all relays together
+// LUTs for mapping channel number to chip number and individual chip channel number. Hard coded for 4x4 config. (+1 size for 1 based indexing of channels)
+//                                      0, 1, 2, 3, 4
+const int ChipNum[TotalChannels + 1] = {0, 0, 0, 0, 0};
+const int ChanNum[TotalChannels + 1] = {0, 1, 2, 3, 4};
 
 
 // RS-485 variables
@@ -38,14 +43,12 @@ char Buffer[L], tmp;
 char thisAddress = static_cast<char>(EEPROM.read(0));
 const long baud = 476000;
 
-const char Ident[4] = {'D', 'A', 'C', 'r'};
+const char Ident[4] = {'D', 'A', 'C', '_'};
 
 
 void setup()
 {
   AD5754RSetup();
-
-  RelaySetup();
 
   SerialSetup();
 }
@@ -96,9 +99,11 @@ void SerialSetup()
 void AD5754RSetup()
 {
   // Setup pins
-  pinMode(Pin_CS, OUTPUT);
-
-  digitalWrite(Pin_CS, HIGH);
+  for (int i = 0; i < nChips; i++)
+  {
+    pinMode(Pin_CS[i], OUTPUT);
+    digitalWrite(Pin_CS[i], HIGH);
+  }
 
   // SPI comms
   SPI.begin();
@@ -107,84 +112,66 @@ void AD5754RSetup()
   SPI.setClockDivider(SPI_CLOCK_DIV2);
 
   // Set Pin numbers to port bytes for direct register manipulation
-  Pin_CS = (1 << PIND1);
+  Pin_CS[0] = (1 << PINF4);
 
-  // Configure AD5754R
+  // Configure AD5754R. All chips done inside subroutine
   ConfigureAD5754R(); // sets output range to values last stored in EEPROM
-}
-
-
-void RelaySetup()
-{
-  // Setup pins
-  Pin_relay[1] = 6;
-  Pin_relay[2] = 7;
-  Pin_relay[3] = 8;
-  Pin_relay[4] = 9;
-
-  // Relays default to OFF on power-up
-  for (int i = 1; i == nRly; i++)
-  {
-    pinMode(Pin_relay[i], OUTPUT);
-    digitalWrite(Pin_relay[i], LOW);
-  }
-
-  // Set Pin numbers to port bytes for direct register manipulation
-  Pin_relay[1] = (1 << PIND7);
-  Pin_relay[2] = (1 << PINE6);
-  Pin_relay[3] = (1 << PINB4);
-  Pin_relay[4] = (1 << PINB5);
 }
 
 
 void ConfigureAD5754R()
 {
-  // Configure all 4 DAC channels
-
-  // first configure the control register
-  PORTD &= ~Pin_CS; // Low
-  SPI.transfer(CTRL);
-  SPI.transfer(0x00);
-  SPI.transfer(0b00000101); // 0000, 0 TSD disabled, 1 CLAMP enabled, 0 CLR to 0V, 1 SDOUT disabled
-  PORTD |= Pin_CS; // High
-
-  // configure output range register, do each channel
-  for (int i = 1; i <= nChan; i++) // 1...nChan rather than 0...(nChan-1)
+  // Configure all N Chips
+  for (int i = 0; i < nChips; i++)
   {
-    ConfigureAD5754R_Vmax(i);
+    // Configure all n DAC channels
+
+    // first configure the control register
+    PORTF &= ~Pin_CS[i]; // Low
+    SPI.transfer(CTRL);
+    SPI.transfer(0x00);
+    SPI.transfer(0b00000101); // 0000, 0 TSD disabled, 1 CLAMP enabled, 0 CLR to 0V, 1 SDOUT disabled
+    PORTF |= Pin_CS[i]; // High
+
+    // configure output range register, do each channel
+    for (int j = 1; j <= nChannelsPerChip; j++) // 1...nChan rather than 0...(nChan-1) because 0 is reserved for "all channels"
+    {
+      ConfigureAD5754R_Vmax(i, j);
+    }
+
+    // configure power register
+    PORTF &= ~Pin_CS[i]; // Low
+    SPI.transfer(PWR);
+    SPI.transfer(0b00000000); // 00000, {0 0 0} = {OCD OCC OCB}(read only bits)
+    SPI.transfer(0b00011111); // {0 0 0} = {OCA 0 TSD}(read only bits), {1 1 1 1 1} = {PUref, PUD, PUC, PUB, PUA} all enabled
+    PORTF |= Pin_CS[i]; // High
+
+    // finally set all 4 channels to CLR code (i.e. reset to 0V)
+    PORTF &= ~Pin_CS[i]; // Low
+    SPI.transfer(CLEAR);
+    SPI.transfer(0x00);
+    SPI.transfer(0x00);
+    PORTF |= Pin_CS[i]; // High
   }
-
-  // configure power register
-  PORTD &= ~Pin_CS; // Low
-  SPI.transfer(PWR);
-  SPI.transfer(0b00000000); // 00000, {0 0 0} = {OCD OCC OCB}(read only bits)
-  SPI.transfer(0b00011111); // {0 0 0} = {OCA 0 TSD}(read only bits), {1 1 1 1 1} = {PUref, PUD, PUC, PUB, PUA} all enabled
-  PORTD |= Pin_CS; // High
-
-  // finally set all 4 channels to CLR code (i.e. reset to 0V)
-  PORTD &= ~Pin_CS; // Low
-  SPI.transfer(CLEAR);
-  SPI.transfer(0x00);
-  SPI.transfer(0x00);
-  PORTD |= Pin_CS; // High
 }
 
 
-void ConfigureAD5754R_Vmax(int Chan)
+void ConfigureAD5754R_Vmax(int Chipnum, int Chan_individual)
 {
   byte VmaxByte; // 00000, 0 0 0 = +5V (Gain of 2 on 2.5V Vref). For +10V set 0 0 1
+  const int Channel = Chipnum * nChannelsPerChip + Chan_individual;
 
   // read Channel VmaxSwitch from EEPROM and set channel config. as appropriate
-  if (EEPROM.read(Chan) == 0)
+  if (EEPROM.read(Channel) == 0)
     VmaxByte = 0b00000000;
   else
     VmaxByte = 0b00000001;
 
-  PORTD &= ~Pin_CS; // Low
-  SPI.transfer(OPRANGE | ChannelBits[Chan]);
+  PORTF &= ~Pin_CS[Chipnum]; // Low
+  SPI.transfer(OPRANGE | ChannelBits[Chan_individual]);
   SPI.transfer(0x00);
   SPI.transfer(VmaxByte);
-  PORTD |= Pin_CS; // High
+  PORTF |= Pin_CS[Chipnum]; // High
 }
 
 
@@ -210,38 +197,28 @@ inline void SerialLoop()
           // For AD5754R analogue write to set DAC values, digital write to set relays
           // Only proceed is specified channel is within range of device
           Chan = static_cast<int>(static_cast<byte>(Buffer[5]));
+          canProceed = (Chan >= 0) && (Chan <= TotalChannels);
           switch (Buffer[3])
           {
             case 'A':
               // Analogue
               // check whether read or write
-              canProceed_DAC = (Chan >= 0) && (Chan <= nChan);
               switch (Buffer[4])
               {
                 case 'W':
                   // Write
                   // ########################
-                  if (canProceed_DAC) DACwriteVal(); else ErrOut();
+                  if (canProceed)
+                  {
+                    if (Chan != 0) DACwriteVal(); else DACwriteVal_ALL();
+                  }
+                  else ErrOut();
                   // ########################
                   break;
                 case 'R':
                   // Read
                   // ########################
-                  if (canProceed_DAC) DACreadVal(); else ErrOut();
-                  // ########################
-                  break;
-              }
-              break;
-            case 'D':
-              // Digital
-              // check whether read or write
-              canProceed_Rly = (Chan >= 0) && (Chan <= nRly);
-              switch (Buffer[4])
-              {
-                case 'W':
-                  // Write
-                  // ########################
-                  if (canProceed_Rly) SetRelay();  else ErrOut();
+                  if (canProceed) DACreadVal(); else ErrOut();
                   // ########################
                   break;
               }
@@ -249,19 +226,18 @@ inline void SerialLoop()
             case 'C':
               // Config. mode
               // check whether read or write
-              canProceed_DAC = (Chan >= 0) && (Chan <= nChan);
               switch (Buffer[4])
               {
                 case 'W':
                   // Write
                   // ########################
-                  if (canProceed_DAC || Chan == 255) SetConfig(); else ErrOut();
+                  if (canProceed) SetConfig(); else ErrOut();
                   // ########################
                   break;
                 case 'R':
                   // Read
                   // ########################
-                  if (canProceed_DAC) GetConfig(); else ErrOut();
+                  if (canProceed) GetConfig(); else ErrOut();
                   // ########################
                   break;
               }
@@ -337,56 +313,37 @@ inline void DACwriteVal()
   const float val = ValBytesToFloat();
   const word DACval = static_cast<word>(constrain(static_cast<long>(floor((val * 65535) + 0.5)), 0, 65535));
 
-  PORTD &= ~Pin_CS; // Low
-  SPI.transfer(DACregWRITE | ChannelBits[Chan]);
+  PORTF &= ~Pin_CS[ChipNum[Chan]]; // Low
+  SPI.transfer(DACregWRITE | ChannelBits[ChanNum[Chan]]);
   SPI.transfer(static_cast<byte>((DACval & 0b1111111100000000) >> 8)); // High byte
   SPI.transfer(static_cast<byte>(DACval & 0b0000000011111111)); // Low byte
-  PORTD |= Pin_CS; // High
+  PORTF |= Pin_CS[ChipNum[Chan]]; // High
 
   // Update channel values for query
   DAC_Vout[Chan] = val;
 }
 
 
-void SetRelay()
+inline void DACwriteVal_ALL()
 {
+  // Loop through all chips, convert value from raw bytes to float, convert to binary word and output
+  int i;
   const float val = ValBytesToFloat();
+  const word DACval = static_cast<word>(constrain(static_cast<long>(floor((val * 65535) + 0.5)), 0, 65535));
 
-  // Get channel number, convert value from raw bytes to float and set relay on if value is anything >0, else set off.
-  switch (Chan)
+  for (i = 0; i < nChips; i++)
   {
-    case 0: // set all relays together
-      if (val > 0.0)
-      {
-        PORTD |= Pin_relay[1];
-        PORTE |= Pin_relay[2];
-        PORTB |= Pin_relay[3];
-        PORTB |= Pin_relay[4];
-      }
-      else
-      {
-        PORTD &= ~Pin_relay[1];
-        PORTE &= ~Pin_relay[2];
-        PORTB &= ~Pin_relay[3];
-        PORTB &= ~Pin_relay[4];
-      }
-      break;
-    case 1:
-      if (val > 0.0) PORTD |= Pin_relay[1];
-      else PORTD &= ~Pin_relay[1];
-      break;
-    case 2:
-      if (val > 0.0) PORTE |= Pin_relay[2];
-      else PORTE &= ~Pin_relay[2];
-      break;
-    case 3:
-      if (val > 0.0) PORTB |= Pin_relay[3];
-      else PORTB &= ~Pin_relay[3];
-      break;
-    case 4:
-      if (val > 0.0) PORTB |= Pin_relay[4];
-      else PORTB &= ~Pin_relay[4];
-      break;
+    PORTF &= ~Pin_CS[i]; // Low
+    SPI.transfer(DACregWRITE | ChannelBits[0]);
+    SPI.transfer(static_cast<byte>((DACval & 0b1111111100000000) >> 8)); // High byte
+    SPI.transfer(static_cast<byte>(DACval & 0b0000000011111111)); // Low byte
+    PORTF |= Pin_CS[i]; // High
+  }
+
+  // Update channel values for query
+  for (i = 1; i <= TotalChannels; i++)
+  {
+    DAC_Vout[i] = val;
   }
 }
 
@@ -402,21 +359,21 @@ void SetConfig()
   }
 
   // Chan 0 sets DAC Vmax for all channels together
-  // Chan 1...4 sets DAC Vmax for that channel alone
+  // Chan 1...N sets DAC Vmax for that channel alone
   // in all of the above cases val=1 sets Vmax=10V, val=0 sets Vmax=5V
 
-  if (Chan == 0) // all channels the same
+  if (Chan == 0) // all channels the same (over all chips)
   {
-    for (int i = 1; i <= nChan; i++)
+    for (int i = 1; i <= TotalChannels; i++)
     {
       EEPROM.write(i, val);
-      ConfigureAD5754R_Vmax(i);
+      ConfigureAD5754R_Vmax(ChipNum[i], ChanNum[i]);
     }
   }
   else
   {
     EEPROM.write(Chan, val);
-    ConfigureAD5754R_Vmax(Chan);
+    ConfigureAD5754R_Vmax(ChipNum[Chan], ChanNum[Chan]);
   }
 }
 
@@ -461,7 +418,7 @@ inline void ErrOut()
 }
 
 
-inline float ValBytesToFloat()
+inline float ValBytesToFloat() // direct from comms buffer
 {
   char val_bytes[4];
   float val;
