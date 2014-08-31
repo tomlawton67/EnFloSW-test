@@ -1,0 +1,6 @@
+Limitations:
+
+Cuboids laying flat in x-y plane
+Rotations about z axis only
+
+Cuboids specified by plan view vertices and z range
