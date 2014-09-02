@@ -1,0 +1,25 @@
+
+
+% This won't typeset correctly with TexShop, as it requires special switches throwing
+
+\documentclass{article}
+
+% Gnuplot produces eps, so don't need graphicx etc
+\usepackage{graphics}
+\usepackage{amssymb}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{color}
+
+
+% This tells it that it's just a little picture, not a full page
+\pagestyle{empty}
+
+
+\begin{document}
+
+\input{Plot}
+% Brings in the LaTeX file made by gnuplot, which itself includes the EPS graphic plot
+
+\end{document} 
+

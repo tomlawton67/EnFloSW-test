@@ -1,0 +1,728 @@
+% GNUPLOT: LaTeX picture with Postscript
+\begingroup
+  \makeatletter
+  \providecommand\color[2][]{%
+    \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Package color not loaded in conjunction with
+      terminal option `colourtext'%
+    }{See the gnuplot documentation for explanation.%
+    }{Either use 'blacktext' in gnuplot or load the package
+      color.sty in LaTeX.}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\includegraphics[2][]{%
+    \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Package graphicx or graphics not loaded%
+    }{See the gnuplot documentation for explanation.%
+    }{The gnuplot epslatex terminal needs graphicx.sty or graphics.sty.}%
+    \renewcommand\includegraphics[2][]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \@ifundefined{ifGPcolor}{%
+    \newif\ifGPcolor
+    \GPcolortrue
+  }{}%
+  \@ifundefined{ifGPblacktext}{%
+    \newif\ifGPblacktext
+    \GPblacktexttrue
+  }{}%
+  % define a \g@addto@macro without @ in the name:
+  \let\gplgaddtomacro\g@addto@macro
+  % define empty templates for all commands taking text:
+  \gdef\gplbacktext{}%
+  \gdef\gplfronttext{}%
+  \makeatother
+  \ifGPblacktext
+    % no textcolor at all
+    \def\colorrgb#1{}%
+    \def\colorgray#1{}%
+  \else
+    % gray or color?
+    \ifGPcolor
+      \def\colorrgb#1{\color[rgb]{#1}}%
+      \def\colorgray#1{\color[gray]{#1}}%
+      \expandafter\def\csname LTw\endcsname{\color{white}}%
+      \expandafter\def\csname LTb\endcsname{\color{black}}%
+      \expandafter\def\csname LTa\endcsname{\color{black}}%
+      \expandafter\def\csname LT0\endcsname{\color[rgb]{1,0,0}}%
+      \expandafter\def\csname LT1\endcsname{\color[rgb]{0,1,0}}%
+      \expandafter\def\csname LT2\endcsname{\color[rgb]{0,0,1}}%
+      \expandafter\def\csname LT3\endcsname{\color[rgb]{1,0,1}}%
+      \expandafter\def\csname LT4\endcsname{\color[rgb]{0,1,1}}%
+      \expandafter\def\csname LT5\endcsname{\color[rgb]{1,1,0}}%
+      \expandafter\def\csname LT6\endcsname{\color[rgb]{0,0,0}}%
+      \expandafter\def\csname LT7\endcsname{\color[rgb]{1,0.3,0}}%
+      \expandafter\def\csname LT8\endcsname{\color[rgb]{0.5,0.5,0.5}}%
+    \else
+      % gray
+      \def\colorrgb#1{\color{black}}%
+      \def\colorgray#1{\color[gray]{#1}}%
+      \expandafter\def\csname LTw\endcsname{\color{white}}%
+      \expandafter\def\csname LTb\endcsname{\color{black}}%
+      \expandafter\def\csname LTa\endcsname{\color{black}}%
+      \expandafter\def\csname LT0\endcsname{\color{black}}%
+      \expandafter\def\csname LT1\endcsname{\color{black}}%
+      \expandafter\def\csname LT2\endcsname{\color{black}}%
+      \expandafter\def\csname LT3\endcsname{\color{black}}%
+      \expandafter\def\csname LT4\endcsname{\color{black}}%
+      \expandafter\def\csname LT5\endcsname{\color{black}}%
+      \expandafter\def\csname LT6\endcsname{\color{black}}%
+      \expandafter\def\csname LT7\endcsname{\color{black}}%
+      \expandafter\def\csname LT8\endcsname{\color{black}}%
+    \fi
+  \fi
+  \setlength{\unitlength}{0.0500bp}%
+  \begin{picture}(14400.00,10080.00)%
+      \csname LTb\endcsname%
+      \put(7200,9860){\makebox(0,0){\strut{}WD=-26 Sites    Source (mm)=X= -625  Y=-375 Z=10    Emission Duration (s)=9.50}}%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8428){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8518){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8607){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8697){\makebox(0,0)[r]{\strut{} 3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8786){\makebox(0,0)[r]{\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8876){\makebox(0,0)[r]{\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,8965){\makebox(0,0)[r]{\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,9055){\makebox(0,0)[r]{\strut{} 7}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,9144){\makebox(0,0)[r]{\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,9234){\makebox(0,0)[r]{\strut{} 9}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,9323){\makebox(0,0)[r]{\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(504,8208){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(925,8208){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1346,8208){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1768,8208){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2189,8208){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2610,8208){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3031,8208){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3453,8208){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3874,8208){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(4295,8208){\makebox(0,0){\strut{} 18}}%
+      \csname LTb\endcsname%
+      \put(-266,8875){\rotatebox{-270}{\makebox(0,0){\strut{}$Av_Puff~(ppm)$}}}%
+      \put(2399,9653){\makebox(0,0){\strut{}Receptor~=~X=-288~Y=-361~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8428){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8518){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8607){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8697){\makebox(0,0)[r]{\strut{} 3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8786){\makebox(0,0)[r]{\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8876){\makebox(0,0)[r]{\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,8965){\makebox(0,0)[r]{\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,9055){\makebox(0,0)[r]{\strut{} 7}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,9144){\makebox(0,0)[r]{\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,9234){\makebox(0,0)[r]{\strut{} 9}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,9323){\makebox(0,0)[r]{\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5304,8208){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5683,8208){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6062,8208){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6441,8208){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6820,8208){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7200,8208){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7579,8208){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7958,8208){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8337,8208){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8716,8208){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9095,8208){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(7199,9653){\makebox(0,0){\strut{}Receptor~=~X=-43~Y=-274~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,8428){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,8556){\makebox(0,0)[r]{\strut{} 0.2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,8684){\makebox(0,0)[r]{\strut{} 0.4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,8812){\makebox(0,0)[r]{\strut{} 0.6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,8939){\makebox(0,0)[r]{\strut{} 0.8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,9067){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,9195){\makebox(0,0)[r]{\strut{} 1.2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,9323){\makebox(0,0)[r]{\strut{} 1.4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10104,8208){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10525,8208){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10946,8208){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11368,8208){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11789,8208){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12210,8208){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12631,8208){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13053,8208){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13474,8208){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13895,8208){\makebox(0,0){\strut{} 18}}%
+      \csname LTb\endcsname%
+      \put(11999,9653){\makebox(0,0){\strut{}Receptor~=~X=-490~Y=-351~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,6456){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,6680){\makebox(0,0)[r]{\strut{} 0.005}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,6904){\makebox(0,0)[r]{\strut{} 0.01}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,7127){\makebox(0,0)[r]{\strut{} 0.015}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,7351){\makebox(0,0)[r]{\strut{} 0.02}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(504,6236){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1262,6236){\makebox(0,0){\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2020,6236){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2779,6236){\makebox(0,0){\strut{} 15}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3537,6236){\makebox(0,0){\strut{} 20}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(4295,6236){\makebox(0,0){\strut{} 25}}%
+      \csname LTb\endcsname%
+      \put(-662,6903){\rotatebox{-270}{\makebox(0,0){\strut{}$Av_Puff~(ppm)$}}}%
+      \put(2399,7681){\makebox(0,0){\strut{}Receptor~=~X=-500~Y=240~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,6456){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,6584){\makebox(0,0)[r]{\strut{} 20}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,6712){\makebox(0,0)[r]{\strut{} 40}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,6840){\makebox(0,0)[r]{\strut{} 60}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,6967){\makebox(0,0)[r]{\strut{} 80}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,7095){\makebox(0,0)[r]{\strut{} 100}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,7223){\makebox(0,0)[r]{\strut{} 120}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,7351){\makebox(0,0)[r]{\strut{} 140}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5304,6236){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5725,6236){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6146,6236){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6568,6236){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6989,6236){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7410,6236){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7831,6236){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8253,6236){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8674,6236){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9095,6236){\makebox(0,0){\strut{} 18}}%
+      \csname LTb\endcsname%
+      \put(7199,7681){\makebox(0,0){\strut{}Receptor~=~X=-62~Y=-688~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,6456){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,6635){\makebox(0,0)[r]{\strut{} 0.005}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,6814){\makebox(0,0)[r]{\strut{} 0.01}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,6993){\makebox(0,0)[r]{\strut{} 0.015}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,7172){\makebox(0,0)[r]{\strut{} 0.02}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,7351){\makebox(0,0)[r]{\strut{} 0.025}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10104,6236){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10862,6236){\makebox(0,0){\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11620,6236){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12379,6236){\makebox(0,0){\strut{} 15}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13137,6236){\makebox(0,0){\strut{} 20}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13895,6236){\makebox(0,0){\strut{} 25}}%
+      \csname LTb\endcsname%
+      \put(11999,7681){\makebox(0,0){\strut{}Receptor~=~X=-697~Y=-687~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,4484){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,4574){\makebox(0,0)[r]{\strut{} 0.1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,4663){\makebox(0,0)[r]{\strut{} 0.2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,4753){\makebox(0,0)[r]{\strut{} 0.3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,4842){\makebox(0,0)[r]{\strut{} 0.4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,4932){\makebox(0,0)[r]{\strut{} 0.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,5021){\makebox(0,0)[r]{\strut{} 0.6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,5110){\makebox(0,0)[r]{\strut{} 0.7}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,5200){\makebox(0,0)[r]{\strut{} 0.8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,5289){\makebox(0,0)[r]{\strut{} 0.9}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,5379){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(504,4264){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(925,4264){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1346,4264){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1768,4264){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2189,4264){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2610,4264){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3031,4264){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3453,4264){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3874,4264){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(4295,4264){\makebox(0,0){\strut{} 18}}%
+      \csname LTb\endcsname%
+      \put(-398,4931){\rotatebox{-270}{\makebox(0,0){\strut{}$Av_Puff~(ppm)$}}}%
+      \put(2399,5709){\makebox(0,0){\strut{}Receptor~=~X=-72~Y=-226~Z=82}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,4484){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,4612){\makebox(0,0)[r]{\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,4740){\makebox(0,0)[r]{\strut{} 20}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,4868){\makebox(0,0)[r]{\strut{} 30}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,4995){\makebox(0,0)[r]{\strut{} 40}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,5123){\makebox(0,0)[r]{\strut{} 50}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,5251){\makebox(0,0)[r]{\strut{} 60}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,5379){\makebox(0,0)[r]{\strut{} 70}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5304,4264){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5683,4264){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6062,4264){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6441,4264){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6820,4264){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7200,4264){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7579,4264){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7958,4264){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8337,4264){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8716,4264){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9095,4264){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(7199,5709){\makebox(0,0){\strut{}Receptor~=~X=144~Y=-399~Z=8}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,4484){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,4633){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,4782){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,4931){\makebox(0,0)[r]{\strut{} 3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,5081){\makebox(0,0)[r]{\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,5230){\makebox(0,0)[r]{\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,5379){\makebox(0,0)[r]{\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10104,4264){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10862,4264){\makebox(0,0){\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11620,4264){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12379,4264){\makebox(0,0){\strut{} 15}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13137,4264){\makebox(0,0){\strut{} 20}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13895,4264){\makebox(0,0){\strut{} 25}}%
+      \csname LTb\endcsname%
+      \put(11999,5709){\makebox(0,0){\strut{}Receptor~=~X=1769~Y=-67~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,2512){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,2661){\makebox(0,0)[r]{\strut{} 0.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,2810){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,2959){\makebox(0,0)[r]{\strut{} 1.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,3109){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,3258){\makebox(0,0)[r]{\strut{} 2.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,3407){\makebox(0,0)[r]{\strut{} 3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(504,2292){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(883,2292){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1262,2292){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1641,2292){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2020,2292){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2400,2292){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2779,2292){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3158,2292){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3537,2292){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3916,2292){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(4295,2292){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(-398,2959){\rotatebox{-270}{\makebox(0,0){\strut{}$Av_Puff~(ppm)$}}}%
+      \put(2399,3737){\makebox(0,0){\strut{}Receptor~=~X=192~Y=67~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,2512){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,2661){\makebox(0,0)[r]{\strut{} 0.1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,2810){\makebox(0,0)[r]{\strut{} 0.2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,2960){\makebox(0,0)[r]{\strut{} 0.3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,3109){\makebox(0,0)[r]{\strut{} 0.4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,3258){\makebox(0,0)[r]{\strut{} 0.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,3407){\makebox(0,0)[r]{\strut{} 0.6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5304,2292){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5683,2292){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6062,2292){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6441,2292){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6820,2292){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7200,2292){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7579,2292){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7958,2292){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8337,2292){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8716,2292){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9095,2292){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(7199,3737){\makebox(0,0){\strut{}Receptor~=~X=39~Y=192~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,2512){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,2611){\makebox(0,0)[r]{\strut{} 0.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,2711){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,2810){\makebox(0,0)[r]{\strut{} 1.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,2910){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,3009){\makebox(0,0)[r]{\strut{} 2.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,3109){\makebox(0,0)[r]{\strut{} 3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,3208){\makebox(0,0)[r]{\strut{} 3.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,3308){\makebox(0,0)[r]{\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,3407){\makebox(0,0)[r]{\strut{} 4.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10104,2292){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10483,2292){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10862,2292){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11241,2292){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11620,2292){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12000,2292){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12379,2292){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12758,2292){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13137,2292){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13516,2292){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13895,2292){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(11999,3737){\makebox(0,0){\strut{}Receptor~=~X=500~Y=-96~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,540){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,668){\makebox(0,0)[r]{\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,796){\makebox(0,0)[r]{\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,924){\makebox(0,0)[r]{\strut{} 15}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,1051){\makebox(0,0)[r]{\strut{} 20}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,1179){\makebox(0,0)[r]{\strut{} 25}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,1307){\makebox(0,0)[r]{\strut{} 30}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(372,1435){\makebox(0,0)[r]{\strut{} 35}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(504,320){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(883,320){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1262,320){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(1641,320){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2020,320){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2400,320){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(2779,320){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3158,320){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3537,320){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(3916,320){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(4295,320){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(-266,987){\rotatebox{-270}{\makebox(0,0){\strut{}$Av_Puff~(ppm)$}}}%
+      \put(2399,-10){\makebox(0,0){\strut{}$Time~(s)$}}%
+      \put(2399,1765){\makebox(0,0){\strut{}Receptor~=~X=586~Y=-389~Z=8}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,540){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,630){\makebox(0,0)[r]{\strut{} 0.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,719){\makebox(0,0)[r]{\strut{} 1}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,809){\makebox(0,0)[r]{\strut{} 1.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,898){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,988){\makebox(0,0)[r]{\strut{} 2.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,1077){\makebox(0,0)[r]{\strut{} 3}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,1167){\makebox(0,0)[r]{\strut{} 3.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,1256){\makebox(0,0)[r]{\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,1346){\makebox(0,0)[r]{\strut{} 4.5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5172,1435){\makebox(0,0)[r]{\strut{} 5}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5304,320){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(5683,320){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6062,320){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6441,320){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(6820,320){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7200,320){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7579,320){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(7958,320){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8337,320){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(8716,320){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9095,320){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(7199,-10){\makebox(0,0){\strut{}$Time~(s)$}}%
+      \put(7199,1765){\makebox(0,0){\strut{}Receptor~=~X=649~Y=-740~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,540){\makebox(0,0)[r]{\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,639){\makebox(0,0)[r]{\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,739){\makebox(0,0)[r]{\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,838){\makebox(0,0)[r]{\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,938){\makebox(0,0)[r]{\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,1037){\makebox(0,0)[r]{\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,1137){\makebox(0,0)[r]{\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,1236){\makebox(0,0)[r]{\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,1336){\makebox(0,0)[r]{\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(9972,1435){\makebox(0,0)[r]{\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10104,320){\makebox(0,0){\strut{} 0}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10483,320){\makebox(0,0){\strut{} 2}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(10862,320){\makebox(0,0){\strut{} 4}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11241,320){\makebox(0,0){\strut{} 6}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(11620,320){\makebox(0,0){\strut{} 8}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12000,320){\makebox(0,0){\strut{} 10}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12379,320){\makebox(0,0){\strut{} 12}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(12758,320){\makebox(0,0){\strut{} 14}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13137,320){\makebox(0,0){\strut{} 16}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13516,320){\makebox(0,0){\strut{} 18}}%
+      \colorrgb{0.75,0.75,0.75}%
+      \put(13895,320){\makebox(0,0){\strut{} 20}}%
+      \csname LTb\endcsname%
+      \put(11999,-10){\makebox(0,0){\strut{}$Time~(s)$}}%
+      \put(11999,1765){\makebox(0,0){\strut{}Receptor~=~X=803~Y=-87~Z=7}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+    }%
+    \gplbacktext
+    \put(0,0){\includegraphics{Plot}}%
+    \gplfronttext
+  \end{picture}%
+\endgroup
