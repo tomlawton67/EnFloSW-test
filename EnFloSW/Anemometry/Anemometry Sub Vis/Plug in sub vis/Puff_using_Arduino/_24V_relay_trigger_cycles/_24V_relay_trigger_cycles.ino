@@ -81,7 +81,7 @@ void HoldOff()
 
 void serialEvent()
 {
-  if (Serial.peek() == '@') // beginning of instruction in correct place, read until termination char '#'
+  if (Serial.peek() == '@') // beginning of instruction in correct place
   {
     Serial.read(); // discard '@'
     // read all into buffer, then parse values as appropriate
