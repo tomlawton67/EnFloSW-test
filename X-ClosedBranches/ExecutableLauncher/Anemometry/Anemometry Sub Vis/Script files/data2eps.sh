@@ -59,7 +59,7 @@ rm ./terminal.log
 
 # Best not to tidy these up- useful later:
 # rm ./Plot.eps
-# rm ./Plot.tex
+rm ./Plot.tex
 # rm ./plotwrap.tex
 # rm ./*.tex
 #--------------------------------------------------------------------------
