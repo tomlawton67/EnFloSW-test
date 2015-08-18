@@ -31,6 +31,7 @@ char Cmd;
 char dt_bytes[4];
 
 unsigned long Overrun = 0;
+const byte ack[3] = {'#', '#', '#'}; // acknowledgement for end of clocking. Repeated for robustness against overrun corruption
 
 byte OS[3] = {0, 0, 0};
 byte Range = 1;
@@ -50,9 +51,9 @@ void setup()
   spi4teensy3::init(0, 1, 0); // clk div 2 (24MHz), cpol 1, cpha 0 (Note this is above spec max, should be 15MHz max at Vdrive = 3.3V !!
 
   Serial.begin(115200);
-  while (!Serial);
+  //while (!Serial);
 
-  delay(30);
+  //delay(30);
   Reset();
 }
 
@@ -125,7 +126,7 @@ void Busy_FALLING()
   Clocking = 0;
   // Pulse ISR can change volatile clocking global between being reset above and the following check
   // if it goes high, this means new data was being converted during the upcoming conversion
-  // this is an overrun, set flags 
+  // this is an overrun, set flags
   GPIOC_PCOR = pin_CS; // CS low
   spi4teensy3::receive(DataBuffer, NchanBytes);
   GPIOC_PSOR = pin_CS; // CS high
@@ -158,33 +159,33 @@ void Sleep(byte NewSleepState)
 {
   switch (NewSleepState)
   {
-  case 0: // wakeup
-    switch (SleepState)
-    {
-    case 0: // already awake, do nothing
+    case 0: // wakeup
+      switch (SleepState)
+      {
+        case 0: // already awake, do nothing
 
+          break;
+        case 1: // re-config range bit and wait 100us
+          digitalWrite(pin_RANGE, Range);
+          digitalWrite(pin_STBY, HIGH);
+          delayMicroseconds(100);
+          break;
+        case 2: // re-config range bit, wait 13ms, apply reset
+          digitalWrite(pin_RANGE, Range);
+          digitalWrite(pin_STBY, HIGH);
+          delay(13);
+          Reset();
+          break;
+      }
       break;
-    case 1: // re-config range bit and wait 100us 
-      digitalWrite(pin_RANGE, Range);
-      digitalWrite(pin_STBY, HIGH);
-      delayMicroseconds(100);
+    case 1: // standby
+      digitalWrite(pin_RANGE, HIGH);
+      digitalWrite(pin_STBY, LOW);
       break;
-    case 2: // re-config range bit, wait 13ms, apply reset
-      digitalWrite(pin_RANGE, Range);
-      digitalWrite(pin_STBY, HIGH);
-      delay(13);
-      Reset();
-      break; 
-    }
-    break;
-  case 1: // standby
-    digitalWrite(pin_RANGE, HIGH);
-    digitalWrite(pin_STBY, LOW);
-    break;
-  case 2: // shutdown
-    digitalWrite(pin_RANGE, LOW);
-    digitalWrite(pin_STBY, LOW);
-    break;
+    case 2: // shutdown
+      digitalWrite(pin_RANGE, LOW);
+      digitalWrite(pin_STBY, LOW);
+      break;
   }
   SleepState = NewSleepState;
 }
@@ -216,6 +217,7 @@ inline void ACQ_End()
 {
   SampleClock.end();
   GPIOB_PCOR = pin_ACQ;
+  Serial.write(ack, 3); // acknowledge clocking is over to allow proper clearing of host input buffer surplus bytes (sent in between end of sample requests and end_ack cmd)
 }
 
 
@@ -266,12 +268,12 @@ void SerInCheck()
       TriggerMode = static_cast<int>(static_cast<byte>(SerIn[4]));
       switch (TriggerMode)
       {
-      case 0:
-        detachInterrupt(pin_TRIG);
-        break;
-      case 1:
-        attachInterrupt(pin_TRIG, Trigger, FALLING); 
-        break;
+        case 0:
+          detachInterrupt(pin_TRIG);
+          break;
+        case 1:
+          attachInterrupt(pin_TRIG, Trigger, FALLING);
+          break;
       }
 
       // Number of channels (bytes to receive)
