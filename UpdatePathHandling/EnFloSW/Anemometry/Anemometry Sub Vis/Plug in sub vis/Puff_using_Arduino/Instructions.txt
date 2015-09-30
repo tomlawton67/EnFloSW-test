@@ -1,0 +1,1 @@
+This device is currently hard-coded to be on COM15. Please configure (in Windows or NI-MAX) the Arduino to occupy this port by default when it is connected.

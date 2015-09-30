@@ -1,0 +1,797 @@
+Date	09 Jul 2015
+Time	00:00
+Seconds since 1/1/04	3519241200.832
+Rig_Setup	ADAM_Server
+Ch Discription Array Start
+Zone	Sub Zone	Name	Ch State	Function	Module Type	Port Name	Address	Slot	Ch No in Mod	Calibration Type	Coeff A	Coeff B	Coeff C	Coeff D	String	Comments	Duty	Value	
+A_Tunnel	Trav	1	On	Analogue In	4018	MainNetwork	252	0	0	Linear	2.3000	1	0	0			18724	25.100000000000
+A_Tunnel	Speed	Dem Velocity	On	Analogue Out	Hold Value		0	0	0	Linear	0.4250	0.4271	0	0	!Max Velocity = 25.0		65535	0.000000000000
+A_Tunnel	Speed	Calib Tweak	On	Analogue In	Hold Value		0	0	0	Raw	30	1.5000	35	0		%	65535	0.000000000000
+A_Tunnel	Speed	Dem Voltage	On	Digital Out	4021	MainNetwork	222	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig !Default = -2.0	65535	0.000000000000
+A_Tunnel	Motor	Temp	On	Analogue In	4018	MainNetwork	252	0	3	Raw	0	0	0	0			1	21.600000000000
+A_Tunnel	Motor	Enable	On	Relay Out	5060	MainNetwork	120	4	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+A_Tunnel	Turbine	Enable	On	Relay Out	4060	MainNetwork	209	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+A_Tunnel	Turbine_1	Dem_Volts	On	Analogue Out	4021	MainNetwork	220	0	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+A_Tunnel	Turbine_1	Dem_RPM	On	Analogue Out	Hold Value		0	3	1	Raw	0	0	0	0			65535	0.000000000000
+A_Tunnel Metadata	Roughness	Pattern	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	3	Aligned; None; Staggered; Uniform Staggered; 		0	3.000000000000
+A_Tunnel Metadata	Roughness	Element	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	3	None; Random blocks; Uniform cube; Uniform cubes plus 12.5% random 2mm caps; 		0	3.000000000000
+A_Tunnel Metadata	Roughness Element	Height (mm)	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	20; None; 		0	0.000000000000
+A_Tunnel Metadata	Roughness	Unit size	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	20 x 20mm; 40 x 40mm; 80 x 80mm; None; 		0	1.000000000000
+A_Tunnel Metadata	Roughness Area	Density (%)	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	0; 25; 6.25; 		0	1.000000000000
+A_Tunnel Metadata	Roughness Elements	In a Unit	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	0; 1; 16; 		0	1.000000000000
+A_Tunnel Metadata	Baseboard	Vertical Displacement (mm)	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	0; 115; 65; 		0	0.000000000000
+A_Tunnel Metadata	Travers Origin	X Offset	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	1450			0	1450.000000000000
+A_Tunnel Metadata	Leading Edge		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	11.4mm Lego Fence; Metal shark-tooth fence max 121mm  min 52mm; None; Ramp 17 x 200mm; Ramp 18.8 x 200mm; Ramp 29 x 175mm; Ramp 29 x 390mm; Ramp 9 x 175mm; Ramp 9 x 175mm  then double height cubes at equal interval; Ramp 9 x 175mm then 20mm Fence; Ramp 9 x 175mm then 2310 0f 2mm snyder roughness; Ramp 9 x 175mm then 40mm Fence; Ramp 9 x 175mm then random doubled height cubes; Rounded nose 18.2 x 55mm; Rounded nose 9 x 150mm; 		0	1.000000000000
+A_Tunnel Metadata	Cube Centre	Y	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0	ytreytryt; 		0	0.000000000000
+A_Tunnel Metadata	Side	Walls	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	Blunt leading edge_440mm separation_2000mm long_starting at x=-530; Blunt leading edge_440mm separation_4000mm long_starting at x=-530; Blunt leading edge_450mm separation_2000mm long_starting at x=0; Blunt leading edge_450mm separation_4000mm long_starting at x=0; Sharp leading Edge_190mm seperation_2000mm long_starting at x=0; Sharp leading Edge_270mm seperation_2000mm long_starting at x=0; Sharp leading Edge_350mm seperation_2000mm long_starting at x=0; Sharp leading Edge_450mm seperation_2000mm long_starting at x=0; Sharp leading Edge_450mm seperation_4000mm long_starting at x=0; 		0	1.000000000000
+A_Tunnel Metadata	Test		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	6	Averaging time; Blockage; Calib; Cross section; Fluxes; Horizontal layer; Original Model; Profile; Re-test; Saturation chamber; Spanwise; Turbine; Vertical layer; Zero Mass Flux Flow; 		0	6.000000000000
+A_Tunnel Metadata	Uo/Ulocal		Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0.9890			65535	0.988981589000
+A_Tunnel Metadata	Surrounding cube	Heights	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	2	Uniform; X=-120 Y=+40 Z=+2 and X=-120 Y=-40 Z=+2; X=-160 Y=0 Z=+2; X=-160 Y=0 Z=-2; X=-200 Y=+40 Z=+2 and X=-200 Y=-40 Z=+2; X=-240 Y=0 Z=+2; X=-240 Y=0 Z=-2; X=-280 Y=+40 Z=+2 and X=-280 Y=-40 Z=+2; X=-320 Y=0 Z=+2; X=-320 Y=0 Z=-2; X=-40 Y=+40 Z=+2 and X=-40 Y=-40 Z=+2; X=-80 Y=0 Z=+2; X=-80 Y=0 Z=-2; X=-80 Y=0 Z=-20; X=-80 and X=-160  removed; X=-80  -160 and -240  removed; X=0 Y=0 Z=0; 		0	2.000000000000
+A_Tunnel Metadata	Attempt Number		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	2; 		0	0.000000000000
+A_Tunnel Metadata	Plan Area	Density	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	10	0; 0.059; 0.108; 0.181; 0.238; 0.244; 0.246; 0.247; 0.248; 0.306; None; 		0	10.000000000000
+A_Tunnel Metadata	Frontal Area	Density	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	9	0; 0.066; 0.073; 0.081; 0.082; 0.083; 0.11; 0.165; 0.326; None; 		0	9.000000000000
+A_Tunnel Metadata	Surface	Code	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	None; S_0; S_1; S_10; S_2; S_3; S_4; S_5; S_6; S_7; S_8; 		0	0.000000000000
+A_Tunnel Metadata	Model	Type	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	1:40 lattice model; BT_Tower; BT_Tower with Lattice; Large cylinder; Medium cylinder; No Model; Small cylinder; 		0	0.000000000000
+A_Tunnel Metadata	Orientation		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	0; 10; 100; 110; 120; 130; 135; 140; 150; 160; 170; 180; 190; 20; 200; 210; 220; 225; 230; 240; 250; 260; 270; 280; 290; 30; 300; 310; 315; 320; 330; 340; 350; 40; 45; 50; 60; 70; 80; 90; 		0	0.000000000000
+A_Tunnel Metadata	Device		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	Crosswire; 		0	0.000000000000
+A_Tunnel Metadata	 Anemometer		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	N/A; 		0	0.000000000000
+Aero_Tunnel	Speed	Dem Velocity	On	Analogue Out	Hold Value		0	0	0	Linear	-0.19510	0.23060	0	0	!Max Velocity =40.5		65535	0.000000000000
+Aero_Tunnel	Speed	Meas Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Speed	Calib Tweak	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Speed	Dem Voltage	On	Analogue Out	4021	MainNetwork	226	0	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+Aero_Tunnel	Fan	RPM	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	38.000000000000
+Aero_Tunnel	Server	Pulse	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	1.000000000000
+Aero_Tunnel	Fan	Watchdog	On	Relay Out	4060	MainNetwork	216	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+Aero_Tunnel	Working_Section	Dem Temp	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		Deg C	65535	21.700000000000
+Aero_Tunnel	Thermistor	Temp	On	Analogue In	Arduino Thermistor	COM18	6	0	7	Linear	-1.1000	1	0	0			65535	23.909948730469
+Aero_Tunnel	Motor	Enable	On	Relay Out	4060	MainNetwork	207	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig   !Do Not Reset	65535	0.000000000000
+Aero_Tunnel	Motor	Temp	On	Analogue In	4018	MainNetwork	238	0	4	Raw	0	0	0	0			65535	23.700000000000
+Aero_Tunnel	Pitot tube	Voltage	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.004000000000
+Aero_Tunnel	Chilled_Water	Temp	On	Analogue In	4018	MainNetwork	238	0	2	Raw	0	0	0	0			65535	21.600000000000
+Aero_Tunnel	Cooling_Div_Valve	Dem Pos	On	Analogue Out	4021	MainNetwork	223	0	0	Linear	2	0.08000	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Cooling_Pump	Enable	On	Relay Out	4060	MainNetwork	207	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Drive	Ready	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Balance	Lift	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-0.376663793103
+Aero_Tunnel	Balance	Lift_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.002309481793
+Aero_Tunnel	Balance	Pitch	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.049655172414
+Aero_Tunnel	Balance	Pitch_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000132217301
+Aero_Tunnel	Balance	Drag	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.128870689655
+Aero_Tunnel	Balance	Drag_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000618009141
+Aero_Tunnel	Balance	Side-Force	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.117715517241
+Aero_Tunnel	Balance	Side-Force_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.001100263897
+Aero_Tunnel	Balance	Yaw	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.006715517241
+Aero_Tunnel	Balance	Yaw_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000824242
+Aero_Tunnel	Balance	Roll	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-0.022189655172
+Aero_Tunnel	Balance	Roll_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000200498514
+Aero_Tunnel	Balance_Range	Roll	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.690000000000
+Aero_Tunnel	Balance_Range	Yaw	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	12.370000000000
+Aero_Tunnel	Balance_Range	Side-Force	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	-1.060000000000
+Aero_Tunnel	Balance_Range	Drag	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.380000000000
+Aero_Tunnel	Balance_Range	Pitch	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	2.950000000000
+Aero_Tunnel	Balance_Range	Lift	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	-3.180000000000
+Aero_Tunnel	Balance_Range	Roll_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000064662800
+Aero_Tunnel	Balance_Range	Yaw_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000060985500
+Aero_Tunnel	Balance_Range	Side-Force_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000071741500
+Aero_Tunnel	Balance_Range	Drag_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000040438100
+Aero_Tunnel	Balance_Range	Pitch_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000050590000
+Aero_Tunnel	Balance_Range	Lift_Variance	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000039516000
+Aero_Tunnel	Rolling_Road	Enable	On	Relay Out	4060	MainNetwork	207	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Enclosure_Trav	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+Aero_Tunnel	Enclosure_Trav	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	680.000000000000
+Aero_Tunnel	Enclosure_Trav	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+Aero_Tunnel	Inside_Trav	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	-0.000000000000
+Aero_Tunnel	Inside_Trav	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	-41.999511718750
+Aero_Tunnel	Inside_Trav	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	712.001953125000
+Aero_Tunnel	Pitch	Deg	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Road	Dem_Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Road	Watchdog	On	Relay Out	4060	MainNetwork	216	0	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+Aero_Tunnel	Road_Belt	Travel_km	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Belt_Absent	or_Broken	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-1.360000000000
+Aero_Tunnel	Road_Belt_Slip	Warning	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.380000000000
+Aero_Tunnel	Road_BL_Suction	Secondary	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_BL_Suction	Primary	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Chiller	Enable	On	Relay Out	4060	MainNetwork	207	0	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Road_E-Stop	Active	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-6.960000000000
+Aero_Tunnel	Road_Load_Error	Right	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Road_Load_Error	Left	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.920000000000
+Aero_Tunnel	Road_LoadCell	Right	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_LoadCell	Left	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Main_Drives	Started	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	3.140000000000
+Aero_Tunnel	Road_Platen_Alarm	Active	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Road_Platen_High	Temp_Alarm	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Platen_Temp	Rear_Right	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Platen_Temp	Rear_Left	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Platen_Temp	Front_Right	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Platen_Temp	Front_Left	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Speed	m/s	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Road_Suction	Rear	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Suction	Middle	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Suction	Front	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Suction	Established	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	12.030000000000
+Aero_Tunnel	Road_Water	Inlet _Temp	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Water	Outlet _Temp	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Water_Alarm	Active	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Road_Water_High	Temp_Alarm	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	NaN
+Aero_Tunnel	Road_Yaw	Angle_Deg	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Aero_Tunnel	Seeder	Enable	On	Relay Out	4060	MainNetwork	216	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	SmAD	Temp	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	25.950000000000
+Aero_Tunnel	Socket	Ch0	On	Relay Out	4060	MainNetwork	219	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Socket	Ch1	On	Relay Out	4060	MainNetwork	219	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Source	Enable	Off	Relay Out	4060	MainNetwork	216	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	PIV	Enable	On	Relay Out	4060	MainNetwork	219	0	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	Enclosure	Power	On	Relay Out	4060	MainNetwork	219	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Aero_Tunnel	User	Name	On	Analogue In	Hold Value		0	0	0	Text	1	0	0	1	Michael_Bottomley; Nick_Martin; 		65535	1.000000000000
+Aero_Tunnel Metadata	alpha		Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+Aero_Tunnel Metadata	body		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	Cylinder; None; 		0	1.000000000000
+Aero_Tunnel Metadata	Rolling_road		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	off; on; 		0	0.000000000000
+Aero_Tunnel Metadata	vehicle_scale		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	2	1:20; 1:5; 1:8; 		0	2.000000000000
+Aero_Tunnel Metadata	Ensight Measurement	Plane	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	2	XY; XZ; YZ; 		0	2.000000000000
+Aero_Tunnel	Abs Pressure	Bar	On	Analogue In	4017	MainNetwork	224	0	4	Linear	0	0.4500	0	0			65535	0.049500000000
+Synthetic_Jet	Channel1	State	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		!Shared By = Rig	0	0.000000000000
+Synthetic_Jet	Channel2	State	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		!Shared By = Rig	0	0.000000000000
+B_Tunnel	Motor	Enable	On	Relay Out	4060	COM13	20	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+B_Tunnel	Motor	Temp	On	Analogue In	4018	MainNetwork	245	0	6	Raw	0	0	0	0			32	25.100000000000
+B_Tunnel	User	Name	On	Analogue In	Hold Value		0	0	0	Text	1	0	0	3	Adam_Burgess; Amin; Daniel_Hume; Michael_Bottomley; Nazanin; Paul_Hayden; Tom_Bridger; 		65535	3.000000000000
+Cluster Room	General	Temp	On	Analogue In	4018	MainNetwork	242	0	1	Linear	0	1	0	0			18724	20.700000000000
+Cluster Room	Temp	Warning	On	Analogue In	Comparator	MainNetwork	0	0	6	Raw	33	0	1	2	n.hills@surrey.ac.uk;	Cluster Room:General:Temp:::	65535	0.000000000000
+Complete	Scan	Period	Always On	Analogue In	VIRTUAL		0	0	0	Raw	0	0	0	0		(Sec)	65535	1.744099617004
+D_Tunnel	Thermo	1	Off	Analogue In	4018	MainNetwork	242	0	1	Raw	0	0	0	0			65535	31.000000000000
+D_Tunnel	Motor	Temp	On	Analogue In	4018	MainNetwork	242	0	0	Raw	0	0	0	0			8	22.800000000000
+D_Tunnel	Speed	Dem Velocity	On	Analogue Out	Hold Value		0	0	0	Linear	0.6558	0.22680	0	0	!Max Velocity = 15		65535	0.000000000000
+D_Tunnel	Speed	Calib Tweak	On	Analogue In	Hold Value		0	0	0	Raw	25	5	0	0		%	65535	0.000000000000
+D_Tunnel	Speed	Dem Voltage	On	Analogue Out	4021	MainNetwork	241	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig !Default = -2.0	65535	0.000000000000
+D_Tunnel	User	Name	On	Analogue In	Hold Value		0	0	0	Text	1	0	0	4	Adam_Burgess; Adetola_Elias; Elliott_Willcox; Erikas_Kneizys; Jermaine_Anderson; Paul_Hayden; Paul_Nathan; Sheila_Lynch; Tom_Bridger; Tom_Farr; mohd.nadia; 		65535	4.000000000000
+D_Tunnel	Motor	Enable	On	Relay Out	4060	MainNetwork	208	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+D_Tunnel	Speaker	Enable	On	Relay Out	4060	MainNetwork	208	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+D_Tunnel Metadata	speaker	amplitude	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+D_Tunnel Metadata	speaker	frequency	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo Lab	Hygrometry	Rel Humidity	On	Analogue In	Vaisala	COM10	50	0	0	Raw	0	0	0	0		%	65535	32.250000000000
+EnFlo Lab	Hygrometry	Dew Point temp	On	Analogue In	Vaisala	COM10	50	0	2	Raw	0	0	0	0		C	128	8.570000000000
+EnFlo Lab	Hygrometry	Air Temp	On	Analogue In	Vaisala	COM10	50	0	1	Raw	0	0	0	0		C	256	26.450000000000
+EnFlo Lab	ScaniValve	Step	Off	Digital Out	4060	MainNetwork	211	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Do Not Reset	65535	NaN
+EnFlo Lab	ScaniValve	Position	Off	Digital In	4053	MainNetwork	210	5	0	Linear	1	1	0	0	Front Panel	!ASYNC !Do Not Reset	65535	8.000000000000
+EnFlo Lab	ScaniValve	Diverter	Off	Digital Out	4060	MainNetwork	211	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Do Not Reset	65535	NaN
+EnFlo Lab	labstrat1	Z=0m Floor	On	Analogue In	Thermistor	COM13	17	0	0	Linear	-0.09550	1	0	0			65535	22.878839431341
+EnFlo Lab	labstrat1	Z=0.1m	On	Analogue In	Thermistor	COM13	17	0	1	Linear	-0.025100	1	0	0			65535	23.775223380920
+EnFlo Lab	labstrat1	Z=0.5m	On	Analogue In	Thermistor	COM13	17	0	2	Linear	-0.03600	1	0	0			65535	23.892460418238
+EnFlo Lab	labstrat1	Z=1.5m	On	Analogue In	Thermistor	COM13	17	0	3	Linear	0.029600	1	0	0			65535	24.030382149559
+EnFlo Lab	labstrat1	Z=2.5m	On	Analogue In	Thermistor	COM13	17	0	4	Linear	0.08630	1	0	0			65535	24.119965203013
+EnFlo Lab	labstrat1	Z=3.5m	On	Analogue In	Thermistor	COM13	17	0	5	Linear	0.015100	1	0	0			65535	24.312050244780
+EnFlo Lab	labstrat1	Z=4.5m	On	Analogue In	Thermistor	COM13	17	0	6	Linear	0.007700	1	0	0			65535	24.522166843581
+EnFlo Lab	labstrat1	Z=5.75m Roof	On	Analogue In	Thermistor	COM13	17	0	7	Linear	-0.004100	1	0	0			65535	24.095349427163
+EnFlo Lab	labstrat1	Delta T	On	Analogue In	VIRTUAL		0	0	0	Raw	0	0	0	0		Top-Bottom	65535	0.629706425343
+EnFlo Lab	Desired	Air Temp	On	Analogue In	Hold Value		0	0	13	Raw	395000000	0.5300	11.5000	5300	A=Aero Tun heat output coeff; B=gain; C=Min water Temp; D=A_Tunnel heat output coefficient; Ch = Max Extraction Value	Deg C	65535	21.700000000000
+EnFlo Lab	Heat	Extraction	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.059092467691
+EnFlo Lab	labstrat1	Av Temp	On	Analogue In	VIRTUAL		0	0	0	Raw	0	0	0	0	EnFlo Lab:labstrat1:Z=4.5m; EnFlo Lab:labstrat1:Z=3.5m; EnFlo Lab:labstrat1:Z=2.5m; EnFlo Lab:labstrat1:Z=1.5m; EnFlo Lab:labstrat1:Z=0.5m; 		37449	24.172120581036
+EnFlo Lab	Comp Air	Pressure	On	Analogue In	5017	MainNetwork	96	1	5	Linear	-2.5000	2.3150	0	0		bar	65535	6.903530000000
+EnFlo Lab	Emergency_Stop	Happy	On	Analogue In	5018	MainNetwork	120	6	1	Raw	0	0	0	0			65535	0.996700000000
+EnFlo Lab	Leak_Detector	Happy	On	Digital In	4053	MainNetwork	203	1	2	Raw	1	1	0	0			65535	1.000000000000
+EnFlo Lab	Comp Air	Warning	On	Analogue In	Comparator		0	0	0	Raw	10	5.3000	0.20000	2	N.Hardy@surrey.ac.uk;	EnFlo Lab:Comp Air:Pressure	65535	0.000000000000
+EnFlo_Tunnel	Speed	Dem Velocity	On	Analogue Out	Hold Value		0	2	3	Linear	4.4476	2.7764	0	0	!Max Velocity = 3.05		65535	0.800000000000
+EnFlo_Lab	Ventilation	Enable	On	Analogue In	Hold Value		0	0	1	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Lab	Window_Fans	Enable	On	Relay Out	4060	MainNetwork	208	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Lab	Window	Enable	On	Analogue Out	Arduino D_out	COM18	10	0	1	Raw	0	0	0	0	Front Panel	!ASYNC	65535	1.000000000000
+EnFlo_Lab	Window	Open	On	Analogue Out	Arduino D_out	COM18	10	0	4	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Lab	West Window	Open1	On	Relay Out	5060	MainNetwork	127	2	2	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Lab	West Window	Open2	On	Relay Out	5060	MainNetwork	127	2	3	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Speed	Calib Tweak	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		%	65535	6.560981252848
+EnFlo_Tunnel	Speed	Dem Current	On	Analogue Out	5024	MainNetwork	120	3	3	Raw	4.3910	3.5676	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	6.814447266803
+EnFlo_Tunnel	Usonic Y+ve Duct	Velocity	On	Analogue In	GILL	COM8	65	0	1	Raw	0	0	0	0			21845	0.770000000000
+EnFlo_Tunnel	Usonic Y-ve Duct	Velocity	On	Analogue In	GILL	COM9	65	0	1	Raw	0	0	0	0			43690	0.890000000000
+EnFlo_Tunnel	Usonic Y-ve Duct	Direction	Off	Analogue In	GILL	COM9	66	0	0	Raw	0	0	0	0			10922	NaN
+EnFlo_Tunnel	Shaft	rpm	On	Event counter	4080	MainNetwork	251	0	0	Linear	0	0.05000	0	0			18724	213.900000000000
+EnFlo_Tunnel	Reference	Velocity	On	Analogue In	Average		0	0	0	Linear	0	0.9515	0	7		EnFlo_Tunnel:Usonic Y+ve Duct:Velocity;EnFlo_Tunnel:Usonic Y-ve Duct:Velocity;	65535	0.789745000000
+EnFlo_Tunnel	Usonic_Ref_2	Velocity	Off	Analogue In	GILL	COM12	65	2	1	Raw	0	0	0	0			43690	0.040000000000
+EnFlo_Tunnel	Hydrosonic	Integral	On	Analogue In	VIRTUAL		0	0	0	Raw	0	0	0	0		Days at 100%	65535	1.024881925184
+EnFlo_Tunnel	Days Run at	2.5m/s	On	Analogue In	VIRTUAL		0	0	0	Raw	0	0	0	0		Days at 100%	65535	16.968808832980
+EnFlo_Tunnel	Floor_Cooling	Enable	On	Relay Out	4060	MainNetwork	206	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Heat_Ex_Div_Valve	Dem Pos	On	Analogue Out	4021	MainNetwork	240	0	0	Linear	0	0.10000	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Exit Duct	Dem Temp	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		Deg C	65535	21.694279982641
+EnFlo_Tunnel	Exit Duct Top	Temp	On	Analogue In	Arduino Thermistor	COM18	6	0	8	Linear	-1.1000	1	0	0		Blue	43690	24.258337402344
+EnFlo_Tunnel	Exit Duct	Temp	On	Analogue In	Arduino Thermistor	COM18	6	0	9	Linear	-1.1000	1	0	0		Blue	21845	24.216253662109
+EnFlo_Tunnel	Chilled Water	Motor1 Temp	On	Analogue In	4018	MainNetwork	247	0	6	Linear	0	1	0	0			2	25.400000000000
+EnFlo_Tunnel	Chilled Water	Motor2 Temp	On	Analogue In	4018	MainNetwork	247	0	7	Linear	0	1	0	0			4	24.200000000000
+EnFlo_Tunnel	Chilled Water	Pressure_OK	On	Analogue In	4017	MainNetwork	20	0	1	Linear	0	0.15630	0	0			65535	1.002664500000
+EnFlo_Tunnel	Chilled Water	Supply	On	Analogue In	Arduino Thermistor	COM18	6	0	6	Linear	-1.1000	1	0	0			65535	23.243841552734
+EnFlo_Tunnel	Chilled Water	Return	On	Analogue In	4018	MainNetwork	247	0	2	Raw	0	0	0	0			8256	9.100000000000
+EnFlo_Tunnel	Cooling_Panel	Manifold_Temp	Off	Analogue In	4018	MainNetwork	249	0	3	Linear	0.7000	1	0	0			4160	25.400000000000
+EnFlo_Tunnel	Chilled Water	Dem Temp	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0	EnFlo_Tunnel:Heater Temp:Average	Deg C	65535	18.000000000000
+EnFlo_Tunnel	Chilled Water	Valve Dem Pos	On	Analogue In	VIRTUAL		0	0	0	Raw	10	0	0	0		%	65535	100.000000000000
+EnFlo_Tunnel	Chilled Water	Valve Dem Voltage	On	Analogue Out	4021	MainNetwork	243	0	0	Linear	2	0.08000	0	0	EnFlo_Tunnel:Chilled Water:Valve Dem Pos		65535	100.000000000000
+EnFlo_Tunnel	Chiller_Pump	Enable	On	Relay Out	4060	MainNetwork	202	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Chiller_Pump	Running	On	Digital In	4053	MainNetwork	203	1	0	Raw	1	1	0	0			65535	0.000000000000
+EnFlo_Tunnel	Therm	Master_Reference	On	Analogue In	Thermistor	COM13	14	0	7	Linear	-0.08580	1	0	0			65535	24.158461297207
+EnFlo_Tunnel	Chilled Water	Pressure_return (Bar)	On	Analogue In	4017	MainNetwork	20	0	3	Raw	0	1	0	0			65535	2.328000000000
+EnFlo_Tunnel	Chilled Water	Motor_Dem_Voltage	On	Analogue Out	4021	MainNetwork	13	0	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Chilled Water	Desired_Delta_P	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0	Front Panel		65535	0.400000000000
+EnFlo_Tunnel	Chilled Water	Pressure_supply (Bar)	On	Analogue In	4017	MainNetwork	20	0	2	Raw	0	1	0	0			65535	2.359000000000
+EnFlo_Tunnel	Fan Gearbox	Y+ Temp	On	Analogue In	4018	MainNetwork	245	0	3	Raw	0	0	0	0			1040	40.200000000000
+EnFlo_Tunnel	Fan Gearbox	Y- Temp	On	Analogue In	4018	MainNetwork	245	0	4	Raw	0	0	0	0			520	36.900000000000
+EnFlo_Tunnel	Heater	Enable	On	Relay Out	5060	MainNetwork	120	4	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Motor	Enable	On	Relay Out	5060	MainNetwork	120	4	4	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+EnFlo_Tunnel	Warning_Cone	Enable	On	Relay Out	4060	MainNetwork	214	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Tap_Water	Enable	On	Relay Out	5060	MainNetwork	96	3	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Pressure	Static	On	Analogue In	5017	MainNetwork	11	7	0	Linear	-0.21840	29	0	0		Pascals	43690	-1.146397707810
+EnFlo_Tunnel	Inlet	K_Factor	On	Analogue In	VIRTUAL		0	0	0	Raw	0	0	0	0		l/min	65535	NaN
+EnFlo_Tunnel	Inlet_Fans	Enable	On	Relay Out	4060	MainNetwork	214	0	2	Raw	0	0	0	0	Front Panel	!ASYNC	65535	1.000000000000
+EnFlo_Tunnel	Inlet_Fan	Front_Trunk	On	Analogue Out	Arduino A_out	COM18	9	0	3	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Inlet_Fan	Y-ve	On	Analogue Out	Arduino A_out	COM18	9	0	1	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	3.900000000000
+EnFlo_Tunnel	Inlet_Fan	Y+ve	On	Analogue Out	Arduino A_out	COM18	9	0	2	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	3.890000000000
+EnFlo_Tunnel	Inlet_Fan	Above Y-ve	On	Analogue Out	Arduino A_out	COM18	9	0	4	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	6.000000000000
+EnFlo_Tunnel	Inlet_Fan	Above Y=550	On	Analogue Out	Arduino A_out	COM18	11	0	1	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	4.000000000000
+EnFlo_Tunnel	Inlet_Fan	Above Y=1650	On	Analogue Out	Arduino A_out	COM18	11	0	2	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	4.000000000000
+EnFlo_Tunnel	Inlet_Fan	Orange	Always Off	Analogue Out	Arduino A_out	COM18	11	0	3	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Inlet_Fan	Upwards	On	Analogue Out	Arduino A_out	COM18	11	0	4	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Motor	Temp	On	Analogue In	4018	MainNetwork	245	0	5	Raw	0	0	0	0			4128	55.300000000000
+EnFlo_Tunnel	Trav Origin	X Offset	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	13625.000000000000
+EnFlo_Tunnel	Trav Pos	X	On	Analogue In	Hold Value	MainNetwork	0	0	0	Raw	0	0	0	0			65535	4600.000119000000
+EnFlo_Tunnel	Trav Pos	Y	On	Analogue In	Hold Value	MainNetwork	0	0	0	Raw	0	0	0	0			65535	-799.918932600000
+EnFlo_Tunnel	Trav Pos	Z	On	Analogue In	Hold Value	MainNetwork	0	0	0	Raw	0	0	0	0			65535	299.962733400000
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=1500_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	1	Linear	-1.1241	1	0	0			65535	24.210372656250
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=-1500_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	2	Linear	-1.0347	1	0	0			65535	24.254698193359
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=1000_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	3	Linear	-1.1369	1	0	0			65535	24.209199853516
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=-1000_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	4	Linear	-1.1028	1	0	0			65535	24.248793017578
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=500_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	5	Linear	-1.1395	1	0	0			65535	24.216975830078
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=-500_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	6	Linear	-1.0597	1	0	0			65535	24.225395214844
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=0_Z=50	On	Analogue In	Arduino Thermistor	COM18	5	0	7	Linear	-1.1777	1	0	0			65535	24.239261669922
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=0_Z=450	On	Analogue In	Arduino Thermistor	COM18	5	0	8	Linear	-1.0780	1	0	0			65535	24.219393798828
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=0_Z=950	On	Analogue In	Arduino Thermistor	COM18	5	0	9	Linear	-1.1119	1	0	0			65535	24.221687646484
+EnFlo_Tunnel	Temp	Pre_Inlet_Y=0_Z=1450	On	Analogue In	Arduino Thermistor	COM18	5	0	10	Linear	-1.1492	1	0	0			65535	24.221466503906
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=1450	On	Analogue In	Thermistor	COM13	14	0	6	Linear	-0.07000	1	0	0		Z=1450	65535	24.088676126133
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=1350	On	Analogue In	Thermistor	COM13	14	0	5	Linear	0.04140	1	0	0		Z=1350	65535	24.170460284537
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=1250	On	Analogue In	Thermistor	COM13	14	0	4	Linear	0.011000	1	0	0		Z=1250	65535	24.172967084278
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=1150	On	Analogue In	Thermistor	COM13	14	0	3	Linear	-0.05300	1	0	0		Z=1150	65535	24.178091591270
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=1050	On	Analogue In	Thermistor	COM13	14	0	2	Linear	0.06200	1	0	0		Z=1050	65535	24.161449427163
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=950	On	Analogue In	Thermistor	COM13	14	0	1	Linear	-0.020800	1	0	0		Z=950	65535	24.160914136280
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=850	On	Analogue In	Thermistor	COM13	14	0	0	Linear	-0.031000	1	0	0		Z=850	65535	24.163880081959
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=750	On	Analogue In	Thermistor	COM13	15	0	7	Linear	0.08400	1	0	0		Z=750	65535	24.160422185407
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=650	On	Analogue In	Thermistor	COM13	15	0	6	Linear	0.07500	1	0	0		Z=650	65535	24.161290637486
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=550	On	Analogue In	Thermistor	COM13	15	0	5	Linear	0.05250	1	0	0		Z=550	65535	24.168399290077
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=450	On	Analogue In	Thermistor	COM13	15	0	4	Linear	-0.004200	1	0	0		Z=450	65535	24.170931537101
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=350	On	Analogue In	Thermistor	COM13	15	0	3	Linear	0.03590	1	0	0		Z=350	65535	24.168250686874
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=250	On	Analogue In	Thermistor	COM13	15	0	2	Linear	-0.010300	1	0	0		Z=250	65535	24.181288502013
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=150	On	Analogue In	Thermistor	COM13	15	0	1	Linear	0.03790	1	0	0		Z=150	65535	24.173541150790
+EnFlo_Tunnel	Temp	Inlet_Y=0_Z=50	On	Analogue In	Thermistor	COM13	15	0	0	Linear	0.07920	1	0	0		Z=50	65535	24.178649427163
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=1450	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset       !Zone Active	65535	27.296000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=1350	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	26.296000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=1250	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	25.296000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=1150	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	24.296000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=1050	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	23.296000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=950	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	23.546000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=850	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	23.796000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=750	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	24.046000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=650	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	24.296000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=550	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	24.596000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=450	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	24.896000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=350	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	25.196000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=250	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	25.496000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=150	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	25.996000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=0_Z=50	Off	Analogue In	Hold Value		0	1	0	Raw	8	0.030000	150	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	27.096000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=1450	Off	Analogue Out	5024	MainNetwork	120	0	0	Linear	4	0.16000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=1350	Off	Analogue Out	5024	MainNetwork	120	0	1	Linear	4	0.16000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=1250	Off	Analogue Out	5024	MainNetwork	120	0	2	Linear	4.9200	0.15360	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=1150	Off	Analogue Out	5024	MainNetwork	120	0	3	Linear	4.4500	0.15400	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=1050	Off	Analogue Out	5024	MainNetwork	120	3	0	Linear	4.7000	0.15000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=950	Off	Analogue Out	5024	MainNetwork	120	1	0	Linear	4.7000	0.15300	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=850	Off	Analogue Out	5024	MainNetwork	120	1	1	Linear	4.8000	0.15200	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=750	Off	Analogue Out	5024	MainNetwork	120	1	2	Linear	5.5000	0.15200	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=650	Off	Analogue Out	5024	MainNetwork	120	1	3	Linear	4.8000	0.15200	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=550	Off	Analogue Out	5024	MainNetwork	120	3	1	Linear	4.8000	0.15200	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=450	Off	Analogue Out	5024	MainNetwork	120	2	0	Linear	5.1000	0.15200	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=350	Off	Analogue Out	5024	MainNetwork	120	2	1	Linear	4.7000	0.15300	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=250	Off	Analogue Out	5024	MainNetwork	120	2	2	Linear	5.2000	0.15300	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=150	Off	Analogue Out	5024	MainNetwork	120	2	3	Linear	5	0.15520	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=0_Z=50	Off	Analogue Out	5024	MainNetwork	120	3	2	Linear	3	0.16000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=1450	On	Analogue In	Thermistor	COM13	9	0	5	Linear	-0.13340	1	0	0			65535	24.183312801763
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=1350	On	Analogue In	Arduino Thermistor	COM18	8	0	11	Linear	-1.1200	1	0	0			65535	24.180415039062
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=1250	On	Analogue In	Arduino Thermistor	COM18	8	0	10	Linear	-1.1620	1	0	0			65535	24.193041503906
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=1150	On	Analogue In	Arduino Thermistor	COM18	8	0	9	Linear	-1.1230	1	0	0			65535	24.198289062500
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=1050	On	Analogue In	Arduino Thermistor	COM18	8	0	8	Linear	-1.1400	1	0	0			65535	24.198897705078
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=950	On	Analogue In	Arduino Thermistor	COM18	7	0	12	Linear	-1.1180	1	0	0			65535	24.211559326172
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=850	On	Analogue In	Arduino Thermistor	COM18	8	0	7	Linear	-1.1240	1	0	0			65535	24.199089599609
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=750	On	Analogue In	Arduino Thermistor	COM18	8	0	6	Linear	-1.1030	1	0	0			65535	24.193295166016
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=650	On	Analogue In	Arduino Thermistor	COM18	8	0	5	Linear	-1.0680	1	0	0			65535	24.200432617187
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=550	On	Analogue In	Arduino Thermistor	COM18	8	0	4	Linear	-1.0990	1	0	0			65535	24.193938232422
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=450	On	Analogue In	Thermistor	COM13	9	0	0	Linear	-0.09900	1	0	0			65535	24.207831235522
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=350	On	Analogue In	Arduino Thermistor	COM18	8	0	3	Linear	-0.9750	1	0	0			65535	24.199652099609
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=250	On	Analogue In	Arduino Thermistor	COM18	8	0	2	Linear	-1.1870	1	0	0			65535	24.193828857422
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=150	On	Analogue In	Arduino Thermistor	COM18	8	0	1	Linear	-1.0490	1	0	0			65535	24.191478515625
+EnFlo_Tunnel	Temp	Inlet_Y=-1500_Z=50	On	Analogue In	Arduino Thermistor	COM18	7	0	1	Linear	-1.0080	1	0	0			65535	24.200679199219
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=1450	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=1350	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=1250	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=1150	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=1050	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=950	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=850	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=750	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=650	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=550	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=450	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=350	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=250	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=150	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset        !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Inlet_Y=-1500_Z=50	Off	Analogue In	Hold Value		0	1	0	Raw	30	0.5000	1000	0	Front Panel	!Shared By = Rig !Do Not Reset       !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=1450	Off	Analogue Out	Arduino A_out	COM18	16	0	15	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=1350	Off	Analogue Out	Arduino A_out	COM18	16	0	14	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=1250	Off	Analogue Out	Arduino A_out	COM18	16	0	13	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=1150	Off	Analogue Out	Arduino A_out	COM18	16	0	12	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=1050	Off	Analogue Out	Arduino A_out	COM18	16	0	11	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=950	Off	Analogue Out	Arduino A_out	COM18	16	0	10	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=850	Off	Analogue Out	Arduino A_out	COM18	16	0	9	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=750	Off	Analogue Out	Arduino A_out	COM18	16	0	8	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=650	Off	Analogue Out	Arduino A_out	COM18	16	0	7	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=550	Off	Analogue Out	Arduino A_out	COM18	16	0	6	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=450	Off	Analogue Out	Arduino A_out	COM18	16	0	5	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=350	Off	Analogue Out	Arduino A_out	COM18	16	0	4	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=250	Off	Analogue Out	Arduino A_out	COM18	16	0	3	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=150	Off	Analogue Out	Arduino A_out	COM18	16	0	2	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Inlet_Y=-1500_Z=50	Off	Analogue Out	Arduino A_out	COM18	16	0	1	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Temp	Inlet_Y=-1000_Z=50	On	Analogue In	Arduino Thermistor	COM18	7	0	3	Linear	-1.0760	1	0	0			65535	24.209552978516
+EnFlo_Tunnel	Temp	Inlet_Y=-500_Z=50	On	Analogue In	Arduino Thermistor	COM18	7	0	5	Linear	-1.1670	1	0	0			65535	24.187003906250
+EnFlo_Tunnel	Temp	Inlet_Y=500_Z=50	On	Analogue In	Arduino Thermistor	COM18	7	0	6	Linear	-1.1000	1	0	0			65535	24.171728515625
+EnFlo_Tunnel	Temp	Inlet_Y=1000_Z=50	On	Analogue In	Arduino Thermistor	COM18	7	0	4	Linear	-1.0980	1	0	0			65535	24.166648437500
+EnFlo_Tunnel	Temp	Inlet_Y=1500_Z=50	On	Analogue In	Arduino Thermistor	COM18	7	0	2	Linear	-1.0780	1	0	0			65535	24.180789062500
+EnFlo_Tunnel	Temp	Inlet_Y=-1000_Z=450	On	Analogue In	Thermistor	COM13	9	0	1	Linear	-0.05910	1	0	0			65535	24.195039239003
+EnFlo_Tunnel	Temp	Inlet_Y=-500_Z=450	On	Analogue In	Thermistor	COM13	9	0	3	Linear	-0.012500	1	0	0			65535	24.172505529218
+EnFlo_Tunnel	Temp	Inlet_Y=500_Z=450	On	Analogue In	Thermistor	COM13	9	0	4	Linear	-0.04530	1	0	0			65535	24.169330874135
+EnFlo_Tunnel	Temp	Inlet_Y=1000_Z=450	On	Analogue In	Thermistor	COM13	9	0	6	Linear	0.011800	1	0	0			65535	24.167185229922
+EnFlo_Tunnel	Temp	Inlet_Y=1500_Z=450	On	Analogue In	Thermistor	COM13	9	0	7	Linear	0.021500	1	0	0			65535	24.173594395601
+EnFlo_Tunnel	Temp	Inlet_Y=-1000_Z=950	On	Analogue In	Arduino Thermistor	COM18	7	0	11	Linear	-1.0580	1	0	0			65535	24.175123779297
+EnFlo_Tunnel	Temp	Inlet_Y=-500_Z=950	On	Analogue In	Arduino Thermistor	COM18	7	0	7	Linear	-1.0130	1	0	0			65535	24.156067382813
+EnFlo_Tunnel	Temp	Inlet_Y=500_Z=950	On	Analogue In	Arduino Thermistor	COM18	7	0	8	Linear	-1.1000	1	0	0			65535	24.181524658203
+EnFlo_Tunnel	Temp	Inlet_Y=1000_Z=950	On	Analogue In	Arduino Thermistor	COM18	7	0	14	Linear	-1.1100	1	0	0			65535	24.180222167969
+EnFlo_Tunnel	Temp	Inlet_Y=1500_Z=950	On	Analogue In	Arduino Thermistor	COM18	7	0	13	Linear	-1.1000	1	0	0			65535	24.182409667969
+EnFlo_Tunnel	Temp	Inlet_Y=-1000_Z=1450	On	Analogue In	Arduino Thermistor	COM18	8	0	13	Linear	-0.9880	1	0	0			65535	24.164984619141
+EnFlo_Tunnel	Temp	Inlet_Y=-500_Z=1450	On	Analogue In	Arduino Thermistor	COM18	7	0	10	Linear	-1.0840	1	0	0			65535	24.176986328125
+EnFlo_Tunnel	Temp	Inlet_Y=500_Z=1450	On	Analogue In	Arduino Thermistor	COM18	7	0	9	Linear	-1.0920	1	0	0			65535	24.187724121094
+EnFlo_Tunnel	Temp	Inlet_Y=1000_Z=1450	On	Analogue In	Arduino Thermistor	COM18	8	0	14	Linear	-1.1710	1	0	0			65535	24.178517822266
+EnFlo_Tunnel	Temp	Inlet_Y=1500_Z=1450	On	Analogue In	Thermistor	COM13	9	0	2	Linear	-0.04360	1	0	0			65535	24.171030874135
+EnFlo_Tunnel	Inlet_Temp	Average	On	Analogue In	Average		0	0	0	Raw	0	0	0	100		EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=50;	37449	24.173837142259
+EnFlo_Tunnel	Inlet_Temp	St Deviation	On	Analogue In	St Deviation		0	0	0	Raw	0	0	0	100		EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=1450;EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=950;EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=450;EnFlo_Tunnel:Temp:Inlet_Y=-1500_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=-1000_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=-500_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=0_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=500_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=1000_Z=50;EnFlo_Tunnel:Temp:Inlet_Y=1500_Z=50;	37449	0.021866415849
+EnFlo_Tunnel	Return_Temp	Floor_Far_02	Off	Analogue In	4018	COM13	10	0	0	Linear	-0.8000	1	0	0			1	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_02	Off	Analogue In	4018	MainNetwork	229	0	0	Linear	-0.30000	1	0	0			2	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_03	Off	Analogue In	4018	COM13	10	0	1	Linear	-0.8000	1	0	0			4	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_03	Off	Analogue In	4018	MainNetwork	229	0	2	Linear	0.20000	1	0	0			8	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_04	Off	Analogue In	4018	COM13	10	0	2	Linear	-0.6000	1	0	0			16	18.100000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_04	Off	Analogue In	4018	MainNetwork	229	0	4	Linear	0.20000	1	0	0			32	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_05	Off	Analogue In	4018	COM13	10	0	3	Linear	-0.7000	1	0	0			64	18.000000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_05	Off	Analogue In	4018	MainNetwork	228	0	0	Linear	0.9000	1	0	0			128	18.400000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_06	Off	Analogue In	4018	COM13	10	0	4	Linear	-0.8000	1	0	0			256	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_06	Off	Analogue In	4018	MainNetwork	228	0	2	Linear	0.9000	1	0	0			512	18.400000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_07	Off	Analogue In	4018	COM13	10	0	5	Linear	-0.7000	1	0	0			1024	19.000000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_07	Off	Analogue In	4018	MainNetwork	228	0	4	Linear	0.7000	1	0	0			2048	18.500000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_08	Off	Analogue In	4018	COM13	11	0	0	Linear	-1	1	0	0			4096	17.000000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_08	Off	Analogue In	4018	MainNetwork	228	0	5	Linear	0.8000	1	0	0			8192	18.600000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_09	Off	Analogue In	4018	COM13	11	0	1	Linear	-1	1	0	0			16384	17.000000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_09	Off	Analogue In	4018	MainNetwork	246	0	1	Linear	0.9000	1	0	0			32768	20.400000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_10	Off	Analogue In	4018	COM13	11	0	2	Linear	0.20000	1	0	0			1	18.500000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_10	Off	Analogue In	4018	MainNetwork	246	0	2	Linear	-0.9000	1	0	0			2	18.800000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_11	Off	Analogue In	4018	COM13	11	0	3	Linear	-0.30000	1	0	0			4	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_11	Off	Analogue In	4018	MainNetwork	246	0	0	Linear	-1.1000	1	0	0			8	18.600000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_12	Off	Analogue In	4018	COM13	11	0	4	Raw	0	0	0	0			16	19.000000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_12	Off	Analogue In	4018	MainNetwork	246	0	3	Linear	-1.4000	1	0	0			32	18.600000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_13	Off	Analogue In	4018	COM13	11	0	5	Linear	-0.6000	1	0	0			64	17.900000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_13	Off	Analogue In	4018	MainNetwork	236	0	0	Linear	-1.2000	1	0	0			128	19.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_14	Off	Analogue In	4018	COM13	12	0	0	Linear	-0.30000	1	0	0			256	18.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Turn_14	Off	Analogue In	4018	MainNetwork	236	0	3	Linear	-1.3000	1	0	0			512	19.100000000000
+EnFlo_Tunnel	Return_Temp	Floor_Turn_Sur_14	Off	Analogue In	4018	COM13	12	0	1	Linear	0.5000	1	0	0			1024	18.800000000000
+EnFlo_Tunnel	Return_Temp	Floor_Turn_Sur_15	Off	Analogue In	4018	MainNetwork	236	0	2	Linear	-1	1	0	0			2048	19.200000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_16	Off	Analogue In	4018	COM13	12	0	3	Linear	0.20000	1	0	0			4096	18.900000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_16	Off	Analogue In	4018	MainNetwork	249	0	2	Linear	-0.5000	1	0	0			8192	19.700000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_17	Off	Analogue In	4018	COM13	12	0	6	Linear	0.20000	1	0	0			16384	18.700000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_17	Off	Analogue In	4018	MainNetwork	249	0	3	Linear	-0.5000	1	0	0			32768	19.900000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_18	Off	Analogue In	4018	COM13	12	0	5	Linear	-0.5000	1	0	0			1	18.500000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_18	Off	Analogue In	4018	MainNetwork	249	0	4	Linear	-1	1	0	0			2	19.400000000000
+EnFlo_Tunnel	Return_Temp	Floor_Far_19	Off	Analogue In	4018	COM13	12	0	4	Linear	-0.30000	1	0	0			4	18.900000000000
+EnFlo_Tunnel	Return_Temp	Floor_Near_19	Off	Analogue In	4018	MainNetwork	249	0	5	Linear	-0.9000	1	0	0			8	19.100000000000
+EnFlo_Tunnel	Temp	Floor_Near_1	On	Analogue In	Arduino Thermistor	COM18	1	0	1	Linear	-1.1317	1	0	0			65535	24.181379833984
+EnFlo_Tunnel	Temp	Floor_Far_1	On	Analogue In	Arduino Thermistor	COM18	1	0	2	Linear	-1.0469	1	0	0		Floor_Far_1	65535	24.156163964844
+EnFlo_Tunnel	Temp	Floor_4.3	Off	Analogue In	Arduino Thermistor	COM18	2	0	1	Linear	-1.0078	1	0	0		Floor_4.3	65535	20.758465869141
+EnFlo_Tunnel	Temp	Floor_5.2	Off	Analogue In	Arduino Thermistor	COM18	2	0	3	Linear	-1.1486	1	0	0		Floor_5.2	65535	NaN
+EnFlo_Tunnel	Temp	Floor_6.1	Off	Analogue In	Arduino Thermistor	COM18	2	0	5	Linear	-1.1461	1	0	0		Floor_6.1	65535	20.791766210937
+EnFlo_Tunnel	Temp	Floor_6.2	Off	Analogue In	Arduino Thermistor	COM18	2	0	6	Linear	-1.2177	1	0	0		Floor_6.2	65535	20.542340283203
+EnFlo_Tunnel	Temp	Floor_6.3	Off	Analogue In	Arduino Thermistor	COM18	2	0	7	Linear	-1.0053	1	0	0		Floor_6.3	65535	20.449991748047
+EnFlo_Tunnel	Temp	Floor_7.1	Off	Analogue In	Arduino Thermistor	COM18	2	0	8	Linear	-1.1118	1	0	0		Floor_7.1	65535	20.636796191406
+EnFlo_Tunnel	Temp	Floor_7.2	Off	Analogue In	Arduino Thermistor	COM18	2	0	9	Linear	-1.0725	1	0	0		Floor_7.2	65535	21.299234619141
+EnFlo_Tunnel	Temp	Floor_7.3	Off	Analogue In	Arduino Thermistor	COM18	2	0	10	Linear	-1.0643	1	0	0		Floor_7.3	65535	20.279480517578
+EnFlo_Tunnel	Temp	Z=70_Y=-1585	On	Analogue In	Arduino Thermistor	COM18	3	0	1	Linear	-1.0183	1	0	0		Floor_8.1	65535	24.182536181641
+EnFlo_Tunnel	Temp	Z=70_Y=-1250	On	Analogue In	Arduino Thermistor	COM18	3	0	3	Linear	-1.1549	1	0	0		Floor_8.3	65535	24.219489648437
+EnFlo_Tunnel	Temp	Z=70_Y=-920	On	Analogue In	Arduino Thermistor	COM18	3	0	4	Linear	-0.9673	1	0	0		Floor_9.1	65535	24.182144580078
+EnFlo_Tunnel	Temp	Z=70_Y=-585	On	Analogue In	Arduino Thermistor	COM18	3	0	2	Linear	-1.0091	1	0	0		Floor_8.2	65535	24.199457128906
+EnFlo_Tunnel	Temp	Z=70_Y=-250	On	Analogue In	Arduino Thermistor	COM18	3	0	10	Linear	-1.0948	1	0	0		Floor_11.1	65535	24.204607958984
+EnFlo_Tunnel	Temp	Z=70_Y=80	On	Analogue In	Arduino Thermistor	COM18	3	0	9	Linear	-1.0970	1	0	0		Floor_10.3	65535	24.177566650391
+EnFlo_Tunnel	Temp	Z=70_Y=415	On	Analogue In	Arduino Thermistor	COM18	3	0	7	Linear	-1.0823	1	0	0		Floor_10.1	65535	24.198614306641
+EnFlo_Tunnel	Temp	Z=70_Y=750	On	Analogue In	Arduino Thermistor	COM18	3	0	8	Linear	-1.0530	1	0	0		Floor_10.2	65535	24.204080078125
+EnFlo_Tunnel	Temp	Z=70_Y=1080	On	Analogue In	Arduino Thermistor	COM18	3	0	6	Linear	-1.1530	1	0	0		Floor_9.3	65535	24.207229492188
+EnFlo_Tunnel	Temp	Z=70_Y=1415	On	Analogue In	Arduino Thermistor	COM18	3	0	5	Linear	-1.1031	1	0	0		Floor_9.2	65535	24.193897070312
+EnFlo_Tunnel	Temp	Floor_11.2	Off	Analogue In	Arduino Thermistor	COM18	4	0	1	Linear	-1.1478	1	0	0		Floor_11.2	65535	22.372921435547
+EnFlo_Tunnel	Temp	Floor_11.3	Off	Analogue In	Arduino Thermistor	COM18	4	0	2	Linear	-1.0514	1	0	0		Floor_11.3	65535	22.312552636719
+EnFlo_Tunnel	Temp	Floor_12.1	Off	Analogue In	Arduino Thermistor	COM18	4	0	3	Linear	-1.0607	1	0	0		Floor_12.1	65535	22.676513134766
+EnFlo_Tunnel	Temp	Floor_12.2	Off	Analogue In	Arduino Thermistor	COM18	4	0	4	Linear	-1.1743	1	0	0		Floor_12.2	65535	22.379868701172
+EnFlo_Tunnel	Temp	Floor_12.3	On	Analogue In	Arduino Thermistor	COM18	4	0	5	Linear	-1.0893	1	0	0		Floor_12.3	65535	22.682214892578
+EnFlo_Tunnel	Temp	Floor_13.1	Off	Analogue In	Arduino Thermistor	COM18	4	0	6	Linear	-1.1311	1	0	0		Floor_13.1	65535	21.201907812500
+EnFlo_Tunnel	Temp	Floor_13.2	On	Analogue In	Arduino Thermistor	COM18	4	0	7	Linear	-1.1197	1	0	0		Floor_13.2	65535	23.828023388672
+EnFlo_Tunnel	Temp	Floor_13.3	On	Analogue In	Arduino Thermistor	COM18	4	0	8	Linear	-1.1045	1	0	0		Floor_13.3	65535	23.820884521484
+EnFlo_Tunnel	Temp	Floor_14.1	On	Analogue In	Arduino Thermistor	COM18	4	0	9	Linear	-1.1154	1	0	0		Floor_14.1	65535	23.854173974609
+EnFlo_Tunnel	Temp	Floor_14.2	On	Analogue In	Arduino Thermistor	COM18	4	0	10	Linear	-1.1558	1	0	0		Floor_14.2	65535	23.880027636719
+EnFlo_Tunnel	Temp	Floor_18.1	Off	Analogue In	Thermistor	MainNetwork	235	0	0	Linear	-0.11090	1	0	0		Floor_18.1	65535	21.349712196661
+EnFlo_Tunnel	Temp	Floor_18.2	Off	Analogue In	Thermistor	MainNetwork	235	0	1	Linear	-0.18800	1	0	0		Floor_18.2	65535	21.376779006386
+EnFlo_Tunnel	Temp	Floor_18.3	Off	Analogue In	Thermistor	MainNetwork	235	0	2	Linear	-0.18590	1	0	0		Floor_18.3	65535	-85.271249999687
+EnFlo_Tunnel	Temp	Floor_19.1	Off	Analogue In	Thermistor	MainNetwork	235	0	3	Linear	1.0000E-4	1	0	0		Floor_19.1	65535	21.324033196301
+EnFlo_Tunnel	Temp	Floor_19.2	Off	Analogue In	Thermistor	MainNetwork	235	0	4	Linear	-0.08230	1	0	0		Floor_19.2	65535	21.290442093215
+EnFlo_Tunnel	Temp	Floor_19.3	Off	Analogue In	Thermistor	MainNetwork	235	0	5	Linear	-0.023000	1	0	0		Floor_19.3	65535	21.385538804580
+EnFlo_Tunnel	Temp	Floor_Up_Y=-1585	On	Analogue In	Arduino Thermistor	COM18	1	0	10	Linear	-1.1004	1	0	0		Floor_4.2	65535	24.149325341797
+EnFlo_Tunnel	Temp	Floor_Up_Y=-1250	On	Analogue In	Arduino Thermistor	COM18	1	0	9	Linear	-1.1400	1	0	0		Floor_4.1	65535	24.173964843750
+EnFlo_Tunnel	Temp	Floor_Up_Y=-920	On	Analogue In	Arduino Thermistor	COM18	1	0	8	Linear	-1.1045	1	0	0		Floor_3.3	65535	24.167594726562
+EnFlo_Tunnel	Temp	Floor_Up_Y=-585	On	Analogue In	Arduino Thermistor	COM18	1	0	7	Linear	-1.1792	1	0	0		Floor_3.2	65535	24.167418652344
+EnFlo_Tunnel	Temp	Floor_Up_Y=-250	On	Analogue In	Arduino Thermistor	COM18	1	0	6	Linear	-1.0640	1	0	0		Floor_3.1	65535	24.170893798828
+EnFlo_Tunnel	Temp	Floor_Up_Y=80	On	Analogue In	Arduino Thermistor	COM18	1	0	3	Linear	-1.1120	1	0	0		Floor_2.1	65535	24.171355712891
+EnFlo_Tunnel	Temp	Floor_Up_Y=415	On	Analogue In	Arduino Thermistor	COM18	2	0	4	Linear	-1.1605	1	0	0		Floor_5.3	65535	24.136558105469
+EnFlo_Tunnel	Temp	Floor_Up_Y=750	On	Analogue In	Arduino Thermistor	COM18	1	0	4	Linear	-0.9143	1	0	0		Floor_2.2	65535	24.164984667969
+EnFlo_Tunnel	Temp	Floor_Up_Y=1080	On	Analogue In	Arduino Thermistor	COM18	1	0	5	Linear	-1.0513	1	0	0		Floor_2.3	65535	24.163787890625
+EnFlo_Tunnel	Temp	Floor_Up_Y=1415	On	Analogue In	Arduino Thermistor	COM18	2	0	2	Linear	-1.0513	1	0	0		Floor_5.1	65535	24.176116992187
+EnFlo_Tunnel	Temp	Floor_X=11m	On	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_12.3	65535	22.682214892578
+EnFlo_Tunnel	Temp	Floor_X=12m	On	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_13.2; EnFlo_Tunnel:Temp:Floor_13.3	65535	23.824453955078
+EnFlo_Tunnel	Temp	Floor_X=13m	On	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_14.1; EnFlo_Tunnel:Temp:Floor_14.2	65535	23.867100805664
+EnFlo_Tunnel	Temp	Floor_X=14m	Off	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_12.2	65535	NaN
+EnFlo_Tunnel	Temp	Floor_X=15m	Off	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_14.1	65535	NaN
+EnFlo_Tunnel	Temp	Floor_X=16m	Off	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_14.2	65535	NaN
+EnFlo_Tunnel	Temp	Floor_X=17m	Off	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_13.3	65535	NaN
+EnFlo_Tunnel	Temp	Floor_X=18m	Off	Analogue In	Average		0	0	0	Raw	0	0	0	0		EnFlo_Tunnel:Temp:Floor_13.2	65535	NaN
+EnFlo_Tunnel	Setpoint	Floor_Far_1	Off	Analogue In	Hold Value		0	1	0	Raw	2.5000	0.010000	300	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_Near_1	Off	Analogue In	Hold Value		0	1	0	Raw	2.5000	0.010000	300	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=-1585	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=-1250	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	45.000000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=-920	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	43.300000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=-585	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=-250	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=80	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	43.000000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=415	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	43.300000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=750	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	44.000000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=1080	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	43.500000000000
+EnFlo_Tunnel	Setpoint	Floor_Up_Y=1415	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_X=11m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_X=12m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_X=13m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	42.296000000000
+EnFlo_Tunnel	Setpoint	Floor_X=14m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Floor_X=15m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Floor_X=16m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Floor_X=17m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Floor_X=18m	Off	Analogue In	Hold Value		0	1	0	Raw	5	0.05000	600	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Far_1	Off	Analogue Out	5024	MainNetwork	121	3	1	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Near_1	Off	Analogue Out	5024	MainNetwork	121	3	0	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=-1585	Off	Analogue Out	5024	MainNetwork	121	0	0	Quad	1.2497	0.09668	-1.5500E-4	0	Front Panel	!ASYNC   Box_11	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=-1250	Off	Analogue Out	5024	MainNetwork	121	0	3	Quad	0.6167	0.11052	-1.7400E-4	0	Front Panel	!ASYNC   Box_09	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=-920	Off	Analogue Out	5024	MainNetwork	121	0	1	Quad	0.7401	0.10065	-1.5500E-4	0	Front Panel	!ASYNC   Box_10	65535	-0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=-585	Off	Analogue Out	5024	MainNetwork	121	0	2	Quad	1.1229	0.09720	-1.5600E-4	0	Front Panel	!ASYNC   Box_08	65535	-0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=-250	Off	Analogue Out	5024	MainNetwork	121	2	0	Quad	0.7415	0.09891	-1.4200E-4	0	Front Panel	!ASYNC   Box_04	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=80	Off	Analogue Out	5024	MainNetwork	121	2	2	Quad	1.1471	0.10292	-1.7400E-4	0	Front Panel	!ASYNC   Box_06	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=415	Off	Analogue Out	5024	MainNetwork	121	2	3	Quad	0.5927	0.10633	-1.8800E-4	0	Front Panel	!ASYNC   Box_07	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=750	Off	Analogue Out	5024	MainNetwork	121	2	1	Quad	0.6262	0.09899	-1.7500E-4	0	Front Panel	!ASYNC   Box_05	65535	-0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=1080	Off	Analogue Out	5024	MainNetwork	121	3	3	Quad	0.4975	0.09209	-1.4800E-4	0	Front Panel	!ASYNC   Box_03	65535	-0.000000000000
+EnFlo_Tunnel	Power	Floor_Up_Y=1415	Off	Analogue Out	5024	MainNetwork	121	3	2	Quad	0.8408	0.09248	-1.5900E-4	0	Front Panel	!ASYNC   Box_02	65535	-0.000000000000
+EnFlo_Tunnel	Power	Floor_X=11m	Off	Analogue Out	5024	MainNetwork	11	1	2	Quad	1.3880	0.09538	-1.5500E-4	0	Front Panel	!ASYNC   Box_12	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_X=12m	Off	Analogue Out	5024	MainNetwork	11	1	3	Quad	1.6555	0.09517	-1.5400E-4	0	Front Panel	!ASYNC   Box_13	65535	-0.000000000000
+EnFlo_Tunnel	Power	Floor_X=13m	Off	Analogue Out	5024	MainNetwork	11	1	0	Quad	1.4913	0.09346	-1.4200E-4	0	Front Panel	!ASYNC   Box_14	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_X=14m	Off	Analogue Out	5024	MainNetwork	11	3	1	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_X=15m	Off	Analogue Out	5024	MainNetwork	11	3	0	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_X=16m	Off	Analogue Out	5024	MainNetwork	11	3	3	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_X=17m	Off	Analogue Out	5024	MainNetwork	11	3	2	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Floor_X=18m	Off	Analogue Out	5024	MainNetwork	11	1	1	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Temp	Y+ve_Side_Top	On	Analogue In	Arduino Thermistor	COM18	14	0	1	Linear	-1.0435	1	0	0			65535	24.299883789062
+EnFlo_Tunnel	Temp	Y+ve_Side_Middle	On	Analogue In	Arduino Thermistor	COM18	14	0	3	Linear	-0.9927	1	0	0			65535	24.190924267578
+EnFlo_Tunnel	Temp	Y+ve_Side_Bottom	On	Analogue In	Arduino Thermistor	COM18	14	0	5	Linear	-0.9480	1	0	0			65535	24.116147949219
+EnFlo_Tunnel	Temp	Y-ve_Side_Top	On	Analogue In	Arduino Thermistor	COM18	14	0	7	Linear	-1.0358	1	0	0			65535	24.275662402344
+EnFlo_Tunnel	Temp	Y-ve_Side_Middle	On	Analogue In	Arduino Thermistor	COM18	14	0	9	Linear	-1.1489	1	0	0			65535	24.195246728516
+EnFlo_Tunnel	Temp	Y-ve_Side_Bottom	On	Analogue In	Arduino Thermistor	COM18	14	0	11	Linear	-1.1118	1	0	0			65535	24.148209765625
+EnFlo_Tunnel	Power	Y+ve_Side_Top	Off	Analogue Out	Arduino A_out	COM18	13	0	1	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Y+ve_Side_Middle	Off	Analogue Out	Arduino A_out	COM18	13	0	2	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Y+ve_Side_Bottom	Off	Analogue Out	Arduino A_out	COM18	13	0	3	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Y+ve_Side_Top	Off	Analogue In	Hold Value		0	1	0	Raw	50	0.5000	6000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Y+ve_Side_Middle	Off	Analogue In	Hold Value		0	1	0	Raw	50	0.5000	6000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Y+ve_Side_Bottom	Off	Analogue In	Hold Value		0	1	0	Raw	50	0.5000	6000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Power	Y-ve_Side_Top	Off	Analogue Out	Arduino A_out	COM18	12	0	1	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Y-ve_Side_Middle	Off	Analogue Out	Arduino A_out	COM18	12	0	2	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Power	Y-ve_Side_Bottom	Off	Analogue Out	Arduino A_out	COM18	12	0	3	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Y-ve_Side_Top	Off	Analogue In	Hold Value		0	1	0	Raw	50	0.5000	6000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Y-ve_Side_Middle	Off	Analogue In	Hold Value		0	1	0	Raw	50	0.5000	6000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Setpoint	Y-ve_Side_Bottom	Off	Analogue In	Hold Value		0	1	0	Raw	50	0.5000	6000	0	Front Panel	!Shared By = Rig !Do Not Reset         !Zone Active	65535	0.000000000000
+EnFlo_Tunnel	Temp	Y+ve_Side_Flow_Top	On	Analogue In	Arduino Thermistor	COM18	14	0	2	Linear	-1.1256	1	0	0			65535	24.292643408203
+EnFlo_Tunnel	Temp	Y+ve_Side_Flow_Middle	On	Analogue In	Arduino Thermistor	COM18	14	0	4	Linear	-1.0565	1	0	0			65535	24.196307617188
+EnFlo_Tunnel	Temp	Y+ve_Side_Flow_Bottom	On	Analogue In	Arduino Thermistor	COM18	14	0	6	Linear	-1.1233	1	0	0			65535	24.160208300781
+EnFlo_Tunnel	Temp	Y-ve_Side_Flow_Top	On	Analogue In	Arduino Thermistor	COM18	14	0	8	Linear	-1.0572	1	0	0			65535	24.244832470703
+EnFlo_Tunnel	Temp	Y-ve_Side_Flow_Middle	On	Analogue In	Arduino Thermistor	COM18	14	0	10	Linear	-1.1139	1	0	0			65535	24.190970605469
+EnFlo_Tunnel	Temp	Y-ve_Side_Flow_Bottom	On	Analogue In	Arduino Thermistor	COM18	14	0	12	Linear	-1.0064	1	0	0			65535	24.150460351563
+EnFlo_Tunnel	Temp	Roof_Far_2	On	Analogue In	4018	MainNetwork	229	0	6	Linear	1.7800	1	0	0			32896	25.480000000000
+EnFlo_Tunnel	Temp	Roof_Near_3	On	Analogue In	4018	MainNetwork	229	0	7	Linear	1.9100	1	0	0			16448	30.310000000000
+EnFlo_Tunnel	Temp	Roof_Far_4	On	Analogue In	4018	MainNetwork	228	0	6	Linear	2.2400	1	0	0			8224	28.540000000000
+EnFlo_Tunnel	Temp	Roof_Far_6	On	Analogue In	4018	MainNetwork	232	0	2	Linear	0.7800	1	0	0			4112	25.480000000000
+EnFlo_Tunnel	Temp	Roof_Near_7	On	Analogue In	4018	MainNetwork	232	0	3	Linear	0.6600	1	0	0			2056	25.560000000000
+EnFlo_Tunnel	Temp	Roof_Far_8	On	Analogue In	4018	MainNetwork	232	0	4	Linear	0.4100	1	0	0			1028	25.310000000000
+EnFlo_Tunnel	Temp	Roof_Far_10	On	Analogue In	4018	MainNetwork	232	0	5	Linear	-0.23000	1	0	0			514	25.370000000000
+EnFlo_Tunnel	Temp	Roof_Near_12	On	Analogue In	4018	MainNetwork	232	0	6	Linear	0.13000	1	0	0			257	25.530000000000
+EnFlo_Tunnel	Temp	Roof_Far_15	On	Analogue In	4018	MainNetwork	232	0	7	Linear	0.15000	1	0	0			32896	25.250000000000
+EnFlo_Tunnel	Temp	Roof_Near_17	Off	Analogue In	4018	MainNetwork	245	0	0	Linear	-0.6400	1	0	0			16448	25.460000000000
+EnFlo_Tunnel	Temp	Roof_Far_19	On	Analogue In	4018	MainNetwork	245	0	1	Linear	-0.4900	1	0	0			8224	25.310000000000
+EnFlo_Tunnel	Temp	LDA Probe	On	Analogue In	Arduino Thermistor	COM18	6	0	3	Linear	-1.1000	1	0	0		Blue	65535	24.218664550781
+EnFlo_Tunnel	Cold_Wire	Therm	Off	Analogue In	Arduino Thermistor	COM18	6	0	4	Linear	-1.1000	1	0	0		Green	65535	21.335150146484
+EnFlo_Tunnel	FFID	Temp	On	Analogue In	Arduino Thermistor	COM18	6	0	2	Linear	-1.1000	1	0	0		Brown	65535	62.618414306641
+EnFlo_Tunnel	Ref_1	Temp	Off	Analogue In	Arduino Thermistor	COM18	6	0	4	Linear	-1.0890	1	0	0		Green	65535	21.686817871094
+EnFlo_Tunnel	Ref_2	Temp	Off	Analogue In	Arduino Thermistor	COM18	6	0	5	Linear	-1.0920	1	0	0		Orange	65535	21.605662353516
+EnFlo_Tunnel	Ref_3	Temp	Off	Analogue In	Arduino Thermistor	COM18	6	0	2	Linear	-1.0130	1	0	0		Brown	65535	21.720947753906
+EnFlo_Tunnel	Ref_4	Temp	Off	Analogue In	Arduino Thermistor	COM18	6	0	3	Linear	-1.1080	1	0	0		Blue	65535	21.702729980469
+EnFlo_Tunnel	FFID2	Temp	Off	Analogue In	Arduino Thermistor	COM18	6	0	5	Linear	-1.1000	1	0	0		Orange	65535	21.384588623047
+EnFlo_Tunnel Metadata	Puff_duration	Sec	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	2			0	2.000000000000
+EnFlo_Tunnel	Main_Lights	Enable	On	Relay Out	4060	MainNetwork	205	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+EnFlo_Tunnel	Extra_Lights	Enable	On	Relay Out	5060	MainNetwork	120	4	5	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+Aero_Tunnel	Server	Healthy	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	1.000000000000
+EnFlo_Tunnel	Trav1 Pos	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	220.000000000000
+EnFlo_Tunnel	Trav1 Pos	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	813.000976562500
+EnFlo_Tunnel	Trav1 Pos	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	3054.000732421875
+EnFlo_Tunnel	Source	Temp	Always Off	Analogue In	4018	MainNetwork	246	0	2	Linear	-0.9000	1	0	0			34952	20.700000000000
+EnFlo_Tunnel	Trav2 Pos	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	700.000000000000
+EnFlo_Tunnel	Trav2 Pos	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	-499.991791975836
+EnFlo_Tunnel	Trav2 Pos	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	4665.018804897072
+EnFlo_Tunnel	Source_Pos	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0	EnFlo_Tunnel:Trav1 Pos:X		65535	-0.000000000000
+EnFlo_Tunnel	Source_Pos	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0	EnFlo_Tunnel:Trav1 Pos:Y		65535	-0.000000000000
+EnFlo_Tunnel	Source_Pos	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0	EnFlo_Tunnel:Trav1 Pos:Z		65535	0.000000000000
+EnFlo_Tunnel	Safety_Loop	Status	On	Analogue In	5018	MainNetwork	120	6	2	Raw	0	0	0	0			8456	0.996700000000
+EnFlo_Tunnel	Gas Solenoid	Status	On	Analogue In	5018	MainNetwork	120	6	0	Raw	0	0	0	0			8456	0.996700000000
+EnFlo_Tunnel	Source1	Enable	Always Off	Relay Out	4060	MainNetwork	212	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Source2	Enable	Always Off	Relay Out	4060	MainNetwork	212	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Source3	Enable	Always Off	Relay Out	5060	MainNetwork	96	3	4	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Source_Pos	X_Model	Always Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-70.000000000000
+EnFlo_Tunnel	Source_Pos	Y_Model	Always Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-105.000000000000
+EnFlo_Tunnel	Twin_Stacks	Info	Off	Analogue In	Hold Value		0	0	0	Text	1	0	0	3	Source1;Source2;Both Sources; Upwind Source; Downwind Source		65535	2.000000000000
+EnFlo_Tunnel	Source2_Pos	X_Model	Always Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-82.500000000000
+EnFlo_Tunnel	Moving_Source	X_Model	Always Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	62.500000000000
+EnFlo_Tunnel	Ref_Source	X_Model	Always Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-100.000000000000
+EnFlo_Tunnel	Turbine_1	Dem_Volts	On	Analogue Out	5024	MainNetwork	11	2	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_2	Dem_Volts	On	Analogue Out	5024	MainNetwork	11	2	1	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_3	Dem_Volts	On	Analogue Out	5024	MainNetwork	11	2	2	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_4	Dem_Volts	On	Analogue Out	5024	MainNetwork	11	2	3	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_5	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	3	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_6	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	3	1	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_7	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	3	2	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_8	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	3	3	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_10	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	4	1	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_11	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	4	2	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_12	Dem_Volts	Off	Analogue Out	5024	MainNetwork	11	4	3	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Turbine_1	Dem_RPM	On	Analogue Out	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_2	Dem_RPM	On	Analogue Out	Hold Value		0	3	2	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_3	Dem_RPM	On	Analogue Out	Hold Value		0	3	3	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_4	Dem_RPM	On	Analogue Out	Hold Value		0	3	4	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_5	Dem_RPM	On	Analogue Out	Hold Value		0	3	5	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_6	Dem_RPM	On	Analogue Out	Hold Value		0	3	6	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_7	Dem_RPM	On	Analogue Out	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_8	Dem_RPM	On	Analogue Out	Hold Value		0	3	2	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_9	Dem_RPM	On	Analogue Out	Hold Value		0	3	3	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_10	Dem_RPM	On	Analogue Out	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_11	Dem_RPM	On	Analogue Out	Hold Value		0	3	5	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Turbine_12	Dem_RPM	On	Analogue Out	Hold Value		0	3	6	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Job	Name	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	20 buildings 500x250x125mm; ACTUAL; Antonio_LDA_FFID_Neutral; Building Wakes; CONCAWE; Convective_BL; Cube; DAPPLE; DIPLOS; DSTL; DYCE; Dense Gas; Flow Uniformity; Flying FFID Trials; Gravity Waves; HRModUrb; Headstart07; Home Office; Imperial; L Shaped Building; LDA_tall_building_wake; Line Source release; Moditic; Nantes Canyon; Norway; Odour; ROSE; Reference Dispersion; Sandia 08; Sellafield Jan 03; Sellafield March 02; Shell; Silsoe Cube; St Thomas Hospital; Stable_Boundary_Layer; Storage tanks; Street Canyon; Street Junction; Supergen; Tall Bldgs Disp; Tree canopy; Twin Stack Dispersion; Vehicle_Wake; Westlakes_08; Westlakes_SAV2 WD=94; XW_LDA_Comparison; 		65535	22.000000000000
+EnFlo_Tunnel	Obstacle/	Building	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	1-500 DAPPLE low Res; 100mm Trench; 100x100 Cube; 100x100 pressure tapped cube; 100x100x200 Tall; 100x100x300 Tall; 100x100x400mm Tall; 110mm cube array 110mm spacing; 110mm cube array 55mm spacing; 12 WTs; 150*150*150mm cube; 16 blocks 55 x 55 x 110mm tall centre at x=12m; 16 buildings 250*500*125mm; 16 x 110mm cube array 110mm spacing; 20 buildings 500x250x125mm; 25 x 110mm cube array 110mm spacing; 25mm Trench in 1.4m Turntable; 4 buildings 750x500x125mm; 4 x 110mm cube array 110mm spacing; 400mm x 400mm Heated Mat centre 12m; 500x250x125 Block; 500x300mm Trees 100mm tall; 660mm x 3000mm Heated Mat centre 12m; 70x140x70bldgs 14x21row; 70x140x70bldgs 14x29 row; 9 x 110mm cube array 110mm spacing; 990mm x 3000mm Heated Mat centre 14m; Array of 24 tanks dia 130mm height 88mm; Blade 1; Blade 2; Building With Single Stack; Building with Twin Stack; Champs Elysees Source 1; Champs Elysees Source 2; Champs Elysees Source 3; Complex - All buildings; Complex - only 2 buildings; Complex Array; Concawe Actual Model 6 Cylinders; DAPPLE Dome Centre; DAPPLE Dome Centre with station; DAPPLE high Res buildings at intersection; DAPPLE low Res; DAPPLE low Res with roof roughness; DAPPLE low Res(model+B42-45 and obstacles in the west of the model); DAPPLE low Res(sampling at Mary  Rd  Model+B42-45); DAPPLE low Res(sampling at Mary  Rd with B38-41and A5); DAPPLE low Res(sampling at Mary  Rd without B38-41); DAPPLE low Res(sampling at Mary. Rd add A1-5); DYCE_London_110mm; False Floor (table 4.17m x 0.9m  height 230mm); Forest at x=11003; Group of 2 Tanks D=133mm upstream tank; Group of 6 Tanks D=400mm no downstream tanks; Group of 9 Tanks D=133mm Centre releasing 67mm roof heights; Group of 9 Tanks D=400mm 3 downstream tanks; HRModUrb SimpleC; HRModUrb SimpleC with tall building; HRModUrb SimpleV; Headstart07 building; Mesh Wool Disc Trees 220mm spacing; Moditic_Bump; Moditic_Bump_0-1385mm_200mm false floor; Moditic_Bump_0-1385mm_200mm false floor No roughness; Moditic_Bump_0-1385mm_200mm false floor with Array; Moditic_Bump_0-1385mm_200mm false floor with Array_2; Network Regular; None; Norway 1:300; Norway 1:500; ROSE (Bremen); Row_of_blocks_H=204_L=250mm; S1_0Deg; S1_45Deg; S2_0Deg; Sellafiield Site Model; Sellafiield Site Model (Flat); Single Turbine II; Single wind turbine (blade II) at X=10000 Y=0; St Thomas Hospital - East Wing - Unclad; St Thomas Hospital - East Wing - clad; Storage Tank H=100  D=400mm; Storage Tank H=100  D=400mm with 0 Deg Bund; Storage Tank H=100  D=400mm with 45 Deg Bund; Storage Tank H=100  D=400mm with Bund plus upstream tank; Storage Tank H=100 D=500mmStorage Tank H=100  D=700mm; Storage Tank H=89  D=133mm; Storage Tank H=89  D=133mm with 0 Deg Bund; Storage Tank H=89  D=133mm with 266mm Bund on turn table; Storage Tank H=89  D=133mm with 45 Deg Bund; Subfloor trench 285x285x3m; Tree 171 mm - Dense; Tree 171 mm - Porous; Tree 91 mm - Dense; Tree 91 mm - Porous; Tree85mmRow - x=13000; Two-Buildings Config; Vehicle 1to20 - False Floor (table 4.17m x 0.9m  height 230mm); Vehicle 1to5 - False Floor (table 4.17m x 0.9m  height 230mm); WT Array1; WT Array2; WT Array21; WT Array3; WT Array4; WT Array5; WT Array6; WT Array7; WT x 2; WT x 3; WT x 4; 		65535	32.000000000000
+EnFlo_Tunnel	Vorticity	Generators	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	5 Irwin spires 1.26m   X=50mm Y spacing 630mm; 5 Irwin spires 1.2m   X=50mm Y spacing 700mm; Not Installed; Offshore 5x TruncIrwin (H:1490)  B(H:0):150  B(H:1490):10  Yspace:660  X:50; Offshore 5x TruncIrwin (H:1490)  B(H:0):150  B(H:700):10  Yspace:660  X:50; Onshore 5xTruncNonIrwin (H:1490  B(H:0-120):250  B(H:192):177  B(H:1490):24)  YSpace:660 X:50; 		65535	0.000000000000
+EnFlo_Tunnel	Roughness	Height	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	H=16mm  W=50mm Yspace=510mm Xspace=360mm Staggered; H=20mm W=80mm YSpace=240mm  XSpace=240mm Staggered; H=20mm W=80mm YSpace=240mm  XSpace=720mm Staggered; no roughness elements (smooth); 		65535	1.000000000000
+EnFlo_Tunnel	Side Wall	Separation	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	1.07m; 1.5m; 2.0m; 2.5m; 2.93m; 3m  from x=0.67 to x=10.67m; 3m  from x=0.67 to x=12.67m; 3m  from x=0.67 to x=18m; 3m  from x=0.67 to x=6.67m; 3m  from x=12 to x=18m; 3m  from x=2 to x=19m; 3m  from x=8 to x=18m; No sidewalls installed; 		65535	12.000000000000
+EnFlo_Tunnel	Safety	GMU_Watchdog	On	Relay Out	5060	MainNetwork	120	4	0	Raw	1	0	0	0	Read A		65535	1.000000000000
+EnFlo_Tunnel	User	Name	Off	Analogue In	Hold Value		0	0	0	Text	1	0	0	11	Adam_Sayer; Alison_Rudd; Headstart; Helen_Smethurst; James_Fabian; James_Harrison; Kahled_Bashiti; Matteo_Carpentieri; Murat_Tutkun; Nadia_Dayana; Paul_Hayden; Shanying_Zhang; Tom_Farr; Tom_Lawton; Yomi_Ajileye; 		0	11.000000000000
+EnFlo_Tunnel Metadata	No of	Turbines	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo_Tunnel Metadata	Turbine	Blade_Angle	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	2			0	2.000000000000
+EnFlo_Tunnel Metadata	Hub_1	Velocity	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	1.3980			0	1.398000000000
+EnFlo_Tunnel Metadata	Hub_2	Velocity	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	1.1900			0	1.190000000000
+EnFlo_Tunnel Metadata	Hub_3	Velocity	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	1.2200			0	1.220000000000
+EnFlo_Tunnel Metadata	Hub_4	Velocity	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	1.8400			0	1.840000000000
+EnFlo_Tunnel Metadata	Hub_1	Xpos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	12000			0	12000.000000000000
+EnFlo_Tunnel Metadata	Hub_1	Ypos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo_Tunnel Metadata	Hub_2	Xpos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	14496			0	14496.000000000000
+EnFlo_Tunnel Metadata	Hub_2	Ypos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo_Tunnel Metadata	Hub_3	Xpos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	16992			0	16992.000000000000
+EnFlo_Tunnel Metadata	Hub_3	Ypos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo_Tunnel Metadata	Hub_4	Xpos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	NaN			0	NaN
+EnFlo_Tunnel Metadata	Hub_4	Ypos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	NaN			0	NaN
+EnFlo_Tunnel Metadata	Tank	Roof Height (mm)	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	92			0	92.000000000000
+EnFlo_Tunnel Metadata	Stability		Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	Neutral; Stable; Unstable; 		0	1.000000000000
+EnFlo_Tunnel	Thermistor_Rake	Z=1450	On	Analogue In	Thermistor	COM13	16	0	1	Linear	-0.10300	1	0	0			65535	-273.253000000000
+EnFlo_Tunnel	Thermistor_Rake	Z=1350	On	Analogue In	Thermistor	COM13	16	0	2	Linear	-0.07500	1	0	0			65535	24.139630874135
+EnFlo_Tunnel	Thermistor_Rake	Z=1250	On	Analogue In	Thermistor	COM13	16	0	3	Linear	-0.03200	1	0	0			65535	24.123385229922
+EnFlo_Tunnel	Thermistor_Rake	Z=1150	On	Analogue In	Thermistor	COM13	16	0	4	Linear	-0.08400	1	0	0			65535	24.147091591270
+EnFlo_Tunnel	Thermistor_Rake	Z=1050	On	Analogue In	Thermistor	COM13	16	0	5	Linear	0	1	0	0			65535	24.109319161157
+EnFlo_Tunnel	Thermistor_Rake	Z=950	On	Analogue In	Thermistor	COM13	16	0	6	Linear	-0.15624	1	0	0			65535	24.111070713482
+EnFlo_Tunnel	Thermistor_Rake	Z=850	On	Analogue In	Thermistor	COM13	16	0	7	Linear	-0.10200	1	0	0			65535	24.125799322189
+EnFlo_Tunnel	Thermistor_Rake	Z=750	On	Analogue In	Thermistor	COM13	227	0	0	Linear	-0.17900	1	0	0			65535	24.114656708880
+EnFlo_Tunnel	Thermistor_Rake	Z=650	On	Analogue In	Thermistor	COM13	227	0	1	Linear	-0.19800	1	0	0			65535	24.131889120729
+EnFlo_Tunnel	Thermistor_Rake	Z=550	On	Analogue In	Thermistor	COM13	227	0	2	Linear	-0.20000	1	0	0			65535	24.139772034502
+EnFlo_Tunnel	Thermistor_Rake	Z=450	On	Analogue In	Thermistor	COM13	227	0	3	Linear	-0.28470	1	0	0			65535	24.140748359053
+EnFlo_Tunnel	Thermistor_Rake	Z=350	On	Analogue In	Thermistor	COM13	227	0	4	Linear	-0.23619	1	0	0			65535	24.116760154561
+EnFlo_Tunnel	Thermistor_Rake	Z=250	On	Analogue In	Thermistor	COM13	227	0	5	Linear	-0.25854	1	0	0			65535	24.127359980949
+EnFlo_Tunnel	Thermistor_Rake	Z=150	On	Analogue In	Thermistor	COM13	227	0	6	Linear	-0.16878	1	0	0			65535	24.118289828331
+EnFlo_Tunnel	Thermistor_Rake	Z=50	On	Analogue In	Thermistor	COM13	227	0	7	Linear	-0.23961	1	0	0			65535	24.139699496954
+EnFlo_Tunnel Metadata	Tank	Height (mm)	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	100			0	100.000000000000
+Fast FID	Valco Valve	Position	On	Analogue Out	VICI	COM11	200	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Do Not Reset	65535	4.000000000000
+FFID	System	Enable	On	Relay Out	4060	MainNetwork	204	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+Froude	NPL	Atmos_Press	On	Analogue In	Web Client		0	0	0	Linear	0	0.9930	0	0		mbar	64	1011.569100000000
+GMU	Source	Type	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	11mm downward facing; 1mm Annulus above tank wall with Internal 2mm Annulus floating roof at 50mm.; 2 x ID=11mm Holes; 23mm IDD=8mm; 2mm Annulus around a quarter of inside of tank wall; 2mm Annulus around inside of tank wall; 4 point source ID=8.5mm located 90 deg apart on 8cm Diameter; 4 x 3mm holes spaced 8mm apart at roof perimeter; 8  x 3mm holes spaced 10mm apart at roof perimeter; 8mm Annulus around inside of tank wall; B2 D=6.8mm; B204 Height 244mm ID 5.5mm; B230 Height 152.4mm ID 8.5mm; B30 Area; B311 ID=11mm; B331 ID=5.4mm; B38_8mm_ID_passive; B38_OD=3.1mm_ID=2mm; B548 OD=13.8mm ID=3.5mm; Both_Scrubbers_ID=4mm; Both_Scrubbers_ID=7mm; Capped release D=10mm H=10mm Slot=2mm; D=12mm; D=13.6mm; D=16mm (ID=12 mm); D=18mm; D=20mm; D=22.5mm; D=3.4mm; D=5mm (ground release); D=6mm (ID=4.2 mm); D=7.1mm; D=9mm; D=9mm  20mm long passive; Dext = 8.5 mm; Exit Port of Solenoid Valve; H=25:W=100mm; H=50; ID=1.6 OD=1.9; ID=1.9 OD=3.0mm; ID=103mm; ID=15 mm 90 deg bend copper tube; ID=20mm; ID=3.4mm  OD= 4mm; ID=3.9mm OD=6.3mm; ID=4.25mm; ID=4mm; ID=5.1mm OD=5.8mm (Ground release); ID=5.1mm OD=5.8mm (roof release); ID=5.1mm at Z= 10mm  (Ground release); ID=50mm; ID=5mm OD=5.8mm; ID=6mm; ID=6mm OD=8mm; ID=8.6mm; ID=8mm OD=9mm; ID=9.2mm; ID=9.5mm OD=12.5mm; ID=9mm OD=10mm  Short Passive; Line Source 100mm  1.07m width; Line Source 25mm  1.3m long  perp to flow; Line Source 25x1300; Line Source 50mm  1.07m Wide; Line source parallel to flow; None; Pond_No1&2_140mm; Pond_No1&2_84mm; Pond_No1_84mm; Pond_No2_84mm; ROSE 9mm at last grid; SAV ID=3.5mm; Sample tubes in source; Single 5mm Stack; Single 7.9 mm stack; THORP  ID=5.1mm; Twin 5mm Stacks; Twin Passive Stacks ID=8mm OD=8.7mm; UKAEA ID=1.7mm; W=50mm; 		65535	40.000000000000
+GMU	Release	Orientation	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	Vertical; Horizontal 0 Deg; Downwards; External System Tests; Horizontal; 		65535	0.000000000000
+GMU	Trace	Gas	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	Propane; Ethane; 		65535	0.000000000000
+GMU	Carrier 1	Gas	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	Air; Nitrogen; Helium; CO2; Krypton; None; 		65535	3.000000000000
+GMU	Carrier 2	Gas	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	Air; Nitrogen; Helium; CO2; Krypton; None; 		65535	0.000000000000
+GMU	Carrier 1	Hi-Tec Range	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	Very Low; Low; High; 		65535	1.000000000000
+GMU	Trace	Hi-Tec Range	On	Analogue In	Coded		0	0	0	Text	0	0	0	0	5 ml/min; 50 ml/min; 300 ml/min; 		65535	1.000000000000
+GMU	Carrier 1	Dem Volt	On	Analogue Out	5024	MainNetwork	96	2	0	Linear	-0.0026000	1	0	0	Front Panel	!ASYNC	65535	0.000000000000
+GMU	Carrier 2	Dem Volt	On	Analogue Out	5024	MainNetwork	96	2	3	Linear	-0.003300	1	0	0	Front Panel	!ASYNC	65535	0.000000000000
+GMU	Trace	Dem Volt	On	Analogue Out	5024	MainNetwork	96	2	1	Linear	-0.0016000	1	0	0	Front Panel	!ASYNC	65535	0.000000000000
+GMU	Carrier 1	Meas Volt	Always On	Analogue In	5017	MainNetwork	96	1	0	Linear	0	1	0	0		Volts	43690	0.006000000000
+GMU	Carrier 2	Meas Volt	Always On	Analogue In	5017	MainNetwork	96	1	1	Linear	0	1	0	0		Volts	21845	0.003000000000
+GMU	Trace	Meas Volt	Always On	Analogue In	5017	MainNetwork	96	1	2	Linear	0	1	0	0		Volts	21845	0.015000000000
+GMU	Carrier 1	Meas Q	On	Analogue In	Read Ch	MainNetwork	0	1	0	Hi-Tec Q	0	0	0	0	GMU:Carrier 1:Meas Volt	l/min	43690	0.000000000000
+GMU	Carrier 2	Meas Q	On	Analogue In	Read Ch	MainNetwork	0	1	0	Hi-Tec Q	0	0	0	0	GMU:Carrier 2:Meas Volt	l/min	21845	0.000000000000
+GMU	Trace	Meas Q	On	Analogue In	Read Ch	MainNetwork	0	1	2	Hi-Tec Q	0	0	0	0	GMU:Trace:Meas Volt	l/min	65535	0.000000000000
+GMU	Carrier 1	Meas M_dot	On	Analogue In	Read Ch	MainNetwork	0	1	0	Hi-Tec M_dot	0	0	0	0	GMU:Carrier 1:Meas Volt	Kg/min	65535	0.000000000000
+GMU	Carrier 2	Meas M_dot	On	Analogue In	Read Ch	MainNetwork	0	1	0	Hi-Tec M_dot	0	0	0	0	GMU:Carrier 2:Meas Volt	Kg/min	65535	0.000000000000
+GMU	Trace	Meas M_dot	On	Analogue In	Read Ch	MainNetwork	0	1	2	Hi-Tec M_dot	0	0	0	0	GMU:Trace:Meas Volt	Kg/min	65535	0.000000000000
+GMU	Remaining	Nitrogen	On	Analogue In	VIRTUAL	MainNetwork	0	1	1	Raw	9.2000	0	0	0		Kg	65535	0.000000000000
+GMU	Remaining	Helium	On	Analogue In	VIRTUAL	MainNetwork	0	1	1	Raw	1.5300	0	0	0		Kg	65535	0.000000000000
+GMU	Remaining	CO2	On	Analogue In	VIRTUAL	MainNetwork	0	1	1	Raw	34	0	0	0		Kg	65535	17.857432765813
+GMU	Remaining	Krypton	On	Analogue In	VIRTUAL	MainNetwork	0	1	1	Raw	6.8000	0	0	0		Kg	65535	0.000000000000
+GMU	Remaining	Ethane	On	Analogue In	VIRTUAL	MainNetwork	0	1	1	Raw	15	0	0	0		Kg	65535	0.000000000000
+GMU	Remaining	Propane	On	Analogue In	VIRTUAL	MainNetwork	0	1	1	Raw	42.5000	0	0	0		Kg	65535	12.000078007211
+GMU	Calibration	Gas 1	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		ppm	65535	148.000000000000
+GMU	Calibration	Gas 2	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0		ppm	65535	764.000000000000
+GMU	Carrier 1	Dem Q	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+GMU	Carrier 2	Dem Q	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+GMU	Trace	Dem Q	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+GMU	Source	Dem Q	On	Analogue In	Hold Value	MainNetwork	0	1	0	Raw	0	0	0	0		l/min	65535	0.000000000000
+GMU	Source	Meas Q	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0		l/min	65535	0.000000000000
+GMU	Source	Meas M_dot	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0		Kg/min	65535	0.000000000000
+GMU	Source	Meas Density	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0		Kg/m3	65535	0.000000000000
+GMU	Source	Meas Den Ratio	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0			65535	0.000000000000
+GMU	Source	Dem Strength	On	Analogue In	Hold Value	MainNetwork	0	1	0	Raw	0	0	0	0	Initialise when starting scan table	%	65535	0.000000000000
+GMU	Source	ppm/%Density	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0			65535	-0.000000000000
+GMU	Source	Meas Strength	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0		%	65535	0.000000000000
+GMU	Source	Est Time	On	Analogue In	VIRTUAL	MainNetwork	0	1	0	Raw	0	0	0	0		Seconds	65535	3499.696170806885
+GMU	Detector	Meas Current	On	Analogue In	5017	MainNetwork	96	1	6	Linear	0	2.3647	0	0	Across 422.89 ohm resistor	HC detector analogue o/p (mA)	34952	4.093295700000
+GMU	Detector	Strength	On	Analogue In	VIRTUAL		0	1	6	Raw	-0.4468	0.13890	4	20	C=low mA;  D=High mA	%	65535	0.121758772730
+GMU	Test	Ethane trip	On	Digital In	5051	MainNetwork	96	0	0	Raw	0	0	0	0		Ethane trip	65535	1.000000000000
+GMU	Source	Release Temp	Always On	Analogue In	Read Ch		0	0	0	Raw	0	0	0	0	EnFlo_Tunnel:Inlet_Temp:Average		65535	24.173837142259
+GMU	Detector	Serial output	Always Off	Analogue In	IR2100	MainNetwork	1	1	0	Raw	0	0	0	0		HC detector serial o/p	65535	37888.000000000000
+GMU	Gas	Enable	On	Relay Out	5060	MainNetwork	96	3	5	Raw	1	0	0	0	Front Panel	!ASYNC 	65535	1.000000000000
+GMU	Detector	Happy	On	Digital In	5051	MainNetwork	96	0	15	Raw	0	0	0	0			65535	1.000000000000
+GMU	Source	Pressure	Always On	Analogue In	5017	MainNetwork	96	1	7	Linear	5	326.640	0	0		mbar	65535	710.869040000000
+GMU	Trace	Open	On	Relay Out	5060	MainNetwork	96	3	3	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+GMU	CO2_Rig	Enable	On	Relay Out	4060	COM13	20	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+GMU	CO2_Supply	Pressure (Bar)	On	Analogue In	4017	MainNetwork	195	0	0	Linear	-0.19000	10	0	0	Front Panel		65535	51.570000000000
+GMU	CO2_Bath	Temp	On	Analogue In	5018	MainNetwork	120	5	2	Linear	1.9000	1	0	0			4	65.600000000000
+Hydrosonic	Transducer	Setting	On	Analogue Out	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Hydrosonic	Seeder	Enable	On	Relay Out	4060	MainNetwork	205	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Hydrosonic	Tank	Temp	Always Off	Analogue In	5018	MainNetwork	120	5	2	Linear	1.6000	1	0	0			4	20.700000000000
+LDA	System	Enable	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+LDA1	Mains_Power	Enable	On	Relay Out	4060	MainNetwork	204	0	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+LDA	Full_Power	Enable	On	Relay Out	4060	MainNetwork	215	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Laser	Power Meter	Reading (mW)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	131.949235800000
+LDA Laser	Green	Power (mW)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Blue	Power (mW)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Green	LDD current (A)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Blue	LDD current (A)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Green	TEC drive (V)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Blue	TEC drive (V)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Green	TEC temp. (degC)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Blue	TEC temp. (degC)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Green	SHG heater (degC)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Blue	SHG heater (degC)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Green	BRF heater (degC)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Blue	BRF heater (degC)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+LDA Laser	Tank	Supply Temp	On	Analogue In	4018	MainNetwork	252	0	2	Linear	2.7000	1	0	0		Thermocouple in Tank Water	4	21.900000000000
+LDA Laser	Tank	Return Temp	On	Analogue In	4018	MainNetwork	252	0	5	Linear	0.6000	1	0	0		Attached on outside of return pipe	64	25.300000000000
+LDA2	Full_Power	Enable	On	Relay Out	4060	MainNetwork	225	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+LDA2	BSA	Enable	On	Relay Out	4060	MainNetwork	225	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+LDA2	System	Enable	On	Analogue In	Hold Value		0	0	2	Raw	0	0	0	0			65535	0.000000000000
+LDA2 Laser	Power	mW	On	Analogue In	4017	MainNetwork	224	0	0	Linear	40.4070	3989.80	0	0			37448	-1667.227400000000
+LDA2 Laser	Current	Amps	On	Analogue In	4017	MainNetwork	224	0	1	Linear	0.5337	19.0940	0	0			18724	-8.440480000000
+LDA2 Laser	Window_Door	Interlocks	On	Analogue In	4017	MainNetwork	224	0	2	Raw	0	0	0	0			65535	1.317000000000
+LDA2 Laser	Shutter	Open	On	Analogue In	4017	MainNetwork	224	0	3	Raw	0	0	0	0			18724	1.422000000000
+LDA2_Laser	Cooling_Pump	Enable	On	Relay Out	4060	MainNetwork	205	0	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig   !Do Not Reset	65535	1.000000000000
+LDA2_Laser	3_Phase_Power	Enable	On	Relay Out	4060	MainNetwork	225	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+LDA2_Laser	Interlock	Enable	On	Relay Out	4060	MainNetwork	225	0	3	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Orifice	Rig	Temp	Off	Analogue In	4018	MainNetwork	229	0	6	Raw	0	0	0	0			37448	24.700000000000
+Strain	Gauge	1	Off	Analogue In	4016	MainNetwork	80	0	0	Linear	0	0.10000	0	0			65535	NaN
+Strain	Gauge	2	Off	Analogue In	4016	MainNetwork	81	0	0	Linear	-1	20	0	0			65535	NaN
+Strain	Gauge	1 Temp	Off	Analogue In	4018	MainNetwork	236	0	0	Linear	0	1	0	0		Z=1450	18724	NaN
+Strain	Gauge	2 Temp	Off	Analogue In	4018	MainNetwork	236	0	1	Linear	0	1	0	0		Z=1450	18724	NaN
+Strain	Gauge	3 Temp	Off	Analogue In	4018	MainNetwork	236	0	2	Linear	0	1	0	0		Z=1450	18724	NaN
+Uni	Chilled Water	Temp	On	Analogue In	4018	MainNetwork	247	0	0	Linear	-1.5000	1	0	0			1024	9.800000000000
+University	Outside	Temp	On	Analogue In	4018	MainNetwork	247	0	1	Linear	-2.8500	1	0	0			4096	15.450000000000
+University	Chilled Water	Requested	On	Relay Out	4060	MainNetwork	214	0	0	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+XW	Angle	Degrees	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-45.000000450000
+A_Tunnel	Probe	Roll	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-60.000585940000
+D_Tunnel	Pitot	Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	9.993034843000
+A_Tunnel	Pitot	Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	-0.041614319104
+A_Tunnel		Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000555019379
+A_Tunnel	Probe	Yaw	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.007812500000
+A_Tunnel	Probe	Pitch	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo_Tunnel Metadata	Inlet_Profile	Name	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	5	ITP6; Inlet1; None; Uniform; case9; case9a; 		0	5.000000000000
+Pressure	Transducer	Supply_Voltage	Off	Analogue In	4017	MainNetwork	195	0	1	Raw	0	4.4030	0	0	Front Panel		65535	NaN
+EnFlo Lab	ScaniValve	Combined_Position	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	30.000000000000
+D_Tunnel		Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	4.696730737000
+Aero_Tunnel		Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	5.301484588000
+Synthetic_Jet	Optimisation	Coefficient	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1.000000000000
+Synthetic_Jet	Phase	Average?	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1.000000000000
+Synthetic_Jet	LEM_Added_Mass	Coefficient	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.424400000000
+Synthetic_Jet	LEM_Pressure	Coefficient	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1.140000000000
+Synthetic_Jet	Identification	Number	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	13309.000000000000
+Synthetic_Jet	Calibration	No_Of_Gens	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	5.000000000000
+Synthetic_Jet	Calibration	Type	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	2.000000000000
+Synthetic_Jet	Calibration	Velocity	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	10.000000000000
+Synthetic_Jet	Frequency	Delta	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	10.000000000000
+Synthetic_Jet	Amplitude	Delta	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1.000000000000
+Synthetic_Jet	Maximum	Amplitude	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	3.000000000000
+Synthetic_Jet	Minimum	Amplitude	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	3.000000000000
+Synthetic_Jet	Maximum	Frequency	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1500.000000000000
+Synthetic_Jet	Minimum	Frequency	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	300.000000000000
+Synthetic_Jet	Dwell	Time	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	100.000000000000
+Synthetic_Jet	Samples	Per_Cycle	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	30.000000000000
+Synthetic_Jet	Cavity	Diameter	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.038000000000
+Synthetic_Jet	Cavity	Height	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.008000000000
+Synthetic_Jet	Cavity	Volume	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000200000000
+Synthetic_Jet	Orifice	Diameter	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.005500000000
+Synthetic_Jet	Orifice	Height	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.010000000000
+Synthetic_Jet	Orifice	Volume	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000237583
+EnFlo_Tunnel Metadata	Forest	Xpos	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	11778	Xpos; 		0	11778.000000000000
+A_Tunnel	Wing	Pitch	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	5.000000000000
+EnFlo_Tunnel	Turbine	Enable	On	Relay Out	4060	MainNetwork	204	0	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Seeder_Pump	Enable	On	Relay Out	5060	MainNetwork	11	6	2	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+EnFlo_Tunnel	Seeder	High_Flow	On	Relay Out	5060	MainNetwork	11	6	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Seeder	Low_Flow	On	Relay Out	5060	MainNetwork	11	6	1	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Seeder_Fridge	Temp	On	Analogue In	5018	MainNetwork	120	5	1	Linear	1.9000	1	0	0			2	7.700000000000
+EnFlo_Tunnel	Seeder	Power	On	Analogue Out	5024	MainNetwork	11	4	0	Linear	0	0.05000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+Clean_Air	Hi-Tec	Dem Volt	On	Analogue Out	5024	MainNetwork	96	2	2	Linear	-9.0000E-4	1	0	0	Front Panel	!ASYNC	65535	0.000000000000
+Clean_Air	Hi-Tec	Meas Volt	On	Analogue In	5017	MainNetwork	96	1	4	Raw	0	0	0	0		Volts	37449	0.006000000000
+GMU	Source	Gas	On	Analogue In	Read A		0	0	0	Text	2	0	0	0	CO2;Air;CO2 & Air;		65535	2.000000000000
+Tank	Depth	mm	On	Analogue In	5017	MainNetwork	127	1	0	Linear	-324.090	2023.393	0	0		mm	43690	-313.973035000000
+Tank	Fill_Valve	Enable	On	Relay Out	5060	MainNetwork	127	2	0	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+Tank	Fill	Now	On	Relay Out	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Tank	Desired_Depth	mm	On	Relay Out	Hold Value		0	0	0	Raw	0	0	0	0			65535	0.000000000000
+Tank	Water	Temp	On	Analogue In	4018	MainNetwork	238	0	3	Linear	3	1	0	0			65535	26.200000000000
+EnFlo_Tunnel	Inlet	Uniform_Ambient	On	Analogue In	Hold Value		0	1	0	Raw	0	0	0	0	Front Panel		65535	0.000000000000
+GMU	CO2_Low	Siren	On	Analogue Out	Arduino D_out	COM18	10	0	3	Raw	0	0	0	0	Front Panel	!ASYNC	65535	0.000000000000
+Status	of	Wind_Turbine_Blade_Setup	On	Analogue In	Client Info		0	0	0	Text	0	0	0	0	Program Hung; Warning; Trav Level Running; Lower Level Running; Run Complete; Run Complete;;		34952	7.000000000000
+EnFlo_Tunnel Metadata	Source	Number	Off	Analogue In	Hold Value		0	0	0	Raw	0	0	0	1			0	1.000000000000
+EnFlo_Tunnel Metadata	Model	Trees	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	3	Disc Trees; Mesh Trees; Mesh Wool Disc Tree; None; Wool Trees; 		0	3.000000000000
+EnFlo_Tunnel Metadata	Additional	Buildings	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	1	Monitoring Station; None; 		0	1.000000000000
+A_Tunnel	Trav Pos	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	449.000030517578
+A_Tunnel	Trav Pos	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	-300.000000000000
+A_Tunnel	Trav Pos	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	450.000000000000
+EnFlo_Stack	Floor	Surface (mm)	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1.643800000000
+EnFlo Lab	Hygrometry	Rel Humidity_PN	On	Analogue In	Arduino A_in	COM18	17	0	2	Raw	0	0	0	0			65535	35.307044982910
+EnFlo Lab	Hygrometry	Atmos_Press_PN	On	Analogue In	Arduino A_in	COM18	17	0	1	Raw	0	0	0	0			65535	1011.989990234375
+EnFlo Lab	Hygrometry	Air Temp_PN	On	Analogue In	Arduino A_in	COM18	17	0	3	Raw	0	0	0	0			65535	27.452384948730
+EnFlo Lab	Hygrometry	Air density_PN	Off	Analogue In	Arduino A_in	COM18	17	0	4	Raw	0	0	0	0			65535	NaN
+EnFlo Lab	Hygrometry	Dew Point temp_PN	On	Analogue In	Arduino A_in	COM18	17	0	5	Raw	0	0	0	0			65535	10.747321128845
+EnFlo_Tunnel Metadata	Probe_Setup	Time	On	Analogue In	Hold Value		0	0	0	Text	1	0	0	5	Y14_M11_D28_Daytime; Y14_M12_D10_Daytime; Y15_M03_D12_Daytime; Y15_M03_D17_Daytime; Y15_M03_D25_Daytime; Y15_M04_D30_Daytime; Y15_M06_D24_Daytime; 		0	5.000000000000
+GMU	Source	Live	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+GMU	Back_Press_Valve	Volts	On	Analogue Out	5024	MainNetwork	11	4	1	Linear	2	0.08000	0	0	Front Panel	!ASYNC	65535	0.200435303000
+GMU	Back_Press_Valve	Position	On	Analogue In	5017	MainNetwork	11	7	1	Linear	-24.0500	12.5000	0	0	Front Panel		65535	0.962500000000
+GMU	Back_Pressure	Enable	On	Relay Out	4060	MainNetwork	204	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	0.000000000000
+Fan	Enable	Test	On	Relay Out	4060	MainNetwork	205	0	1	Raw	0	0	0	0	Front Panel	!ASYNC !Shared By = Rig	65535	1.000000000000
+EnFlo_Tunnel	Usonic_Ref_3	Velocity	Off	Analogue In	GILL	COM6	65	2	1	Raw	0	0	0	0			43690	0.020000000000
+EnFlo_Tunnel	Temp	Pre_Inletx_Ch1	On	Analogue In	Arduino Thermistor	COM18	5	0	1	Linear	-1.1241	1	0	0			65535	24.208205908203
+EnFlo_Tunnel	Trav3 Pos	X	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	4000.000000000000
+EnFlo_Tunnel	Trav3 Pos	Z	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+EnFlo_Tunnel	Trav3 Pos	Y	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	1700.000000000000
+EnFlo_Lab	Window_Fans	Power_%	On	Analogue Out	Arduino A_out	COM18	10	0	1	Linear	0	0.010000	0	0	Front Panel	!ASYNC	65535	100.000000000000
+EnFlo_Tunnel	Side_Fan	Y-ve	On	Analogue Out	Arduino A_out	COM18	11	0	3	Linear	0	0.10000	0	0	Front Panel	!ASYNC	65535	0.000000000000
+EnFlo_Tunnel	Heater	Dem Volts	On	Analogue In	Hold Value		0	1	0	Raw	0	0	0	0			65535	0.000000000000
+EnFlo_Tunnel	Heater	Dem Power	On	Analogue In	Hold Value		0	1	0	Raw	0	0	0	0			65535	0.000000000000
+Status	of	Jet_Engine	On	Analogue In	Client Info		0	0	0	Text	0	0	0	0	Program Hung; Warning; Trav Level Running; Lower Level Running; Run Complete; Run Complete;;		34952	7.000000000000
+Jet_Engine	Source	Status	Off	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	Not Using; Waiting to Use; Using		65535	0.000000000000
+Status	of	A_Tunnel	On	Analogue In	Client Info		0	0	0	Text	0	0	0	0	Program Hung; Warning; Trav Level Running; Lower Level Running; Run Complete; Run Complete;;		34952	7.000000000000
+Status	of	ADAM_Server	On	Analogue In	Client Info		0	0	0	Text	0	0	0	0	Program Hung; Warning; Trav Level Running; Lower Level Running; Run Complete; Run Complete;;		34952	7.000000000000
+EnFlo_Tunnel	Wind	Direction Deg	On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	0.000000000000
+No Match			On	Analogue In	Hold Value		0	0	0	Raw	0	0	0	0			0	NaN
+Status	of	EnFlo_Tunnel	On	Analogue In	Client Info		0	0	0	Text	0	0	0	0	Program Hung; Warning; Trav Level Running; Lower Level Running; Run Complete; Run Complete;;		34952	7.000000000000
+EnFlo_Tunnel	Source	Status	On	Analogue In	Hold Value		0	0	0	Text	0	0	0	0	Not Using; Waiting to Use; Using		65535	0.000000000000
+Status	of	Aero_Tunnel	On	Analogue In	Client Info		0	0	0	Text	0	0	0	0	Program Hung; Warning; Trav Level Running; Lower Level Running; Run Complete; Run Complete;;		34952	7.000000000000
+
+Ch Discription Array End
+

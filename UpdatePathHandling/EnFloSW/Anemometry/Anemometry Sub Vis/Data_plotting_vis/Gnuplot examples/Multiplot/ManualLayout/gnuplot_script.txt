@@ -1,0 +1,89 @@
+set term epslatex color size 5,3
+set output "Plot.eps"
+
+
+set multiplot #title 'Multiplot Title not automatically in the right place'
+# Title would have to be manually positioned
+
+# Make the outline box a little paler
+set style line 12 lc rgb '#808080' lt 1 lw 0.6
+set border ls 12
+
+file="U0W_U4WU0E_U4Ed.dat"
+xmin=-22
+xmax=380
+ymin=0
+ymax=0.8
+
+set xrange [xmin:xmax]
+set yrange [ymin:ymax]
+
+set ytics 0.2						# Major tics (numbers on axes)
+set mytics 2						# Number of minor divisions per major (not numbered)
+set xtics 90
+set mxtics 2
+set grid x, y, my					# Turn on some gridlines
+
+set tmargin 1						# Margins are defined in characters- tricky!
+set bmargin 1
+set lmargin 1
+set rmargin 1
+
+
+# Put invisible text at the corners of the plot, so bounding box is set correctly
+# (Bounding box looks for text, not graphics, so plots get cut off otherwise)
+set label '\textcolor{white}{X}' at xmax,ymax centre
+set label '\textcolor{white}{X}' at xmin,ymin centre
+
+scale= 0.2						# Allows use of nice integers for positioning....
+
+set key nobox inside bottom left vertical spacing 2
+set size 6*scale,3*scale
+set origin 0*scale,3*scale				# Position origin of graph; axis labels etc hang beyond
+set title 'Point 7' offset char 0, char -0.5
+plot file index 0 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 6 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+unset key
+
+set size 3*scale,3*scale
+set origin 0*scale,0*scale
+set title 'Title Crash'  offset char 0, char -0.5		# Note titles will clash with x axis labels above....
+plot file index 1 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 7 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+set format y ""
+set grid mx
+
+set size 3*scale,2.6*scale				# Shrunk down to avoid title clash
+set origin 3*scale,0*scale
+set title 'Shrunk down to avoid title clash'  offset char 0, char -0.5		
+plot file index 2 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 8 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+set format x ''						# Turn of X numbers to avoid title clash
+
+set size 3*scale,2*scale
+set origin 6*scale,4*scale
+set title 'Point 10'  offset char 0, char 0
+plot file index 3 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 9 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+set format x
+
+set size 3*scale,4*scale
+set origin 6*scale,0*scale
+set title 'Overlaid Graphs' offset char 0, char -0.5
+plot file index 4 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 10 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+set size 3*scale,4*scale				# Note you can exactly overlay plots
+set origin 6*scale,0*scale
+
+plot file index 5 using 1:2 axes x1y1 title 'WestTT' w p lc rgb '#000000' pt 1 ps 1.2 ,\
+file index 11 using 1:2 axes x1y1 title 'EastTT' w lp lc rgb '#FF0000' lt -1 pt 3 ps 1.2 
+
+
+unset multiplot
+
+

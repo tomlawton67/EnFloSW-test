@@ -1,0 +1,18 @@
+Module	Module	Serial	Module	Day Time	Night Time	Comment
+Active	Type	Port	Address	Timeout	Timeout	
+		Name		(s)	(s)	
+TRUE	4060	MainNetwork	209	3600	600	A Tunnel instrument sockets
+TRUE	4060	MainNetwork	207	4000	1000	Aero Tunnel motor enable
+TRUE	4060	MainNetwork	219	3600	600	Aero Tunnel Sockets
+TRUE	4060	MainNetwork	216	3600	600	Aero Tunnel Watchdog
+TRUE	4060	MainNetwork	202	6000	6000	Chiller pump enable
+TRUE	4060	MainNetwork	208	3600	600	D Tunnel instrument sockets
+TRUE	5000	MainNetwork	121	600	600	EnFlo Tunnel floor heaters
+TRUE	5000	MainNetwork	127	600	600	EnFlo Tunnel back floor heaters and Wind Turbine
+TRUE	4060	MainNetwork	206	5100	2500	EnFlo_Tun floor cooling enable
+TRUE	4060	MainNetwork	205	5100	2500	Laser cooling pumps
+TRUE	4060	MainNetwork	204	3600	1000	LDA1  FFID
+TRUE	4060	MainNetwork	215	3500	900	LDA1  Full Power Enable
+TRUE	4060	MainNetwork	225	3600	1000	LDA2 and Full Power Enable
+TRUE	4060	MainNetwork	212	3600	600	EnFlo Tunnel Solenoid valves
+TRUE	4060	MainNetwork	214	6000	6000	University Chilled water request
