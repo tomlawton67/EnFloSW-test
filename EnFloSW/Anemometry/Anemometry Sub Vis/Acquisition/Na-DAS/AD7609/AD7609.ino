@@ -219,8 +219,7 @@ inline void ACQ_End()
 {
   SampleClock.end();
   GPIOB_PCOR = pin_ACQ;
-  Serial.write(ack, 3); // acknowledge clocking is over to allow proper clearing of host input buffer surplus bytes (sent in between end of sample requests and end_ack cmd)
-}
+ }
 
 
 void SerInCheck()
@@ -235,6 +234,7 @@ void SerInCheck()
     else if (Cmd == '#') // Acquisition stop
     {
       ACQ_End();
+      Serial.write(ack, 3); // acknowledge clocking is over to allow proper clearing of host input buffer surplus bytes (sent in between end of sample requests and end_ack cmd)
     }
     else if (Cmd == '?') // Send back overrun status bit
     {
