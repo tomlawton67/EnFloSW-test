@@ -1,4 +1,6 @@
-// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014
+// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015
+// Set to 120MHz clock
+// !! Remember to cut Vusb to 5V link!!
 
 #include <spi4teensy3.h>
 
@@ -44,13 +46,13 @@ volatile byte Clocking = 0;
 
 void setup()
 {
-  SampleClock.priority(0); // Give sample clock highest priority (default is 128)
+  SampleClock.priority(1); // Give sample clock highest priority after systick (0). (Note default is 128)
 
   Configure_Pins();
 
-  spi4teensy3::init(0, 1, 0); // clk div 2 (24MHz), cpol 1, cpha 0 (Note this is above spec max, should be 15MHz max at Vdrive = 3.3V !!
+  spi4teensy3::init(1, 1, 0); // clk div 4 (15MHz at 120MHz clock), cpol 1, cpha 0 (Note max spec is 15MHz max at Vdrive = 3.3V)
 
-  Serial.begin(115200);
+  Serial.begin(12160000);
   //while (!Serial);
 
   //delay(30);
@@ -79,16 +81,16 @@ void Configure_Pins()
   pinMode(pin_BUSY, INPUT);
   pinMode(pin_TRIG, INPUT_PULLUP);
 
-  digitalWrite(pin_CS, HIGH);
-  digitalWrite(pin_OVR, LOW);
-  digitalWrite(pin_ACQ, LOW);
-  digitalWrite(pin_OS0, LOW);
-  digitalWrite(pin_OS1, HIGH);
-  digitalWrite(pin_OS2, LOW);
-  digitalWrite(pin_STBY, HIGH);
-  digitalWrite(pin_RANGE, HIGH);
-  digitalWrite(pin_CONVST, HIGH);
-  digitalWrite(pin_RESET, LOW);
+  digitalWriteFast(pin_CS, HIGH);
+  digitalWriteFast(pin_OVR, LOW);
+  digitalWriteFast(pin_ACQ, LOW);
+  digitalWriteFast(pin_OS0, LOW);
+  digitalWriteFast(pin_OS1, HIGH);
+  digitalWriteFast(pin_OS2, LOW);
+  digitalWriteFast(pin_STBY, HIGH);
+  digitalWriteFast(pin_RANGE, HIGH);
+  digitalWriteFast(pin_CONVST, HIGH);
+  digitalWriteFast(pin_RESET, LOW);
 
   // configure interrupt(s)
   attachInterrupt(pin_BUSY, Busy_FALLING, FALLING); // on low, read newest conversion
@@ -111,13 +113,13 @@ void Configure_Pins()
 
 void Pulse()
 {
-  // Hold low for 25ns, repeat to achieve this duration
+  // Hold low for 25ns
   GPIOD_PCOR = pin_CONVST; // Low
-  //GPIOD_PCOR = pin_CONVST; // Low
 
-  Clocking = 1; // Use this assignment to extend low duration
+  __asm__("nop\n\t""nop\n\t""nop\n\t"); //25ns delay at 120MHz
 
   GPIOD_PSOR = pin_CONVST; // High
+  Clocking = 1;
 }
 
 
@@ -166,25 +168,25 @@ void Sleep(byte NewSleepState)
 
           break;
         case 1: // re-config range bit and wait 100us
-          digitalWrite(pin_RANGE, Range);
-          digitalWrite(pin_STBY, HIGH);
+          digitalWriteFast(pin_RANGE, Range);
+          digitalWriteFast(pin_STBY, HIGH);
           delayMicroseconds(100);
           break;
         case 2: // re-config range bit, wait 13ms, apply reset
-          digitalWrite(pin_RANGE, Range);
-          digitalWrite(pin_STBY, HIGH);
+          digitalWriteFast(pin_RANGE, Range);
+          digitalWriteFast(pin_STBY, HIGH);
           delay(13);
           Reset();
           break;
       }
       break;
     case 1: // standby
-      digitalWrite(pin_RANGE, HIGH);
-      digitalWrite(pin_STBY, LOW);
+      digitalWriteFast(pin_RANGE, HIGH);
+      digitalWriteFast(pin_STBY, LOW);
       break;
     case 2: // shutdown
-      digitalWrite(pin_RANGE, LOW);
-      digitalWrite(pin_STBY, LOW);
+      digitalWriteFast(pin_RANGE, LOW);
+      digitalWriteFast(pin_STBY, LOW);
       break;
   }
   SleepState = NewSleepState;
@@ -197,9 +199,9 @@ void Reset()
   Overrun = 0;
   GPIOB_PCOR = pin_OVR;
 
-  digitalWrite(pin_RESET, HIGH);
+  digitalWriteFast(pin_RESET, HIGH);
   delayMicroseconds(1);
-  digitalWrite(pin_RESET, LOW);
+  digitalWriteFast(pin_RESET, LOW);
   delayMicroseconds(1);
 }
 
@@ -217,8 +219,7 @@ inline void ACQ_End()
 {
   SampleClock.end();
   GPIOB_PCOR = pin_ACQ;
-  Serial.write(ack, 3); // acknowledge clocking is over to allow proper clearing of host input buffer surplus bytes (sent in between end of sample requests and end_ack cmd)
-}
+ }
 
 
 void SerInCheck()
@@ -233,6 +234,7 @@ void SerInCheck()
     else if (Cmd == '#') // Acquisition stop
     {
       ACQ_End();
+      Serial.write(ack, 3); // acknowledge clocking is over to allow proper clearing of host input buffer surplus bytes (sent in between end of sample requests and end_ack cmd)
     }
     else if (Cmd == '?') // Send back overrun status bit
     {
@@ -256,13 +258,13 @@ void SerInCheck()
       OS[0] = static_cast<int>(static_cast<byte>(SerIn[0]));
       OS[1] = static_cast<int>(static_cast<byte>(SerIn[1]));
       OS[2] = static_cast<int>(static_cast<byte>(SerIn[2]));
-      digitalWrite(pin_OS0, OS[0]);
-      digitalWrite(pin_OS1, OS[1]);
-      digitalWrite(pin_OS2, OS[2]);
+      digitalWriteFast(pin_OS0, OS[0]);
+      digitalWriteFast(pin_OS1, OS[1]);
+      digitalWriteFast(pin_OS2, OS[2]);
 
       // Input voltage Range
       Range = static_cast<int>(static_cast<byte>(SerIn[3]));
-      digitalWrite(pin_RANGE, Range);
+      digitalWriteFast(pin_RANGE, Range);
 
       // Trigger mode
       TriggerMode = static_cast<int>(static_cast<byte>(SerIn[4]));

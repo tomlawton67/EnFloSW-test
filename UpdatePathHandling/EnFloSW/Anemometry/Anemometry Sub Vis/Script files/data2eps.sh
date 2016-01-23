@@ -7,7 +7,7 @@
 rm ./"$1.pdf"
 
 # Make sure we know where to find everything:
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/local/bin:/usr/X11R6/bin:/usr/texbin/
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/local/bin:/usr/X11R6/bin:/usr/texbin/:/Library/TeX/texbin/
 export PATH
 
 # Call gnuplot to run the script which generates the graph:

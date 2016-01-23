@@ -1,0 +1,22 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\info
+{\author Kyle Gompertz}
+{\*\company CPP Wind Engineering, Inc.}}\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 NOTES:\
+\
+11 November 2015\
+\
+Yesterday, I implemented a LUA script on LJ T7 which handles I2C Comms with RangeFinders @ WT3. The script continuously polls the I2C Bus and writes output values to USER_RAM registers. This means that the former setup which involved 3 ADAM Channels for each RangeFinder is no longer necessary. The reason for those 3 Channels was that each was one of three operations necessary to get a reading from RFs, and they were spread out so that the RFs wouldn\'92t slow down the Scan Table. There are some required wait periods between each operation, and rather than handle all three operations in one scan, and for each RF, thereby holding up the scan table, I used the inherent time delay between scan operations to facilitate the required delays.\
+\
+Yesterday I updated the firmware on the T7 and noticed that the device seemed to do a much better job of handling the on-board processing while still handling external requests. This was a noticeable improvement from the last time that I evaluated this performance. So much so that the average scan period was significantly reduced!\
+\
+I have removed the old channels from the table, and the images in this folder show the old setup:\
+\
+I2CRF_Sequence - Shows the order in which the old channels were implemented\
+I2CRF_FindRange - Shows the Ch Description for the first command in the sequence for ea. RF\
+I2CRF_ReadRange - Shows the Ch Description for the second command in the sequence\
+I2CRF_RangeRoof - Ch Description for the 3rd command}
