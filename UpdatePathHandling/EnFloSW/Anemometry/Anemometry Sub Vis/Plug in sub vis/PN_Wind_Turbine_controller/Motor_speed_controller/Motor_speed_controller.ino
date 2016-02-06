@@ -1,3 +1,5 @@
+#pragma GCC optimize ("O3")
+
 #include <SPI.h>
 
 byte Pin_ChA, Pin_ChB, Pin_CS_Vm, Pin_CS_RPM, Pin_LDAC_Vm, Pin_LDAC_RPM, Pin_Spkr;
@@ -18,10 +20,14 @@ char RPM_set_bytes[4], maxVal_RPM_bytes[4], minVal_RPM_bytes[4], RPM_tol_bytes[4
 char maxVal_Vm_bytes[4], minVal_Vm_bytes[4], GearRatio_bytes[4];
 char KP_bytes[4], TI_bytes[4], TD_bytes[4];
 
+const unsigned long dt_Ser = 100; //ms
+unsigned long t_now_Ser, t_old_Ser;
+
+#define spiDAC SPISettings(5000000, MSBFIRST, SPI_MODE1)
+
 
 void setup()
 {
-
   Serial.begin(115200);
 
   // configure pins
@@ -43,15 +49,15 @@ void setup()
   minVal_Vm = -6.0; // Vmotor
 
   // set RPM DAC max and min eng values for 0...10V range
-  maxVal_RPM = 1000.0; //RPM 
+  maxVal_RPM = 1000.0; //RPM
   minVal_RPM = -1000.0; //RPM
 
   // PID values
   RPM_set = 0.0;
   RPM_tol = 0.0;
-  KP = 0.009;
-  TI = 0.5; // Integral time constant (s)
-  TD = 0.0000; // Derivative time constant (O(1) prediction of err at time t + TD) (s)
+  KP = 0.02;
+  TI = 1.0; // Integral time constant (s)
+  TD = 0.0; // Derivative time constant (O(1) prediction of err at time t + TD) (s)
 
   KI = 0.5 * KP / TI;
   KD = KP * TD;
@@ -77,9 +83,6 @@ void setup()
 
   // SPI DAC comms
   SPI.begin();
-  SPI.setDataMode(SPI_MODE1);
-  SPI.setBitOrder(MSBFIRST);
-  SPI.setClockDivider(SPI_CLOCK_DIV4);
 
   // Set Pin numbers to port bytes for speed in loop
   Pin_ChA = (1 << PIND2);
@@ -98,21 +101,22 @@ void setup()
   err_old = 0.0;
   dt = 2 * 60000000 / maxVal_RPM; // some sensible initial dt
   t_now = micros();
+  t_old_Ser = millis();
 
   switch (PPRmult)
   {
-  case 1:
-    attachInterrupt(0, ChA_edgeX1, FALLING);
-    attachInterrupt(1, ChB_edgeX1X2, CHANGE);
-    break;
-  case 2:
-    attachInterrupt(0, ChA_edgeX2X4, CHANGE);
-    attachInterrupt(1, ChB_edgeX1X2, CHANGE);
-    break;
-  case 4:
-    attachInterrupt(0, ChA_edgeX2X4, CHANGE);
-    attachInterrupt(1, ChB_edgeX4, CHANGE);
-    break;
+    case 1:
+      attachInterrupt(0, ChA_edgeX1, FALLING);
+      attachInterrupt(1, ChB_edgeX1X2, CHANGE);
+      break;
+    case 2:
+      attachInterrupt(0, ChA_edgeX2X4, CHANGE);
+      attachInterrupt(1, ChB_edgeX1X2, CHANGE);
+      break;
+    case 4:
+      attachInterrupt(0, ChA_edgeX2X4, CHANGE);
+      attachInterrupt(1, ChB_edgeX4, CHANGE);
+      break;
   }
 
 }
@@ -120,55 +124,70 @@ void setup()
 
 void loop()
 {
-
-  // PID controller loop ################
-  // use dt from encoder pulses, as that actually corresponds to the dt between RPM updates
-  //if (dt > 0) // should never happen
-  //{
-  dti = 0.000001 * static_cast<float>(dt);
-  inv_dti = 1.0 / dti;
-  RPM = dir ? (dtheta * inv_dti) : (-dtheta * inv_dti);
-  //}
-
-  err = RPM_set - RPM;
-
-  if (abs(err - err_old) > RPM_tol) // only alter PID and drive if RPM has changed (note this misses case of const dt with non-zero err)
+  while (true)
   {
-    // PID controller ####################
-    Pi = KP * err;
-    Ii += KI * (err + err_old) * dti;
-    Di = KD * (err - err_old) * inv_dti;
-    Vm = constrain(Pi + Ii + Di, minVal_Vm, maxVal_Vm);
-    // ####################################
+    // PID controller loop ################
+    // use dt from encoder pulses, as that actually corresponds to the dt between RPM updates
 
-    // OUTPUT Vd TO Vd DAC ################
-    // re-scale Vd to 0...65535
-    DACval_Vm = static_cast<word>(constrain(static_cast<long>(floor(((Vm + 10.0) * inv_max_minDivBits_Vm) + 0.5)), 0, 65535));
-    // write to DAC chip
-    PORTB |= Pin_LDAC_Vm; //digitalWrite(Pin_LDAC_Vm, HIGH); 
-    PORTB &= ~Pin_CS_Vm; //digitalWrite(Pin_CS_Vm, LOW);
-    SPI.transfer(static_cast<byte>((DACval_Vm & 0b1111111100000000) >> 8)); // High byte
-    SPI.transfer(static_cast<byte>(DACval_Vm & 0b0000000011111111)); // Low byte
-    PORTB |= Pin_CS_Vm; //digitalWrite(Pin_CS_Vm, HIGH);
-    PORTB &= ~Pin_LDAC_Vm; //digitalWrite(Pin_LDAC_Vm, LOW);
-    // ####################################
+    dti = 0.000001 * static_cast<float>(dt);
+    if (dti > 0.0)
+    {
+      inv_dti = 1.0 / dti;
+      RPM = dir ? (dtheta * inv_dti) : (-dtheta * inv_dti);
 
-    // OUTPUT RPM TO RPM DAC ##############
-    // re-scale RPM to 0...65535
-    DACval_RPM = static_cast<word>(constrain(static_cast<long>(floor(((RPM - minVal_RPM) * inv_max_minDivBits_RPM) + 0.5)), 0, 65535));
-    // write to DAC chip
-    PORTD |= Pin_LDAC_RPM; //digitalWrite(Pin_LDAC_RPM, HIGH);
-    PORTB &= ~Pin_CS_RPM; //digitalWrite(Pin_CS_RPM, LOW);
-    SPI.transfer(static_cast<byte>((DACval_RPM & 0b1111111100000000) >> 8)); // High byte
-    SPI.transfer(static_cast<byte>(DACval_RPM & 0b0000000011111111)); // Low byte
-    PORTB |= Pin_CS_RPM; //digitalWrite(Pin_CS_RPM, HIGH);
-    PORTD &= ~Pin_LDAC_RPM; //digitalWrite(Pin_LDAC_RPM, LOW);
-    // #####################################
+      err = RPM_set - RPM;
 
-    err_old = err;
-   // PORTC ^= Pin_Spkr; // useful for audible loop load cue
+      if (abs(err - err_old) > RPM_tol) // only alter PID and drive if RPM has changed (note this misses case of const dt with non-zero err)
+      {
+        // PID controller ####################
+        Pi = KP * err;
+        Ii += KI * (err + err_old) * dti;
+        Di = KD * (err - err_old) * inv_dti;
+        Vm = constrain(Pi + Ii + Di, minVal_Vm, maxVal_Vm);
+        // ####################################
+
+        // OUTPUT Vm TO Vm_DAC ################
+        // re-scale Vm to 0...65535
+        DACval_Vm = static_cast<word>(constrain(static_cast<long>(floor(((Vm + 10.0) * inv_max_minDivBits_Vm) + 0.5)), 0, 65535));
+        // write to DAC chip
+        SPI.beginTransaction(spiDAC);
+        PORTB |= Pin_LDAC_Vm; //digitalWrite(Pin_LDAC_Vm, HIGH);
+        PORTB &= ~Pin_CS_Vm; //digitalWrite(Pin_CS_Vm, LOW);
+        SPI.transfer(static_cast<byte>((DACval_Vm & 0b1111111100000000) >> 8)); // High byte
+        SPI.transfer(static_cast<byte>(DACval_Vm & 0b0000000011111111)); // Low byte
+        PORTB |= Pin_CS_Vm; //digitalWrite(Pin_CS_Vm, HIGH);
+        PORTB &= ~Pin_LDAC_Vm; //digitalWrite(Pin_LDAC_Vm, LOW);
+        SPI.endTransaction();
+        // ####################################
+
+        // OUTPUT RPM TO RPM_DAC ##############
+        // re-scale RPM to 0...65535
+        DACval_RPM = static_cast<word>(constrain(static_cast<long>(floor(((RPM - minVal_RPM) * inv_max_minDivBits_RPM) + 0.5)), 0, 65535));
+        // write to DAC chip
+        SPI.beginTransaction(spiDAC);
+        PORTD |= Pin_LDAC_RPM; //digitalWrite(Pin_LDAC_RPM, HIGH);
+        PORTB &= ~Pin_CS_RPM; //digitalWrite(Pin_CS_RPM, LOW);
+        SPI.transfer(static_cast<byte>((DACval_RPM & 0b1111111100000000) >> 8)); // High byte
+        SPI.transfer(static_cast<byte>(DACval_RPM & 0b0000000011111111)); // Low byte
+        PORTB |= Pin_CS_RPM; //digitalWrite(Pin_CS_RPM, HIGH);
+        PORTD &= ~Pin_LDAC_RPM; //digitalWrite(Pin_LDAC_RPM, LOW);
+        SPI.endTransaction();
+        // #####################################
+
+        err_old = err;
+        //PORTC ^= Pin_Spkr; // useful for audible loop load cue
+      }
+      //PORTC ^= Pin_Spkr; // useful for audible loop load cue
+    }
+
+    t_now_Ser = millis();
+    if ((t_now_Ser - t_old_Ser) >= dt_Ser)
+    {
+      t_old_Ser = t_now_Ser;
+      SerialCheck();
+    }
+
   }
-    //PORTC ^= Pin_Spkr; // useful for audible loop load cue
 }
 
 
@@ -214,7 +233,6 @@ void ChB_edgeX4()
 
 void ReInitialiseVars()
 {
-
   KI = 0.5 * KP / TI;
   KD = KP * TD;
 
@@ -232,161 +250,128 @@ void ReInitialiseVars()
 
   switch (PPRmult)
   {
-  case 1:
-    A = 0;
-    attachInterrupt(0, ChA_edgeX1, FALLING);
-    attachInterrupt(1, ChB_edgeX1X2, CHANGE);
-    break;
-  case 2:
-    attachInterrupt(0, ChA_edgeX2X4, CHANGE);
-    attachInterrupt(1, ChB_edgeX1X2, CHANGE);
-    break;
-  case 4:
-    attachInterrupt(0, ChA_edgeX2X4, CHANGE);
-    attachInterrupt(1, ChB_edgeX4, CHANGE);
-    break;
+    case 1:
+      A = 0;
+      attachInterrupt(0, ChA_edgeX1, FALLING);
+      attachInterrupt(1, ChB_edgeX1X2, CHANGE);
+      break;
+    case 2:
+      attachInterrupt(0, ChA_edgeX2X4, CHANGE);
+      attachInterrupt(1, ChB_edgeX1X2, CHANGE);
+      break;
+    case 4:
+      attachInterrupt(0, ChA_edgeX2X4, CHANGE);
+      attachInterrupt(1, ChB_edgeX4, CHANGE);
+      break;
   }
-
 }
 
 
-void serialEvent()
+inline void SerialCheck()
 {
-  if (Serial.read() == '@') // beginning of instruction in correct place, read until termination char '#'
+  if (Serial.available())
   {
-    // already discarded '@'
-    // read all into buffer, then parse values as appropriate
-    Serial.readBytesUntil('#', Buffer, sizeof(Buffer)); // does NOT include '#'
-    //Serial.write(reinterpret_cast<byte*>(&Buffer), sizeof(Buffer)); // echo for debug only
-
-    // check if setting RPM only, or full config.
-    switch(Buffer[0])
+    if (Serial.read() == '@') // beginning of instruction in correct place, read until termination char '#'
     {
-    case 1: // RPM set only
-      RPM_set_bytes[0] = Buffer[4];
-      RPM_set_bytes[1] = Buffer[3];
-      RPM_set_bytes[2] = Buffer[2];
-      RPM_set_bytes[3] = Buffer[1];
+      // already discarded '@'
+      // read all into buffer, then parse values as appropriate
+      Serial.readBytesUntil('#', Buffer, sizeof(Buffer)); // does NOT include '#'
+      //Serial.write(reinterpret_cast<byte*>(&Buffer), sizeof(Buffer)); // echo for debug only
 
-      memcpy(&RPM_set, &RPM_set_bytes, 4);
-      //Ii = 0.0;
-      //err_old = 0.0;
-      dt = 2 * 60000000 / maxVal_RPM; // some sensible initial dt
-      t_now = micros();
+      // check if setting RPM only, or full config.
+      switch (Buffer[0])
+      {
+        case 1: // RPM set only
+          RPM_set_bytes[0] = Buffer[4];
+          RPM_set_bytes[1] = Buffer[3];
+          RPM_set_bytes[2] = Buffer[2];
+          RPM_set_bytes[3] = Buffer[1];
 
-      break;
-    case 0: // Full config.
-      RPM_set_bytes[0] = Buffer[4];
-      RPM_set_bytes[1] = Buffer[3];
-      RPM_set_bytes[2] = Buffer[2];
-      RPM_set_bytes[3] = Buffer[1];
+          memcpy(&RPM_set, &RPM_set_bytes, 4);
+          //Ii = 0.0;
+          //err_old = 0.0;
+          dt = 2 * 60000000 / maxVal_RPM; // some sensible initial dt
+          t_now = micros();
 
-      PPR_bytes[0] = Buffer[6];
-      PPR_bytes[1] = Buffer[5];
-      PPRmult = Buffer[7];
+          break;
+        case 0: // Full config.
+          RPM_set_bytes[0] = Buffer[4];
+          RPM_set_bytes[1] = Buffer[3];
+          RPM_set_bytes[2] = Buffer[2];
+          RPM_set_bytes[3] = Buffer[1];
 
-      maxVal_RPM_bytes[0] = Buffer[11];
-      maxVal_RPM_bytes[1] = Buffer[10];
-      maxVal_RPM_bytes[2] = Buffer[9];
-      maxVal_RPM_bytes[3] = Buffer[8];
-      minVal_RPM_bytes[0] = Buffer[15];
-      minVal_RPM_bytes[1] = Buffer[14];
-      minVal_RPM_bytes[2] = Buffer[13];
-      minVal_RPM_bytes[3] = Buffer[12];
-      RPM_tol_bytes[0] = Buffer[19];
-      RPM_tol_bytes[1] = Buffer[18];
-      RPM_tol_bytes[2] = Buffer[17];
-      RPM_tol_bytes[3] = Buffer[16];
+          PPR_bytes[0] = Buffer[6];
+          PPR_bytes[1] = Buffer[5];
+          PPRmult = Buffer[7];
 
-      maxVal_Vm_bytes[0] = Buffer[23];
-      maxVal_Vm_bytes[1] = Buffer[22];
-      maxVal_Vm_bytes[2] = Buffer[21];
-      maxVal_Vm_bytes[3] = Buffer[20];
-      minVal_Vm_bytes[0] = Buffer[27];
-      minVal_Vm_bytes[1] = Buffer[26];
-      minVal_Vm_bytes[2] = Buffer[25];
-      minVal_Vm_bytes[3] = Buffer[24];
-      GearRatio_bytes[0] = Buffer[31];
-      GearRatio_bytes[1] = Buffer[30];
-      GearRatio_bytes[2] = Buffer[29];
-      GearRatio_bytes[3] = Buffer[28];
+          maxVal_RPM_bytes[0] = Buffer[11];
+          maxVal_RPM_bytes[1] = Buffer[10];
+          maxVal_RPM_bytes[2] = Buffer[9];
+          maxVal_RPM_bytes[3] = Buffer[8];
+          minVal_RPM_bytes[0] = Buffer[15];
+          minVal_RPM_bytes[1] = Buffer[14];
+          minVal_RPM_bytes[2] = Buffer[13];
+          minVal_RPM_bytes[3] = Buffer[12];
+          RPM_tol_bytes[0] = Buffer[19];
+          RPM_tol_bytes[1] = Buffer[18];
+          RPM_tol_bytes[2] = Buffer[17];
+          RPM_tol_bytes[3] = Buffer[16];
 
-      KP_bytes[0] = Buffer[35];
-      KP_bytes[1] = Buffer[34];
-      KP_bytes[2] = Buffer[33];
-      KP_bytes[3] = Buffer[32];
-      TI_bytes[0] = Buffer[39];
-      TI_bytes[1] = Buffer[38];
-      TI_bytes[2] = Buffer[37];
-      TI_bytes[3] = Buffer[36];
-      TD_bytes[0] = Buffer[43];
-      TD_bytes[1] = Buffer[42];
-      TD_bytes[2] = Buffer[41];
-      TD_bytes[3] = Buffer[40];
+          maxVal_Vm_bytes[0] = Buffer[23];
+          maxVal_Vm_bytes[1] = Buffer[22];
+          maxVal_Vm_bytes[2] = Buffer[21];
+          maxVal_Vm_bytes[3] = Buffer[20];
+          minVal_Vm_bytes[0] = Buffer[27];
+          minVal_Vm_bytes[1] = Buffer[26];
+          minVal_Vm_bytes[2] = Buffer[25];
+          minVal_Vm_bytes[3] = Buffer[24];
+          GearRatio_bytes[0] = Buffer[31];
+          GearRatio_bytes[1] = Buffer[30];
+          GearRatio_bytes[2] = Buffer[29];
+          GearRatio_bytes[3] = Buffer[28];
 
-      memcpy(&RPM_set, &RPM_set_bytes, 4);
+          KP_bytes[0] = Buffer[35];
+          KP_bytes[1] = Buffer[34];
+          KP_bytes[2] = Buffer[33];
+          KP_bytes[3] = Buffer[32];
+          TI_bytes[0] = Buffer[39];
+          TI_bytes[1] = Buffer[38];
+          TI_bytes[2] = Buffer[37];
+          TI_bytes[3] = Buffer[36];
+          TD_bytes[0] = Buffer[43];
+          TD_bytes[1] = Buffer[42];
+          TD_bytes[2] = Buffer[41];
+          TD_bytes[3] = Buffer[40];
 
-      memcpy(&PPR, &PPR_bytes, 2);
+          memcpy(&RPM_set, &RPM_set_bytes, 4);
 
-      memcpy(&maxVal_RPM, &maxVal_RPM_bytes, 4);
-      memcpy(&minVal_RPM, &minVal_RPM_bytes, 4);
-      memcpy(&RPM_tol, &RPM_tol_bytes, 4);
+          memcpy(&PPR, &PPR_bytes, 2);
 
-      memcpy(&maxVal_Vm, &maxVal_Vm_bytes, 4);
-      memcpy(&minVal_Vm, &minVal_Vm_bytes, 4);
-      memcpy(&GearRatio, &GearRatio_bytes, 4);
+          memcpy(&maxVal_RPM, &maxVal_RPM_bytes, 4);
+          memcpy(&minVal_RPM, &minVal_RPM_bytes, 4);
+          memcpy(&RPM_tol, &RPM_tol_bytes, 4);
 
-      memcpy(&KP, &KP_bytes, 4);
-      memcpy(&TI, &TI_bytes, 4);
-      memcpy(&TD, &TD_bytes, 4);
+          memcpy(&maxVal_Vm, &maxVal_Vm_bytes, 4);
+          memcpy(&minVal_Vm, &minVal_Vm_bytes, 4);
+          memcpy(&GearRatio, &GearRatio_bytes, 4);
 
-      ReInitialiseVars();
-      break; 
-    }    
+          memcpy(&KP, &KP_bytes, 4);
+          memcpy(&TI, &TI_bytes, 4);
+          memcpy(&TD, &TD_bytes, 4);
 
-  }
-  else
-  {
-    // discard entire buffer
-    while (Serial.available() > 0)
+          ReInitialiseVars();
+          break;
+      }
+
+    }
+    else
     {
-      Serial.read();
+      // discard entire buffer
+      while (Serial.available() > 0)
+      {
+        Serial.read();
+      }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,24 +1,25 @@
-// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015
-// Set to 120MHz clock
+// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015. Rev 2: 21/12/2015
+// Set to 144MHz clock
 // !! Remember to cut Vusb to 5V link!!
 
-#include <spi4teensy3.h>
+#pragma GCC optimize ("O3")
+
+#include <SPI.h>
 
 IntervalTimer SampleClock;
 
-int pin_CS = 10;
-int pin_OVR = 0;
-int pin_ACQ = 1;
-int pin_OS0 = 2;
-int pin_OS1 = 3;
-int pin_OS2 = 4;
-int pin_STBY = 5;
-int pin_RANGE = 6;
-int pin_CONVST = 7;
-int pin_RESET = 8;
-int pin_BUSY = 9;
-int pin_TRIG = 23;
-int pin_bTRIG;
+static const byte pin_CS = 10;
+static const byte pin_OVR = 0;
+static const byte pin_ACQ = 1;
+static const byte pin_OS0 = 2;
+static const byte pin_OS1 = 3;
+static const byte pin_OS2 = 4;
+static const byte pin_STBY = 5;
+static const byte pin_RANGE = 6;
+static const byte pin_CONVST = 7;
+static const byte pin_RESET = 8;
+static const byte pin_BUSY = 9;
+static const byte pin_TRIG = 23;
 
 float dt = 1000.0; // us
 
@@ -39,7 +40,7 @@ byte OS[3] = {0, 0, 0};
 byte Range = 1;
 byte TriggerMode = 0;
 byte NchanBytes = 18;
-byte SleepState = 0;
+byte SleepState = 0; // (0, 1, 2) = (wakeup, standby, shutdown)
 
 volatile byte Clocking = 0;
 
@@ -50,8 +51,8 @@ void setup()
 
   Configure_Pins();
 
-  spi4teensy3::init(1, 1, 0); // clk div 4 (15MHz at 120MHz clock), cpol 1, cpha 0 (Note max spec is 15MHz max at Vdrive = 3.3V)
-
+  SPI.begin();
+  
   Serial.begin(12160000);
   //while (!Serial);
 
@@ -62,7 +63,10 @@ void setup()
 
 void loop()
 {
-  SerInCheck(); // Check for host PC commands
+  while (true)
+  {
+    SerInCheck(); // Check for host PC commands
+  }
 }
 
 
@@ -93,32 +97,19 @@ void Configure_Pins()
   digitalWriteFast(pin_RESET, LOW);
 
   // configure interrupt(s)
-  attachInterrupt(pin_BUSY, Busy_FALLING, FALLING); // on low, read newest conversion
-
-  // convert to port bytes for max speed ops
-  pin_CS = (1 << 4); // C4
-  pin_OVR = (1 << 16); // B16
-  pin_ACQ = (1 << 17); // B17
-  //pin_OS0 = (1 << 0); // D0
-  //pin_OS1 = (1 << 12); // A12
-  //pin_OS2 = (1 << 13); // A13
-  //pin_STBY = (1 << 7); // D7
-  //pin_RANGE = (1 << 4); // D4
-  pin_CONVST = (1 << 2); // D2
-  //pin_RESET = (1 << 3); // D3
-  pin_BUSY = (1 << 3); // C3
-  pin_bTRIG = (1 << 2); // C2
+  attachInterrupt(digitalPinToInterrupt(pin_BUSY), Busy_FALLING, FALLING); // on low, read newest conversion
+  SPI.usingInterrupt(digitalPinToInterrupt(pin_BUSY));
 }
 
 
 void Pulse()
 {
-  // Hold low for 25ns
-  GPIOD_PCOR = pin_CONVST; // Low
+  // Hold low for 25ns.
+  digitalWriteFast(pin_CONVST, LOW); // Low
 
-  __asm__("nop\n\t""nop\n\t""nop\n\t"); //25ns delay at 120MHz
+  __asm__ __volatile__("nop\n\t""nop\n\t""nop\n\t""nop\n\t"::); //27.78ns delay at 144MHz.
 
-  GPIOD_PSOR = pin_CONVST; // High
+  digitalWriteFast(pin_CONVST, HIGH); // High
   Clocking = 1;
 }
 
@@ -129,14 +120,20 @@ void Busy_FALLING()
   // Pulse ISR can change volatile clocking global between being reset above and the following check
   // if it goes high, this means new data was being converted during the upcoming conversion
   // this is an overrun, set flags
-  GPIOC_PCOR = pin_CS; // CS low
-  spi4teensy3::receive(DataBuffer, NchanBytes);
-  GPIOC_PSOR = pin_CS; // CS high
+  
+  SPI.beginTransaction(SPISettings(24000000, MSBFIRST, SPI_MODE2));
+  digitalWriteFast(pin_CS, LOW);
+  for (byte i = 0; i < NchanBytes; ++i)
+  {
+    DataBuffer[i] = SPI.transfer(0x00);
+  }
+  digitalWriteFast(pin_CS, HIGH);
+  SPI.endTransaction();
 
   if (Clocking)
   {
-    Overrun += 1;
-    GPIOB_PSOR = pin_OVR;
+    ++Overrun;
+    digitalWriteFast(pin_OVR, HIGH);
   }
 
   Serial.write(DataBuffer, NchanBytes);
@@ -145,14 +142,14 @@ void Busy_FALLING()
 
 void Trigger()
 {
-  //switch (GPIOC_PDIR & pin_bTRIG) // check trigger state high or low
+  //switch (digitalReadFast(pin_TRIG)) // check trigger state high or low
   //{
   //case 0: // Low. Begin sampling
   ACQ_Begin();
-  //  break;
+  //break;
   //default: // High. Stop sampling
-  //  ACQ_End();
-  //  break;
+  //ACQ_End();
+  //break;
   //}
 }
 
@@ -197,12 +194,14 @@ void Reset()
 {
   ACQ_End();
   Overrun = 0;
-  GPIOB_PCOR = pin_OVR;
+  digitalWriteFast(pin_OVR, LOW);
 
   digitalWriteFast(pin_RESET, HIGH);
   delayMicroseconds(1);
   digitalWriteFast(pin_RESET, LOW);
   delayMicroseconds(1);
+
+  Pulse(); // Gets rid of first spurious sample glitch
 }
 
 
@@ -210,19 +209,19 @@ inline void ACQ_Begin()
 {
   SampleClock.begin(Pulse, dt);
   Overrun = 0;
-  GPIOB_PCOR = pin_OVR;
-  GPIOB_PSOR = pin_ACQ;
+  digitalWriteFast(pin_OVR, LOW);
+  digitalWriteFast(pin_ACQ, HIGH);
 }
 
 
 inline void ACQ_End()
 {
   SampleClock.end();
-  GPIOB_PCOR = pin_ACQ;
- }
+  digitalWriteFast(pin_ACQ, LOW);
+}
 
 
-void SerInCheck()
+FASTRUN void SerInCheck()
 {
   if (Serial.available()) // only proceed if byte(s) from PC waiting in buffer
   {
@@ -315,41 +314,3 @@ void SerInCheck()
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
