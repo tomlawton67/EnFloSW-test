@@ -1,7 +1,7 @@
 -- Author : Kyle Gompertz
 -- Last Edited : 11 November 2015
 slave_address = {0x65,0x66,0x67,0x68,0x69,0x6A,0x6B,0x6C}
-zeros = {97,98,98,98,97,96,95,95}
+zeros = {97,98,98,98,97,96,95,96}
 cm = {0,0,0,0,0,0,0,0}
 numBytesTX = 0
 numBytesRX = 0
