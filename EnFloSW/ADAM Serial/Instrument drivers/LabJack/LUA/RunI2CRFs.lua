@@ -1,7 +1,6 @@
 -- Author : Kyle Gompertz
 -- Last Edited : 11 November 2015
 slave_address = {0x65,0x66,0x67,0x68,0x69,0x6A,0x6B,0x6C}
-zeros = {97,98,98,98,97,96,95,96}
 cm = {0,0,0,0,0,0,0,0}
 numBytesTX = 0
 numBytesRX = 0
@@ -51,8 +50,8 @@ while true do
 		elseif processing == 2 then	--Command : Read Register 5160
 			if LJ.CheckInterval(0) then
 				dataRX, error_val = MB.RA(5160, 99, numBytesRX)
-				cm[ps] = zeros[ps] - (256*dataRX[1] + dataRX[2])
-				if cm[ps] < 0 then
+				cm[ps] = (256*dataRX[1] + dataRX[2])
+				if cm[ps] > 1000 then
 				  cm[ps] = 0
 				end
 				MB.W(RAMreg,0,cm[ps])
