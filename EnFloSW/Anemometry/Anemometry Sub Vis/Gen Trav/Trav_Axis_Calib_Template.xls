@@ -1,10 +1,10 @@
 Log Folder Name	C:\Program Files (x86)\National Instruments\LabVIEW 2015
 *************	*************	*************	*************	*************	*************	*************	*************	*************	*************	
-X (mm)	Y (mm)	Z (mm)	X_Strip(mm)	Y_Strip(mm)	Image	Image	Image	Image	Image	Image	Multi Run	Raw	Seconds	Current	Calib_Strip_Offset	Delta Y
-					Delta X	Delta Y	Camera	Scale Factor	Scale	Rotaion	Start Time	Data	since	File		minus
-					mm	mm	Angle	mm/pixel	Ratio	Deg		Filename	1st Jan			Average
+X (mm)	Y (mm)	Z (mm)	X_Strip(mm)	Y_Strip(mm)	Image	Image	Image	Image	Image	Manual	Multi Run	Raw	Seconds	Current	Calib_Strip_Offset	Calculated
+					Delta X	Delta Y	Camera	Scale Factor	Scale	Offset	Start Time	Data	since	File		Ch
+					mm	mm	Angle	mm/pixel	Ratio	Tweak		Filename	1st Jan			
 																
-X (mm)::	Y (mm)::	Z (mm)::	X_Strip(mm)::	Y_Strip(mm)::	Image:Delta X:mm	Image:Delta Y:mm	Image:Camera:Angle	Image:Scale Factor:mm/pixel	Image:Scale:Ratio	Image:Rotaion:Deg	Multi Run:Start Time:	Raw:Data:Filename	Seconds:since:1st Jan	Current:File:	Calib_Strip_Offset::	Delta Y:minus:Average
+X (mm)::	Y (mm)::	Z (mm)::	X_Strip(mm)::	Y_Strip(mm)::	Image:Delta X:mm	Image:Delta Y:mm	Image:Camera:Angle	Image:Scale Factor:mm/pixel	Image:Scale:Ratio	Manual:Offset:Tweak	Multi Run:Start Time:	Raw:Data:Filename	Seconds:since:1st Jan	Current:File:	Calib_Strip_Offset::	Calculated:Ch:
 																
 **Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**	**Description Start**
 **Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**	**Description End**
@@ -14,7 +14,7 @@ X (mm)::	Y (mm)::	Z (mm)::	X_Strip(mm)::	Y_Strip(mm)::	Image:Delta X:mm	Image:De
 **Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**	**Tolerance End**
 																
 **Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**	**Precision Start**
- 	 	 	 	0	 	 	 	 	 	 	 	 	 	 	 	 
+ 	 	 	2	2	 	 	 	 	 	 	 	 	 	 	 	 
 **Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**	**Precision End**
 																
 **Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**	**Dispose Start**
@@ -34,7 +34,7 @@ RV (V1):X Position:X (mm)	RV (V1):Y Position:Y (mm)	RV (V1):Z Position:Z (mm)	X_
 **Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**	**Replace End**
 																
 **Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**	**Maths Start**
- 	 	 	<<X (mm)::>>-<<Calib_Strip_Offset::>>	<<Y (mm)::>>-<<Calib_Strip_Offset::>>	 	 	 	 	 	 	 	 	 	 	 	 
+ 	 	 	<<X (mm)::>>-<<Calib_Strip_Offset::>>	<<Y (mm)::>>-<<Calib_Strip_Offset::>>	 	 	 	 	 	 	 	 	 	 	 	<<Image:Delta X:mm>>-<<Manual:Offset:Tweak>>
 **Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**	**Maths End**
 																
 **Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**	**Omit Start**
