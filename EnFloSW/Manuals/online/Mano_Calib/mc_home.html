@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>A Pressure Transducer Calibration</title>
+ </head>
+ <body bgcolor="#ffffff" text="#000000">
+  <h2 align="center">An Example of a Pressure Transducer Calibration</h2>
+
+ 
+ The aim of this calibration is to relate the voltage output of a micromanometer (the pressure transducer) to the pressure reading on its front panel display. Note that this is not a calibration of the micromanometer against a pressure standard, but only a calibration of the micromanometer with itself (the voltage output from the transducer to front panel display value).  The purpose of doing such a calibration is so that the pressure can be read directly by the computer after it knows the relationship between the output of voltage of the device and the value it displays.
+
+The Micro manometer must have pressure displayed on its front panel (The top right switch) since changing the switch settings on its front panel changes the voltage output of the Micromanometer and therefore the calibration.
+ 
+ 
+  <table cellspacing="2" cellpadding="2" width="100%">
+  
+   <tr>
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <h3>Step 1</h3>
+    <p>If LabVIEW is not running Launch it and open the <strong>EnFlo_Hub.vi</strong> as shown below</p>
+    <img src="Figures/mc1_enflo_hub.jpg" alt width="603" height="458">
+     <p>Click on the <strong>Calibration</strong> icon to open the calibration program.</p>
+    </td></tr>
+
+
+
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 2</h3>
+    <p>This is the <strong>Calibration.vi</strong> which should now be showing. It should have initialised itself to show the most recent calibration that has been carried out or be blank, as shown below, if this is the first calibration carried out using <strong>Calibration.vi</strong> on this machine</p>
+    <img src="Figures/mc2_calib_fp.jpg" alt width="703" height="596">
+    <p>Click on the <strong>Run</strong> arrow to show the calibration setup</p>
+    </td></tr>
+   
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 3</h3>
+    <p>If the <strong>Calib file</strong> box on the <strong>Calibration.vi</strong> was left blank the file dialog will appear asking the user to choose a new or existing calibration file. The Calibration file created in this example is "/Users/paul_local/Documents/LabVIEW_data/Examples/Calib_Files/Mano_Calib.txt".   The layout of this dialog box will be platform dependent.</p>
+    <img src="Figures/mc3_file_dialog.jpg" alt width="560" height="452">
+      <p>Select the desired calibration filename</p>
+     
+    </td>
+   </tr>
+   
+     <tr>
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 4</h3>
+    <p>The <strong>Calibration User input</strong> dialog should now be displayed</p>
+    <img src="Figures/mc4_calib_setup_panel.jpg" alt width="578" height="746" usemap="#mc4_calib_setup_panel.jpg" border="0">
+<p>Enter the voltage limits for the micromanometer voltage output which will enable the acquisition system to optimise the use of its A to D converter voltage range.</p>
+    <p>The <strong>Acquisition Method</strong> used in this example is the ADC488 which is an external Analogue to Digital convertor having it own onboard memory and is linked to the computer via a GPIB interface.</p>
+    <p>Press the green <strong>OK</strong> button after having set this panel appropriately</p>
+    </td>
+   </tr>
+   
+   
+     <tr>
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 5</h3>
+    <p>The <strong>Pressure Transducer Setup.vi</strong> dialog should now be displayed</p>
+    <img src="Figures/mc5_Pres_Trans_Setup.jpg" alt width="584" height="581">
+    
+    <p>Press the green <strong>OK</strong> button when you are ready to move on</p>
+         </td>
+   </tr>
+   
+ 
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 6</h3>
+    <p>Now all the setup dialogs have been answered the <strong>Calibration.vi</strong> should look like this</p>
+    <img src="Figures/mc6_calib_fp.jpg" alt width="693" height="481">
+    
+    <p>In this example the micromanometer we are calibrating is connected to a pitot-static tube in the wind tunnel and so we will be controlling the pressure input to the transducer by changing the wind tunnel speed.</p>
+      </td></tr>
+   
+    <!--The FIRST calibration point-->
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 7</h3>
+    <p>If the wind tunnel you are working on has LabVIEW speed control, go to the <strong>EnFlo_Hub.vi</strong> and click on the icon <strong>Tunnel Speed Control</strong> in the <strong>User</strong> tab to launch the panel shown below, or manually control the tunnel speed</p>
+    <img src="Figures/mc7_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Type in the desired <strong>Tunnel Velocity m/s</strong> value and click on the <strong>Run</strong> arrow to set the tunnel speed</p>
+    </td></tr>
+        
+        
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 8</h3>
+    <p>Now click back on the <strong>Calibration.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar</p>
+    <img src="Figures/mc6_calib_fp.jpg" alt width="693" height="481">
+    <p>The only remaining values to set on <strong>Calibration.vi</strong> front panel are the number of samples <strong>Samples/ch</strong> and the sampling rate <strong>Sampling Rate /ch(Hz)</strong>.</p>
+ <p>Click on the <strong>Run</strong> arrow when the pressure transducer has settled at the first calibration value.</p>
+    </td></tr>
+   
+   
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 9</h3>
+    <p>After the micromanometer has been sampled for 6 seconds the <strong>Input Value Dialog</strong> should be displayed</p>
+    <img src="Figures/mc8_input1.jpg" alt width="420" height="189">
+    <p>Enter the averaged micromanometer display value into the <strong>Input Value Dialog.vi</strong> panel, then press the green <strong>OK</strong> button</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 10</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running the first calibration point should be displayed</p>
+    <img src="Figures/mc9_calib_fp.jpg" alt width="693" height="481">
+    <p>The voltage trace is shown in the plot labelled <strong>Sample of input signals</strong>, and the average voltage value of 0.062 is recorded in the lower array directly above the entered value of 0.25 mmH<sub>2</sub>O. </p>
+    <p>The time trace for each calibration point is saved in a separate Raw data file that can be viewed using  <a href="mc_raw_data_files.html#point1">Measurement.vi</a> in the post processing mode.</p>
+    <p>The calibration constants A and B are NaN (Not a Number) since these cannot be evaluated from just one calibration point</p>
+    </td></tr>
+    
+    <!--The SECOND calibration point-->
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 11</h3>
+    <p>Now click back on the <strong>Set Tunnel Speed.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar or change the tunnel speed manually</p>
+    <img src="Figures/mc10_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Type in the desired <strong>Tunnel Velocity m/s</strong> value and click on the <strong>Run</strong> arrow to set the tunnel speed</p>
+    </td></tr>
+    
+    
+    
+      <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 12</h3>
+     <p>Now click back on the <strong>Calibration.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar</p>
+    <img src="Figures/mc9_calib_fp.jpg" alt width="693" height="481">
+    <p>Click on the <strong>Run</strong> arrow to take the next calibration point after the pressure transducer has settled</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 13</h3>
+     <p>After the micromanometer has been sampled for 6 seconds the <strong>Input Value Dialog</strong> should be displayed</p>
+    <img src="Figures/mc11_input2.jpg" alt width="431" height="189">
+     <p>Enter the averaged micromanometer display value into the <strong>Input Value Dialog.vi</strong> panel, then press the green <strong>OK</strong> button</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 14</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running the first two calibration points should be displayed</p>
+    <img src="Figures/mc12_calib_fp.jpg" alt width="693" height="481">
+    <p>The calibration constants A and B are now shown for the straight line fit for the equation</p>
+<p> E = A + B * Pressure </p>
+<p>where E is the micromanometer voltage output.</p>
+    <p>The <strong>Av % err</strong> is the square root of the mean square error in pressure divided by the average pressure. Obviously for a two point calibration this value will be zero.</p>
+<p>To add the next calibration point repeat <strong>Step 11</strong> to <strong>Step 13</strong> for a tunnel speed of 7m/s</p>
+    </td></tr>
+    
+    
+     <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 15</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running 3 calibration points should be displayed</p>
+    <img src="Figures/mc15_calib_fp.jpg" alt width="693" height="481">
+
+    <p>To add the next calibration point repeat <strong>Step 11</strong> to <strong>Step 13</strong> for a tunnel speed of 10m/s</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 16</h3>
+     <p>When the <strong>Calibration.vi</strong> stops running 4 calibration points should be displayed</p>
+    <img src="Figures/mc18_calib_fp.jpg" alt width="693" height="481">
+    <p>This would be considered a good micromanometer calibration over the pressure range from 0.25 to 6.2 mmH<sub>2</sub>O since the <strong>Av % err</strong> is 0.28% which is quite low. For a reasonable calibration you would expect this value to be less than 1%.</p>
+<p>The coefficients A and B stored in the calibration file, can now be used by <strong>Measurement.vi</strong> to convert the micromanometer voltage output to a reading of pressure using the equation</p>
+ <p>Pressure = (E - A) / B</p> 
+ <p>where E is the micromanometer voltage output.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>  
+
+    <a name="end">  </a>
+    
+    </td></tr>
+    
+    
+  </table>
+  
+   <h3>Advanced options</h3>
+  
+   <p><a href="mc_rm_points.html">How to remove unwanted calibration points</a></p>
+    
+    <p><a href="mc_file.html">View the calibration file</a></p>
+    
+    <p><a href="mc_raw_data_files.html">Information about the raw data files that have been generated</a></p>
+    
+     <p><a href="mc_home.html">Back to top of Page</a></p>
+     
+     <p><a href="../index.html">EnFlo Software Home</a></p>
+  
+  
+ 
+  
+  
+ <map name="mc4_calib_setup_panel.jpg">
+	<area shape="rect" coords="224,636,566,737" href="../Enter_Temp/T_and_P_input.html">
+</map>
+
+
+
+</body>
+</html>

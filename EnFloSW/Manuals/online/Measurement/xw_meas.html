@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Cross wire and reference pitot tube measurement</title>
+ </head>
+ <body bgcolor="#ffffff" text="#000000">
+  <h2 align="center">Using the Measurement.vi to take data from a cross wire and reference pitot tube</h2>
+
+ 
+<p>Prior to measuring, suitable calibrations need to be carried out for the <a href="../Mano_Calib/mc_home.html">Pressure transducer</a> (connected to the pitot-static tube) and the <a href="../XW_Calib/xwc_home.html">Cross Wire probe</a></p>
+
+
+ 
+  <table cellspacing="2" cellpadding="2" width="100%">
+  
+  <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <h3>Step 1</h3>
+    <p>In this example the cross wire signal is connected to Channels 2 and 3 of the ADC488 connection box and the signal from the micromanometer (pressure transducer) is connected to Channel 0.</p>
+    </td></tr>
+  
+  
+   <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <h3>Step 2</h3>
+    <p>If LabVIEW is not running Launch it and open the <strong>EnFlo_Hub.vi</strong> as shown below</p>
+    <img src="Figures_xw_meas/xwm1_enflo_hub.jpg" alt width="603" height="458">
+     <p>Click on the <strong>Measurement</strong> icon to open the Measurement program.</p>
+    </td></tr>
+
+
+
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 3</h3>
+    <p>This is the <strong>Measurement.vi</strong> which should now be showing.</p>
+    <img src="Figures_xw_meas/xwm2_meas_fp.jpg" alt width="661" height="863">
+    <p>Click on the <strong>Run</strong> arrow to show the Measurement setup</p>
+    </td></tr>
+   
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 4</h3>
+    
+     <p>&nbsp;</p>
+     <p>The <strong>Calibration User input</strong> dialog should now be displayed</p>
+    <img src="Figures_xw_meas/xwm3_meas_setup_panel.jpg" alt width="654" height="706" usemap="#xwm3_meas_setup_panel.jpg" border="0">
+<ol>
+	<li>Enter the No of Analogue inst that you wish to use as this will initialise the correct number of elements in the channel array</li>
+	<li>Select the instrument types eg. Pitot-static tube 
+</ol>
+
+
+
+
+    <p>Enter the voltage limits for the two hot wire anemometer bridges and micromanometer voltage outputs. This will enable the acquisition system to optimise the use of its A to D converter voltage range. The Temperature and Pressure inputs at the bottom of this panel are used to determine the air density (&rho;<sub>air</sub>) required to calculate the fluid velocity from the pitot-static tube dynamic pressure (P<sub>dyn</sub>).</p>
+<p> Velocity = (2*P<sub>dyn</sub>/&rho;<sub>air</sub>)<sup>0.5</sup></p>
+ <p>The <strong>Acquisition Method</strong> used in this example is the ADC488 which is an external Analogue to Digital convertor having it own onboard memory and is linked to the computer via a GPIB interface.</p>
+    <p>Press the green <strong>OK</strong> button after having set this panel appropriately</p>
+    </td></tr>
+   
+   <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 5</h3>
+    <p>If the <strong>Calib Filename</strong> for the micromanometer (connected to the pitot-static tube) could not be found the user will be prompted to search for a suitable calibration file via the file dialog box.</p>
+    <img src="Figures_Vel_2/xwc4_mano_filename.jpg" alt width="560" height="431" usemap="#mc4_calib_setup_panel.jpg" border="0">
+
+     <p>The Calibration file chosen in this example is  <strong>/Users/paul_local/Documents/LabVIEW_data/Examples/Calib_Files/Mano_Calib.txt</strong> created during the <a href="../Mano_Calib/mc_home.html">Micromanometer calibration.</a></p>
+ 
+    </td></tr>
+   
+   
+     <tr>
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 6</h3>
+    <p>The <strong>Hot Wire Setup</strong> dialog should now be displayed</p>
+    <img src="Figures_Vel_2/xwc5_HW_Setup.jpg" alt width="462" height="415">
+    <p>Press the green <strong>OK</strong> button after having set this panel appropriately</p>
+         </td>
+   </tr>
+   
+ 
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 7</h3>
+    <p>Now all the setup dialogs have been answered the <strong>Calibration.vi</strong> should look like this</p>
+    <img src="Figures_Vel_2/xwc6_calib_fp.jpg" alt width="693" height="481">
+    
+    <p>Before running the <strong>Calibration.vi</strong> the wind tunnel speed for the first calibration points needs to be set.</p>
+      </td></tr>
+   
+    <!--The FIRST calibration point-->
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 8</h3>
+    <p>If the wind tunnel you are working on has LabVIEW speed control, go to the <strong>EnFlo_Hub.vi</strong> and click on the icon <strong>Tunnel Speed Control</strong> in the <strong>User</strong> tab to launch the panel shown below, or manually control the tunnel speed</p>
+    <img src="Figures_Vel_2/xwc7_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Type in the desired <strong>Tunnel Velocity m/s</strong> value and click on the <strong>Run</strong> arrow to set the tunnel speed</p>
+    </td></tr>
+        
+        
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 9</h3>
+    <p>Now click back on the <strong>Calibration.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar</p>
+    <img src="Figures_Vel_2/xwc6_calib_fp.jpg" alt width="693" height="481">
+    <p>The only remaining values to set on <strong>Calibration.vi</strong> front panel are the number of samples <strong>Samples/ch</strong> and the sampling rate <strong>Sampling Rate /ch (Hz)</strong>.</p>
+<p> Click on the <strong>Run</strong> arrow when the tunnel velocity has settled at the first calibration value.</p>
+    </td></tr>
+   
+   
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 10</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running the first calibration point should be displayed</p>
+    <img src="Figures_Vel_2/xwc9_calib_fp.jpg" alt width="693" height="481">
+    <p>The velocity trace from the pitot-static tube and the voltage traces from the two hot wire anemometer are shown in the plot labelled <strong>Sample of input signals</strong>, and their average values are recorded in the lower array.</p>
+    <p>The calibration constants A, B and n are NaN (Not a Number) since these cannot be evaluated from just one calibration point</p>
+    <p>The time trace for each calibration point is saved in a separate Raw data file that can be view using <a href="../HotWire_Calib/hwc_raw_data_files.html#point1">Measurement.vi</a> in its post processing mode.</p>
+    </td></tr>
+    
+    <!--The SECOND calibration point-->
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 11</h3>
+    <p>Now click back on the <strong>Set Tunnel Speed.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar or change the tunnel speed manually</p>
+    <img src="Figures_Vel_2/xwc10_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Type in the desired <strong>Tunnel Velocity m/s</strong> value and click on the <strong>Run</strong> arrow to set the tunnel speed</p>
+    </td></tr>
+    
+    
+    
+      <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 12</h3>
+     <p>Now click back on the <strong>Calibration.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar</p>
+    <img src="Figures_Vel_2/xwc9_calib_fp.jpg" alt width="693" height="481">
+    <p>Click on the <strong>Run</strong> arrow to take the next calibration point after the pressure transducer has settled</p>
+    </td></tr>
+    
+    
+  
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 13</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running the first two calibration points should be displayed</p>
+    <img src="Figures_Vel_2/xwc12_calib_fp.jpg" alt width="693" height="481">
+    <p>The calibration constants A and B are now shown for the King's law fit for the equation E<sup>2</sup> = A + BU<sup>n</sup> where E is the anemometer voltage, U is the fluid velocity and A, B and n are fitting coefficients.</p>
+    <p>The <strong>Av % err</strong> is the square root of the mean square error in velocity divided by the average velocity. Obviously for a two point calibration this value will be zero.</p>
+    <p>To add the next calibration point repeat <strong>Step 11</strong> and <strong>Step 12</strong> for a tunnel speed of 7m/s</p>
+    </td></tr>
+    
+    
+   
+     <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 14</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running 3 calibration points should be displayed</p>
+    <img src="Figures_Vel_2/xwc15_calib_fp.jpg" alt width="693" height="481">
+    <p>To add the next calibration point repeat <strong>Step 11</strong> and <strong>Step 12</strong> for a tunnel speed of 9m/s</p>
+    </td></tr>
+   
+   
+   
+   
+   
+        <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 15</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running 4 calibration points should be displayed</p>
+    <img src="Figures_Vel_2/xwc18_calib_fp.jpg" alt width="693" height="481">
+    <p>To add the next calibration point repeat <strong>Step 11</strong> and <strong>Step 12</strong> for a tunnel speed of 11m/s</p>
+    </td></tr>
+   
+   
+   
+   
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>The <strong>Calibration.vi</strong> displaying 5 calibration points is shown below</p>
+    <img src="Figures_Vel_2/xwc19_calib_fp.jpg" alt width="693" height="481">
+    <p>This would be considered a good cross wire velocity calibration over the velocity range from 3m/s to 11m/s since the <strong>Av % err</strong> are below 0.15% which is quite low. For a reasonable calibration you would expect this value to be less than 1%.</p>
+
+
+<p>The cross wire Velocity calibration has now been completed with a valid angle calibration file selected so is now ready to be used by <strong>Measurement.vi</strong></p>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>  
+
+    <a name="end"> </a>
+      <p><a href="xwc_2st_vel.html">Back to top of Page</a></p>
+     
+     <p><a href="../index.html">EnFlo Software Home</a></p>
+   
+    </td></tr>
+    
+    
+  </table>
+  
+     
+  
+  
+  
+  <h3>Advanced options</h3>
+  
+  <p><a href="../HotWire_Calib/hwc_Fixed_n.html">How to fix the value of <strong>n</strong></a></p>
+  
+   <p><a href="../HotWire_Calib/hwc_rm_points.html">How to remove unwanted calibration points</a></p>
+    
+    <p><a href="hwc_file.html">View the calibration file</a></p>
+    
+    <p><a href="../HotWire_Calib/hwc_raw_data_files.html">Information about the raw data files that have been generated</a></p>
+    
+
+ 
+  
+
+
+<map name="xwm3_meas_setup_panel.jpg">
+	<area shape="rect" coords="191,561,565,700" href="../Enter_Temp/T_and_P_input.html">
+</map>
+</body>
+</html>

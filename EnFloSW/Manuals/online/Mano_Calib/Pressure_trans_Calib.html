@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>
+  Mano Calib
+  </title>
+ </head>
+ <body bgcolor="#ffffff" text="#000000">
+  <h2 align="center">
+  Mano Calib
+  </h2>
+
+  </a>
+  <table cellspacing="2" cellpadding="2" width="100%">
+  
+  
+
+  
+  
+   <tr>
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>If LabVIEW is not running Launch it and open the EnFlo Hub window</p>
+    <p>&nbsp;</p>
+    
+    <img src="Figures/mc1_enflo_hub.jpg" alt width="603" height="458">
+     <p>Click on the "Calibration Program" icon to open the calibration program which should then initiallised itself to show the most recent calibration that has been carried out.</p>
+    </td></tr>
+
+
+
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc2_calib_fp.jpg" alt width="703" height="596">
+    <p>Click on the "Run" arrow to show the calibration setup</p>
+    </td></tr>
+   
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc3_file_dialog.jpg" alt width="560" height="452">
+    
+     <p>If the "Calib file" box on the "Calibration" panel was left blank you will be prompted to choose a new or existing calibration file. The Calibration file created in this example is "/Users/Paul_Hayden/Calib_Files/Mano_Calib.txt" </p>
+      <p>Please Note. The layout of this dialog box will be platform dependent.</p>
+     
+    </td>
+   </tr>
+   
+     <tr>
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc4_calib_setup_panel.jpg" alt width="578" height="746" usemap="#mc4_calib_setup_panel.jpg" border="0">
+    <p>Press the green "OK" button when you are ready to move on</p>
+    </td>
+   </tr>
+   
+   
+     <tr>
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc5_Pres_Trans_Setup.jpg" alt width="584" height="581">
+    
+    <p>Press the green "OK" button when you are ready to move on</p>
+         </td>
+   </tr>
+   
+ 
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc6_calib_fp.jpg" alt width="693" height="481">
+    
+    <p>The calibration setup has now been completed and the program is now ready to take the first calibration point.
+     In this example the micromanometer we are calibrating is connected to a pitot-static tube in the wind tunnel and so we will be changing the pressure by changing the wind tunnel speed which at EnFlo can be done from the "Set Tunnel Speed Client" vi as shown below.</p>
+      </td></tr>
+   
+        
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc7_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Type in the desired "Tunnel velocity m/s" and click on the "Run" or set the tunnel conditions manually</p>
+    </td></tr>
+        
+        
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc6_calib_fp.jpg" alt width="693" height="481">
+    <p>Click on the run arrow when the pressure transducer has settled at the first calibration value</p>
+    </td></tr>
+   
+   
+   
+    
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc8_input1.jpg" alt width="420" height="189">
+    <p>Enter the micromanometer display value into the "Input Value Dialog.vi" panel, then press the green "OK" button</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc9_calib_fp.jpg" alt width="693" height="481">
+    <p>The calibration panel now shows the first calibration point. The voltage trace is shown in the plot labelled "sample of input signal" and the average voltage value of 0.064 Volts is recorded in the lower array directly above the entered value of 0.25 mmH2O. </p>
+    <p>The calibration constants A and B are NaN (Not a Number) since these cannot be evaluated from just one calibration point</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc10_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Now the second tunnel speed can be entered then click on the "Run" arrow or set the next calibration pressure manually</p>
+    </td></tr>
+    
+    
+    
+      <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc9_calib_fp.jpg" alt width="693" height="481">
+    <p>Click on the "Run" arrow to take the next calibration point</p>
+    </td></tr>
+    
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc11_input2.jpg" alt width="431" height="189">
+    <p>Enter the front panel value into the input dialog box, then press the green "OK" button</p>
+    </td></tr>
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <img src="Figures/mc12_calib_fp.jpg" alt width="693" height="481">
+    <p>The calibration panel now shows the first two calibration points.</p>
+    <p>The calibration constants A and B are now shown for the straight line fit for the equation Voltage = A + B * Pressure</p>
+    <p>The "Av % err" is the squareroot of the mean square error in pressure divided by the average pressure. Obviously for a two point calibration this value will be zero.</p>
+    </td></tr>
+    
+  </table>
+ <map name="mc4_calib_setup_panel.jpg">
+	<area shape="rect" coords="395,514,716,695" href="../Enter_Temp/Temp_press_input.html">
+</map>
+
+
+</body>
+</html>

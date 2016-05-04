@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Crossed Hot Wire Angle Calibration</title>
+ </head>
+ <body bgcolor="#ffffff" text="#000000">
+  <h2 align="center">An Example of a Cross Hot Wire Angle Calibration</h2>
+<table cellspacing="2" cellpadding="2" width="100%">
+ 
+
+
+   <tr><td align="center" width="100%">
+   
+    <p>In making cross wire measurements, one must take account for the fact that not all of the cooling of the hot wire is caused by the flow normal to the wire. The effective angle method is the approach used by the EnFlo Software to account for the cooling effect of flow along the length of the wire. The effective wire angles are found during the calibration procedure, which can be divided into two parts: a velocity calibration and an angle calibration. The velocity calibration procedure must be performed first and is identical to that of the single hot wire. Once the velocity calibration constants are known, one then performs the angle calibration to find the effective angles, which are assumed to be constant over a range of velocities. The angle calibration is generally performed only once for a specific probe; however, the velocity calibration must be performed each time the probe is used.</p>
+
+<p>The angle calibration is performed by rotating the probe through a series of angles (theta) from -15 to +15 degrees from its normal measurement position for a standard XW probe having an included angle of 90 deg between the wires. However, in this example a XW probe having an included angle of 120deg was used and was calibrated over a range of -25 to +25 degrees. The 120 degree probe works better in higher turbulence flows than the standard probe since rectification errors will not occur so readily.</p>
+
+<p>The effective angles for each wire are determined by fitting a straight line through the data using the equation:</p>
+
+<img src="Figures_Angle/equation1.jpg" alt="" width="319" height="95">
+
+<p> where E overbar is the mean anemometer voltage, A, B and n are the coefficients determined from the velocity calibration, U is velocity at which the angle calibration was carried out, &theta; is the angle of the probe to the flow and &psi; is the effective wire angle that you are determining from the angle calibraition.</p>
+
+
+    </td></tr>
+ 
+  
+  <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <h3>Step 1</h3>
+    <p>The hot wire bridges must first be balanced for the desired probe and the bridge tested and adjusted to give optimal frequency response. A <a href="xwc_1st_vel.html">cross wire velocity calibration</a> then needs to be preformed before carrying out an angle calibration</p>
+
+The hot wire probe needs to be placed in a low turbulence steady flow and be held in such a way as will allow the angle of the probe to be changed with respect to the oncoming flow.</p>
+<img src="Figures_Angle/angle_calib_rig.jpg" alt width="478" height="469">
+<p> In this example the hot wire signal is connected to Channel 2 and 3 of the ADC488 connection box and the signal from the micromanometer is connected to Channel 0.</p>
+    </td></tr>
+  
+  
+   <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <h3>Step 2</h3>
+    <p>If LabVIEW is not running Launch it and open the <strong>EnFlo_Hub.vi</strong> as shown below</p>
+    <img src="Figures_Angle/xwc1_enflo_hub.jpg" alt width="603" height="458">
+     <p>Click on the <strong>Calibration</strong> icon to open the calibration program.</p>
+    </td></tr>
+
+
+
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 3</h3>
+    <p>This is the <strong>Calibration.vi</strong> which should now be showing. It should have initialised itself to show the most recent calibration that has been carried out, or be blank if this is the first calibration carried out using <strong>Calibration.vi</strong> on this machine</p></p>
+    <img src="Figures_Angle/xwc2_calib_fp.jpg" alt width="702" height="595">
+    <p>The same filename <strong>XW_Calib.txt</strong> should be used as the previous velocity calibration since a completed cross wire calibration file contains information about both the velocity and angle calibrations.</p>
+    <p>Click on the <strong>Run</strong> arrow to show the calibration setup</p>
+    </td></tr>
+   
+   
+ 
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 4</h3>
+    <p>If the <strong>Calib file</strong> box on the <strong>Calibration.vi</strong> was left blank the file dialog will appear asking the user to choose a new or existing calibration file. The Calibration file chosen in this example is <strong>/Users/paul_local/Documents/LabVIEW_data/Examples/Calib_Files/XW_Calib.txt</strong></p>
+     <p>&nbsp;</p>
+     <p>The <strong>Calibration User input</strong> dialog should now be displayed</p>
+    <img src="Figures_Angle/xwc4_calib_setup_panel.jpg" alt width="621" height="603" usemap="#mc4_calib_setup_panel.jpg" border="0">
+    <p>Firstly change the <strong>Instrument type</strong> to <strong>Cross wire angle</strong></p>
+    <p>The reason for requesting the <strong>Ref vel for angle calib</strong> information is to enable the <strong>Calibration.vi</strong> to correct for any slight variation in tunnel speed during the angle calibration which should be carried out at a nominally constant velocity.</p>
+    <p>Press the green <strong>OK</strong> button after having set this panel appropriately</p>
+    </td></tr>
+   
+   <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 5</h3>
+    <p>If the <strong>Calib Filename</strong> for the micromanometer (connected to the pitot-static tube) could not be found the user will be prompted to search for a suitable calibration file via the file dialog box.</p>
+    <img src="Figures_Angle/xwc4_mano_filename.jpg" alt width="560" height="431" usemap="#mc4_calib_setup_panel.jpg" border="0">
+
+     <p>The Calibration file chosen in this example is  <strong>/Users/paul_local/Documents/LabVIEW_data/Examples/Calib_Files/Mano_Calib.txt</strong> created during the <a href="../Mano_Calib/mc_home.html">Micromanometer calibration.</a></p>
+ 
+    </td></tr>
+   
+   
+     <tr>
+    
+    <td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 6</h3>
+    <p>The <strong>Hot Wire Setup</strong> dialog should now be displayed</p>
+    <img src="Figures_Angle/xwc5_HW_Setup.jpg" alt width="462" height="415">
+    <p>This should have already been set up correctly when the velocity calibration was performed.</p>
+    <p>Press the green <strong>OK</strong> button after having set this panel appropriately</p>
+         </td>
+   </tr>
+   
+ 
+   
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 7</h3>
+    <p>Now all the setup dialogs have been answered the <strong>Calibration.vi</strong> should look like this</p>
+    <img src="Figures_Angle/xwc6_calib_fp.jpg" alt width="693" height="481">
+    
+    <p>Before running the <strong>Calibration.vi</strong> the wind tunnel speed needs to be set to a value roughly in the middle of the range of velocities intended to be measured. In this example the tunnel speed was set to 7m/s for the entire angle calibration</p>
+      </td></tr>
+   
+    <!--The FIRST calibration point-->
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 8</h3>
+    <p>If the wind tunnel you are working on has LabVIEW speed control, go to the <strong>EnFlo_Hub.vi</strong> and click on the icon <strong>Tunnel Speed Control</strong> in the <strong>User</strong> tab to launch the panel shown below, or manually control the tunnel speed</p>
+    <img src="Figures_Angle/xwc7_tunnel_speed.jpg" alt width="254" height="279">
+    <p>Type in the desired <strong>Tunnel Velocity m/s</strong> value and click on the <strong>Run</strong> arrow to set the tunnel speed</p>
+    </td></tr>
+        
+        
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 9</h3>
+    <p>The XW probe angle was set to -25 degrees</p>
+    <p>Now click back on the <strong>Calibration.vi</strong> to make it the active window or select it from the LabVIEW <strong>Window</strong> menu bar</p>
+    <img src="Figures_Angle/xwc6_calib_fp.jpg" alt width="693" height="481">
+    <p>The only remaining values to set on <strong>Calibration.vi</strong> front panel are the number of samples <strong>Samples/ch</strong> and the sampling rate <strong>Sampling Rate /ch (Hz)</strong>.</p>
+<p> Click on the <strong>Run</strong> arrow when the pressure transducer has settled at the first calibration value.</p>
+    </td></tr>
+   
+   
+   
+      <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 10</h3>
+    <p>After the micromanometer has been sampled for 6 seconds the <strong>Input Value Dialog</strong> should be displayed</p>
+    <img src="Figures_Angle/xwc8_input1.jpg" alt width="604" height="348">
+    <p>Enter the XW probe angle into the <strong>Input Value Dialog.vi</strong> panel, then press the green <strong>OK</strong> button</p>
+    </td></tr>
+   
+   
+   
+   
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 11</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running the first calibration point should be displayed</p>
+    <img src="Figures_Angle/xwc9_calib_fp.jpg" alt width="693" height="481">
+    <p>The velocity trace from the pitot-static tube and the voltage traces from the two hot wire anemometer are shown in the plot labelled <strong>Sample of input signals</strong>, and their average values are recorded in the lower array.</p>
+    <p>The calibration constants psi1 and psi2 are NaN (Not a Number) since these cannot be evaluated from just one calibration point</p>
+  <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  <h3>Step 12</h3>
+  <p>The XW probe angle was set to -15 degrees</p>
+  <p>Click on the <strong>Run</strong> arrow of the <strong>Calibration.vi</strong> to take the next calibration point</p>
+    </td></tr>
+    
+    <!--The SECOND calibration point-->
+   
+    
+   
+    
+          <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 13</h3>
+    <p>After the micromanometer has been sampled for 6 seconds the <strong>Input Value Dialog</strong> should be displayed</p>
+    <img src="Figures_Angle/xwc10_input2.jpg" alt width="610" height="344">
+    <p>Enter the XW probe angle into the <strong>Input Value Dialog.vi</strong> panel, then press the green <strong>OK</strong> button</p>
+    </td></tr>
+  
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 14</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running the first two calibration points should be displayed</p>
+    <img src="Figures_Angle/xwc11_calib_fp.jpg" alt width="693" height="481">
+    
+    
+    
+    <p>The calibration constants psi1 and psi2 are now shown for the staight line fit through the equation:</p>
+
+<img src="Figures_Angle/equation1.jpg" alt="" width="319" height="95">
+
+<p> where E overbar is the mean anemometer voltage, A, B and n are the coefficients determined from the velocity calibration, U is velocity at which the angle calibration was carried out, &theta; is the angle of the probe to the flow and &psi; is the effective wire angle that you are determining from the angle calibraition.</p>
+
+    
+  <p> On the calibration plot: </p>
+    
+    <img src="Figures_Angle/equationY.jpg" alt="" width="228" height="98">
+    
+    <p> and</p>
+    
+    <img src="Figures_Angle/equationX.jpg" alt="" width="111" height="48">
+    
+    
+    <p>And the gradient of the fitted straight line will be tan &psi;</p>
+    
+    <p>To add the next calibration point repeat <strong>Step 12</strong> and <strong>Step 13</strong> for a XW probe angle of -5 degrees</p>
+    </td></tr>
+    
+    
+   
+     <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 15</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running 3 calibration points should be displayed</p>
+    <img src="Figures_Angle/xwc12_calib_fp.jpg" alt width="693" height="481">
+    <p>To add the next calibration point repeat <strong>Step 12</strong> and <strong>Step 13</strong> for a XW probe angle of +5 degrees</p>
+    </td></tr>
+   
+   
+   
+   
+   
+        <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 16</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running 4 calibration points should be displayed</p>
+    <img src="Figures_Angle/xwc13_calib_fp.jpg" alt width="693" height="481">
+  <p>To add the next calibration point repeat <strong>Step 12</strong> and <strong>Step 13</strong> for a XW probe angle of +15 degrees</p>
+    </td></tr>
+   
+   
+   
+   
+           <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Step 17</h3>
+    <p>When the <strong>Calibration.vi</strong> stops running 5 calibration points should be displayed</p>
+    <img src="Figures_Angle/xwc14_calib_fp.jpg" alt width="693" height="481">
+  <p>To add the next calibration point repeat <strong>Step 12</strong> and <strong>Step 13</strong> for a XW probe angle of +25 degrees</p>
+    </td></tr>
+   
+    
+    
+    <tr><td align="center" width="100%">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>  
+      <h3>Step 18</h3>
+    <p>The <strong>Calibration.vi</strong> displaying 6 calibration points is shown below</p>
+    <img src="Figures_Angle/xwc15_calib_fp.jpg" alt width="693" height="481">
+    <p>This would be considered a good cross wire angle calibration since the two fitted lines go quite well through all the points</p>
+
+
+<p>The cross wire angle calibration has now been completed but before this cross wire calibration file can be used by <strong>Measurement.vi</strong> a further <a href="xwc_2st_vel.html">Velocity Calibration</a> is recomended.</p>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>  
+
+    <a name="end"> </a>
+      <p><a href="xwc_angle.html">Back to top of Page</a></p>
+     
+     <p><a href="../index.html">EnFlo Software Home</a></p>
+   
+    </td></tr>
+    
+    
+  </table>
+  
+     
+  
+  
+  
+  <h3>Advanced options</h3>
+  
+ 
+  <p><a href="../HotWire_Calib/hwc_rm_points.html">How to remove unwanted calibration points</a></p>
+    
+    <p><a href="hwc_file.html">View the calibration file</a></p>
+    
+    <p><a href="../HotWire_Calib/hwc_raw_data_files.html">Information about the raw data files that have been generated</a></p>
+    
+
+ 
+  
+  
+ <map name="mc4_calib_setup_panel.jpg">
+	<area shape="rect" coords="224,636,566,737" href="../Enter_Temp/T_and_P_input.html">
+</map>
+
+
+
+</body>
+</html>
