@@ -1,5 +1,5 @@
-// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015. Rev 2: 21/12/2015
-// Set to 144MHz clock
+// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015. Rev 2: 21/12/2015. Rev 3: 08/06/2016 (Serial write outside of ISR)
+// Board: Teensy 3.1 / 3.2; USB type: Serial; CPU speed: 144MHz (opt)
 // !! Remember to cut Vusb to 5V link!!
 
 #pragma GCC optimize ("O3")
@@ -8,24 +8,24 @@
 
 IntervalTimer SampleClock;
 
-static const byte pin_CS = 10;
-static const byte pin_OVR = 0;
-static const byte pin_ACQ = 1;
-static const byte pin_OS0 = 2;
-static const byte pin_OS1 = 3;
-static const byte pin_OS2 = 4;
-static const byte pin_STBY = 5;
-static const byte pin_RANGE = 6;
-static const byte pin_CONVST = 7;
-static const byte pin_RESET = 8;
-static const byte pin_BUSY = 9;
-static const byte pin_TRIG = 23;
+#define pin_CS      10
+#define pin_OVR     0
+#define pin_ACQ     1
+#define pin_OS0     2
+#define pin_OS1     3
+#define pin_OS2     4
+#define pin_STBY    5
+#define pin_RANGE   6
+#define pin_CONVST  7
+#define pin_RESET   8
+#define pin_BUSY    9
+#define pin_TRIG    23
 
 float dt = 1000.0; // us
 
 byte DataBuffer[18];  // 18 bits x 8 Ch = 144 bits (= 18 bytes) largest size it will ever be
 
-const int L = 10;
+const byte L = 10;
 char SerIn[L];       // Config message format is ~,OS0,OS1,OS2,RANGE,TRIG,Nchan,[dt...  ]
 //                                                  0   1   2    3    4     5    6 7 8 9
 byte SerOut[L + 1];
@@ -43,6 +43,7 @@ byte NchanBytes = 18;
 byte SleepState = 0; // (0, 1, 2) = (wakeup, standby, shutdown)
 
 volatile byte Clocking = 0;
+volatile byte DataReady = 0;
 
 
 void setup()
@@ -61,10 +62,19 @@ void setup()
 }
 
 
-void loop()
+FASTRUN void loop()
 {
   while (true)
   {
+    if (DataReady)
+    {
+      Serial.write(DataBuffer, NchanBytes); // Faster throughput by putting serial write here rather than in ISR
+      if (dt > 1000.0)
+      {
+        if (NchanBytes < 7) Serial.send_now(); // Need to do this at slow speed else no stream!
+      }
+      DataReady = 0;
+    }
     SerInCheck(); // Check for host PC commands
   }
 }
@@ -136,7 +146,7 @@ void Busy_FALLING()
     digitalWriteFast(pin_OVR, HIGH);
   }
 
-  Serial.write(DataBuffer, NchanBytes);
+  DataReady = 1;
 }
 
 
@@ -237,7 +247,11 @@ FASTRUN void SerInCheck()
     }
     else if (Cmd == '?') // Send back overrun status bit
     {
-      Serial.write(reinterpret_cast<byte*>(&Overrun), 4);
+      byte tmp[4];
+      memcpy(&tmp[0], &Overrun, 4); // 4-byte float for dt
+      Serial.write(tmp, 4);
+      
+
     }
     else if (Cmd == '$') // Sleep state change, $0 or $1 or $2 (wakeup, standby, shutdown)
     {
@@ -306,11 +320,11 @@ FASTRUN void SerInCheck()
     {
       Serial.println("Hello"); // insert debug variable output in place of "Hello"!
     }
-    else
-    {
-      // discard entire buffer
-      while (Serial.available())
-        Serial.read();
-    }
+//    else
+//    {
+//      // discard entire buffer
+//      while (Serial.available())
+//        Serial.read();
+//    }
   }
 }
