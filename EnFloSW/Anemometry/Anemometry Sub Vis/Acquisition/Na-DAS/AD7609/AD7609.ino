@@ -133,10 +133,9 @@ void Busy_FALLING()
   
   SPI.beginTransaction(SPISettings(24000000, MSBFIRST, SPI_MODE2));
   digitalWriteFast(pin_CS, LOW);
-  for (byte i = 0; i < NchanBytes; ++i)
-  {
-    DataBuffer[i] = SPI.transfer(0x00);
-  }
+
+  SPI.transfer(DataBuffer, NchanBytes);
+
   digitalWriteFast(pin_CS, HIGH);
   SPI.endTransaction();
 
