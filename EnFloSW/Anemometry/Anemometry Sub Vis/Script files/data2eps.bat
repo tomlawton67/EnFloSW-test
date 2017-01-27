@@ -34,6 +34,11 @@ REM del *.tex
 
 epstopdf %1.eps
 
-start %1.pdf
+SET File=%1.pdf
+SET altFile=%1.eps.pdf
+
+IF EXIST %altFile% (REN %altFile% %File%)
+
+START %File%
 
 REM del *.eps
