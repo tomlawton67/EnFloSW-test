@@ -1,1 +1,51 @@
-Log Folder Name	G4_2_HD:Users:paulhayden:Documents:Projects:Hong Roughness:Written work:Latex:Nov_2003:																																																										Curley brackets allowed in channel names	{}*************	*************	*************	*************	*************	*************	*************	*************	*************	*************	RawDataFilenameRaw:Data:Filename**Description Start****Description End****Tolerance Start**1.000000**Tolerance End****Precision Start****Precision End****Dispose Start**FALSE**Dispose End****Summarise Start**TRUE**Summarise End****Source Start**Raw:Data:Filename**Source End****Replace Start****Replace End****Maths Start****Maths End****Omit Start****Omit End****Folder level Start****Folder level End****Minimum Value Start****Minimum Value End****Ignore When Start****Ignore When End**
+Log Folder Name	G4_2_HD:\Users\paulhayden\Documents\Projects\Hong Roughness\Written work\Latex\Nov_2003
+Curley brackets allowed in channel names	{}*************	*************	*************	*************	*************	*************	*************	*************	*************	*************	
+Raw	Duplicated
+Data	Instrument
+Filename	Name
+	
+Raw:Data:Filename	Duplicated:Instrument:Name
+	
+**Description Start**	**Description Start**
+**Description End**	**Description End**
+	
+**Tolerance Start**	**Tolerance Start**
+1.000000	1.000000
+**Tolerance End**	**Tolerance End**
+	
+**Precision Start**	**Precision Start**
+**Precision End**	**Precision End**
+	
+**Dispose Start**	**Dispose Start**
+Never	Never
+**Dispose End**	**Dispose End**
+	
+**Summarise Start**	**Summarise Start**
+TRUE	TRUE
+**Summarise End**	**Summarise End**
+	
+**Source Start**	**Source Start**
+Raw:Data:Filename	Duplicated:Instrument:Name
+**Source End**	**Source End**
+	
+**Replace Start**	**Replace Start**
+**Replace End**	**Replace End**
+	
+**Maths Start**	**Maths Start**
+**Maths End**	**Maths End**
+	
+**Omit Start**	**Omit Start**
+**Omit End**	**Omit End**
+	
+**Folder level Start**	**Folder level Start**
+**Folder level End**	**Folder level End**
+	
+**Minimum Value Start**	**Minimum Value Start**
+**Minimum Value End**	**Minimum Value End**
+	
+**Maximum Value Start**	**Maximum Value Start**
+**Maximum Value End**	**Maximum Value End**
+	
+**Ignore When Start**	**Ignore When Start**
+**Ignore When End**	**Ignore When End**
+	
