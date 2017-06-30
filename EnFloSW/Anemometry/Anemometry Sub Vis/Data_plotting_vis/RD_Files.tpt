@@ -26,6 +26,7 @@ TRUE	TRUE
 	
 **Source Start**	**Source Start**
 Raw:Data:Filename	Duplicated:Instrument:Name
+ 	Do not prompt me if this channnel is not found
 **Source End**	**Source End**
 	
 **Replace Start**	**Replace Start**
