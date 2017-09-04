@@ -21,6 +21,8 @@ IntervalTimer SampleClock;
 #define pin_BUSY    9
 #define pin_TRIG    23
 
+#define spi_AD7609 SPISettings(24000000, MSBFIRST, SPI_MODE2)
+
 
 float dt = 1000.0; // us
 
@@ -130,7 +132,7 @@ void Busy_FALLING()
   // if it goes high, this means new data was being converted during the upcoming conversion
   // this is an overrun, set flags
 
-  SPI.beginTransaction(SPISettings(24000000, MSBFIRST, SPI_MODE2));
+  SPI.beginTransaction(spi_AD7609);
   digitalWriteFast(pin_CS, LOW);
 
   SPI.transfer(DataBuffer, NchanBytes);
@@ -209,7 +211,9 @@ void Reset()
   digitalWriteFast(pin_RESET, LOW);
   delayMicroseconds(1);
 
-  //Pulse(); // Gets rid of first spurious sample glitch
+  // Gets rid of first spurious sample glitch
+  Busy_FALLING();
+  DataReady = 0;
 }
 
 
