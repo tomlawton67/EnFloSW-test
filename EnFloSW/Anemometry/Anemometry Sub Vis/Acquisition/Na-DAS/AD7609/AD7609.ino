@@ -21,6 +21,7 @@ IntervalTimer SampleClock;
 #define pin_BUSY    9
 #define pin_TRIG    23
 
+
 float dt = 1000.0; // us
 
 byte DataBuffer[18];  // 18 bits x 8 Ch = 144 bits (= 18 bytes) largest size it will ever be
@@ -53,8 +54,8 @@ void setup()
   Configure_Pins();
 
   SPI.begin();
-  
-  Serial.begin(12160000);
+
+  Serial.begin(12000000);
   //while (!Serial);
 
   //delay(30);
@@ -62,21 +63,19 @@ void setup()
 }
 
 
-FASTRUN void loop()
+void loop()
 {
-  while (true)
+  if (DataReady)
   {
-    if (DataReady)
+    Serial.write(DataBuffer, NchanBytes); // Faster throughput by putting serial write here rather than in ISR
+    if (dt > 1000.0)
     {
-      Serial.write(DataBuffer, NchanBytes); // Faster throughput by putting serial write here rather than in ISR
-      if (dt > 1000.0)
-      {
-        if (NchanBytes < 7) Serial.send_now(); // Need to do this at slow speed else no stream!
-      }
-      DataReady = 0;
+      if (NchanBytes < 7) Serial.send_now(); // Need to do this at slow speed else no stream!
     }
-    SerInCheck(); // Check for host PC commands
+
+    DataReady = 0;
   }
+  SerInCheck(); // Check for host PC commands
 }
 
 
@@ -93,7 +92,7 @@ void Configure_Pins()
   pinMode(pin_CONVST, OUTPUT);
   pinMode(pin_RESET, OUTPUT);
   pinMode(pin_BUSY, INPUT);
-  pinMode(pin_TRIG, INPUT_PULLUP);
+  pinMode(pin_TRIG, INPUT_PULLUP); // Floating state of trigger is high
 
   digitalWriteFast(pin_CS, HIGH);
   digitalWriteFast(pin_OVR, LOW);
@@ -130,7 +129,7 @@ void Busy_FALLING()
   // Pulse ISR can change volatile clocking global between being reset above and the following check
   // if it goes high, this means new data was being converted during the upcoming conversion
   // this is an overrun, set flags
-  
+
   SPI.beginTransaction(SPISettings(24000000, MSBFIRST, SPI_MODE2));
   digitalWriteFast(pin_CS, LOW);
 
@@ -210,27 +209,30 @@ void Reset()
   digitalWriteFast(pin_RESET, LOW);
   delayMicroseconds(1);
 
-  Pulse(); // Gets rid of first spurious sample glitch
+  //Pulse(); // Gets rid of first spurious sample glitch
 }
 
 
 inline void ACQ_Begin()
 {
   SampleClock.begin(Pulse, dt);
+
   Overrun = 0;
-  digitalWriteFast(pin_OVR, LOW);
   digitalWriteFast(pin_ACQ, HIGH);
+  digitalWriteFast(pin_OVR, LOW);
 }
 
 
 inline void ACQ_End()
 {
   SampleClock.end();
+
   digitalWriteFast(pin_ACQ, LOW);
+  detachInterrupt(pin_TRIG);
 }
 
 
-FASTRUN void SerInCheck()
+void SerInCheck()
 {
   if (Serial.available()) // only proceed if byte(s) from PC waiting in buffer
   {
@@ -249,8 +251,6 @@ FASTRUN void SerInCheck()
       byte tmp[4];
       memcpy(&tmp[0], &Overrun, 4); // 4-byte float for dt
       Serial.write(tmp, 4);
-      
-
     }
     else if (Cmd == '$') // Sleep state change, $0 or $1 or $2 (wakeup, standby, shutdown)
     {
@@ -278,18 +278,6 @@ FASTRUN void SerInCheck()
       Range = static_cast<int>(static_cast<byte>(SerIn[3]));
       digitalWriteFast(pin_RANGE, Range);
 
-      // Trigger mode
-      TriggerMode = static_cast<int>(static_cast<byte>(SerIn[4]));
-      switch (TriggerMode)
-      {
-        case 0:
-          detachInterrupt(pin_TRIG);
-          break;
-        case 1:
-          attachInterrupt(pin_TRIG, Trigger, FALLING);
-          break;
-      }
-
       // Number of channels (bytes to receive)
       NchanBytes = static_cast<int>(static_cast<byte>(SerIn[5]));
 
@@ -299,6 +287,24 @@ FASTRUN void SerInCheck()
       dt_bytes[2] = SerIn[7];
       dt_bytes[3] = SerIn[6];
       memcpy(&dt, &dt_bytes, 4); // 4-byte float for dt
+
+      // Trigger mode
+      TriggerMode = static_cast<int>(static_cast<byte>(SerIn[4]));
+      switch (TriggerMode)
+      {
+        case 0:
+          pinMode(pin_TRIG, INPUT_PULLUP);
+          detachInterrupt(pin_TRIG);
+          break;
+        case 1:
+          pinMode(pin_TRIG, INPUT_PULLUP);
+          attachInterrupt(pin_TRIG, Trigger, FALLING);
+          break;
+        case 2:
+          pinMode(pin_TRIG, INPUT_PULLDOWN);
+          attachInterrupt(pin_TRIG, Trigger, RISING);
+          break;
+      }
     }
     else if (Cmd == '&') // Send back config
     {
@@ -319,11 +325,11 @@ FASTRUN void SerInCheck()
     {
       Serial.println("Hello"); // insert debug variable output in place of "Hello"!
     }
-//    else
-//    {
-//      // discard entire buffer
-//      while (Serial.available())
-//        Serial.read();
-//    }
+    //    else
+    //    {
+    //      // discard entire buffer
+    //      while (Serial.available())
+    //        Serial.read();
+    //    }
   }
 }
