@@ -1,4 +1,4 @@
-// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015. Rev 2: 21/12/2015. Rev 3: 08/06/2016 (Serial write outside of ISR)
+// Code for AD7609 based Data acquisition system. Written and tested by Paul Nathan 20/11/2014. Rev 1: 18/08/2015. Rev 2: 21/12/2015. Rev 3: 08/06/2016 (Serial write outside of ISR). Rev 4: 05/01/2018 trigger edge polarity options. Rev 5: 06/03/2018 trigger direction options (master or slave)
 // Board: Teensy 3.1 / 3.2; USB type: Serial; CPU speed: 144MHz (opt)
 // !! Remember to cut Vusb to 5V link!!
 
@@ -41,7 +41,8 @@ const byte ack[3] = {'#', '#', '#'}; // acknowledgement for end of clocking. Rep
 
 byte OS[3] = {0, 0, 0};
 byte Range = 1;
-byte TriggerMode = 0;
+byte TriggerMode = 0; // {0, 1, 2, 3, 4} --> {SW, HW falling edge slave, HW rising edge slave, HW falling edge master, HW rising edge master}
+byte TriggerPolarity = 0; // 0 = falling edge, 1 = rising edge (used in master mode only)
 byte NchanBytes = 18;
 byte SleepState = 0; // (0, 1, 2) = (wakeup, standby, shutdown)
 
@@ -221,6 +222,14 @@ inline void ACQ_Begin()
 {
   SampleClock.begin(Pulse, dt);
 
+  switch (TriggerMode)
+  {
+    case 3:
+    case 4:
+      digitalWriteFast(pin_TRIG, TriggerPolarity);
+      break;
+  }
+
   Overrun = 0;
   digitalWriteFast(pin_ACQ, HIGH);
   digitalWriteFast(pin_OVR, LOW);
@@ -231,8 +240,19 @@ inline void ACQ_End()
 {
   SampleClock.end();
 
+  switch (TriggerMode)
+  {
+    case 1:
+    case 2:
+      detachInterrupt(digitalPinToInterrupt(pin_TRIG));
+      break;
+    case 3:
+    case 4:
+      digitalWriteFast(pin_TRIG, !TriggerPolarity);
+      break;
+  }
+
   digitalWriteFast(pin_ACQ, LOW);
-  detachInterrupt(pin_TRIG);
 }
 
 
@@ -296,17 +316,29 @@ void SerInCheck()
       TriggerMode = static_cast<int>(static_cast<byte>(SerIn[4]));
       switch (TriggerMode)
       {
-        case 0:
+        case 0: // software
+          detachInterrupt(digitalPinToInterrupt(pin_TRIG));
           pinMode(pin_TRIG, INPUT_PULLUP);
-          detachInterrupt(pin_TRIG);
           break;
-        case 1:
+        case 1: // hardware, falling edge, slave
           pinMode(pin_TRIG, INPUT_PULLUP);
-          attachInterrupt(pin_TRIG, Trigger, FALLING);
+          attachInterrupt(digitalPinToInterrupt(pin_TRIG), Trigger, FALLING);
           break;
-        case 2:
+        case 2: // hardware, rising edge, slave
           pinMode(pin_TRIG, INPUT_PULLDOWN);
-          attachInterrupt(pin_TRIG, Trigger, RISING);
+          attachInterrupt(digitalPinToInterrupt(pin_TRIG), Trigger, RISING);
+          break;
+        case 3: // hardware, falling edge, master
+          detachInterrupt(digitalPinToInterrupt(pin_TRIG));
+          pinMode(pin_TRIG, OUTPUT);
+          TriggerPolarity = 0;
+          digitalWriteFast(pin_TRIG, !TriggerPolarity);
+          break;
+        case 4: // hardware, rising edge, master
+          detachInterrupt(digitalPinToInterrupt(pin_TRIG));
+          pinMode(pin_TRIG, OUTPUT);
+          TriggerPolarity = 1;
+          digitalWriteFast(pin_TRIG, !TriggerPolarity);
           break;
       }
     }
